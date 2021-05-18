@@ -1,11 +1,5 @@
-    import XCTest
-    @testable import Ombi
+import XCTest
+@testable import Ombi
+import Combine
 
-    final class OmbiTests: XCTestCase {
-        func testExample() {
-            // This is an example of a functional test case.
-            // Use XCTAssert and related functions to verify your tests produce the correct
-            // results.
-            XCTAssertEqual(Ombi().text, "Hello, World!")
-        }
-    }
+final class OmbiTests: XCTestCase {}
