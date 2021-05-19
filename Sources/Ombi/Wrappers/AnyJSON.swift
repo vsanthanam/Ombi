@@ -7,8 +7,6 @@
 
 import Foundation
 
-/// # AnyJSON
-///
 /// A generic JSON value type that can be expressed with Swift Literals
 public struct AnyJSON: ExpressibleByStringLiteral, ExpressibleByArrayLiteral, ExpressibleByDictionaryLiteral, ExpressibleByIntegerLiteral, ExpressibleByFloatLiteral, ExpressibleByBooleanLiteral {
     

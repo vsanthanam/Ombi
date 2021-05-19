@@ -7,8 +7,6 @@
 
 import Foundation
 
-/// # BodyDecoder
-///
 /// A generic value type to decode response body content from `Data`
 public struct BodyDecoder<Body> {
     
@@ -17,7 +15,7 @@ public struct BodyDecoder<Body> {
     /// Create a `BodyDecoder`
     /// - Parameter handler: The decoding closure
     init(_ handler: @escaping Handler) {
-        self.handle = handler
+        self.decode = handler
     }
     
     // MARK: - API
@@ -26,5 +24,5 @@ public struct BodyDecoder<Body> {
     public typealias Handler = (Data?) throws -> Body?
     
     /// The handler that decodes `Data`
-    public let handle: Handler
+    public let decode: Handler
 }

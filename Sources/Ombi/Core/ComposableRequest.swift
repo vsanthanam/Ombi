@@ -8,8 +8,6 @@
 import Foundation
 import Combine
 
-/// # ComposableRequest
-///
 /// A `ComposableRequest` is a generic type used to execute HTTP requests without needing to type request-specific types.
 ///
 /// Basic usage might look like this:
@@ -250,7 +248,7 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
     /// Add a response validator
     /// - Parameter handler: Closure used to validate a `Response`
     /// - Returns: The request
-    public func validateResponse(with handler: @escaping (Response) -> Response.Validation<ResponseError>) -> Self {
+    public func validateResponse(with handler: @escaping (Response) -> Result<Response, ResponseError>) -> Self {
         validateResponse(with: .init(handler))
     }
     

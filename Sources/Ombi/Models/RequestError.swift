@@ -8,7 +8,7 @@
 import Foundation
 
 /// An error produced by a `RequestManager`
-public enum RequestError<T>: RequestErrorProtocol where T: Error {
+public enum RequestError<T>: LocalizedError, CustomStringConvertible where T: Error {
     
     /// Malformed Request
     case malformedRequest

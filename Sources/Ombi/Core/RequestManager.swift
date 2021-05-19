@@ -9,8 +9,6 @@ import Foundation
 import Combine
 import os.log
 
-/// # RequestManager
-///
 /// An object used to execute `Requestable(s)`
 ///
 /// Basic usage might look like this:
@@ -38,7 +36,9 @@ import os.log
 /// The publisher created by the `makeRequest` methods return a `RequestResponse` and  a `RequestError`.
 /// See the documentation on both of these generic types for more information.
 ///
-/// ## Custom Validation
+/// ## Error Handling
+///
+/// ## Validation
 ///
 /// ## Additional Headers
 ///
@@ -108,7 +108,7 @@ open class RequestManager {
                         return promise(.failure(error))
                     }
                 }
-                .validate(using: requestable)
+                .validate(using: requestable.responseValidator)
             }
             .receive(on: scheduler)
             .handleEvents(receiveCompletion: { [log] completion in
@@ -175,7 +175,7 @@ open class RequestManager {
         request.httpMethod = requestable.method.rawValue
         if let body = requestable.body {
             do {
-                request.httpBody = try requestable.requestEncoder.handle(body)
+                request.httpBody = try requestable.requestEncoder.encode(body)
             } catch {
                 return InstantFailure(error: .malformedRequest)
                     .eraseToAnyPublisher()
@@ -215,7 +215,7 @@ open class RequestManager {
             }
             .tryMap { (data: Data, response: URLResponse) -> T.Response in
                 do {
-                    let body = try requestable.responseDecoder.handle(data)
+                    let body = try requestable.responseDecoder.decode(data)
                     if let response = response as? HTTPURLResponse {
                         let headers = response.allHeaderFields.reduce(RequestHeaders()) { headers, pair in
                             let (field, value) = pair
@@ -249,7 +249,7 @@ open class RequestManager {
                 }
                 os_log(.debug, log: log, "%@", message)
             })
-            .validate(using: requestable)
+            .validate(using: requestable.responseValidator)
             .handleEvents(receiveSubscription: { [log] _ in
                 guard let log = log else { return }
                 var message = "Making Request"
@@ -329,9 +329,9 @@ open class RequestManager {
 }
 
 fileprivate extension Publisher {
-    func validate<T>(using requestable: T) -> AnyPublisher<T.Response, T.Failure> where T: Requestable, T.Response == Output {
+    func validate<T, E>(using validator: ResponseValidator<T, E>) -> AnyPublisher<RequestResponse<T>, RequestError<E>> where Output == RequestResponse<T> {
         tryMap { response in
-            try requestable.responseValidator.handle(response).get()
+            try validator.validate(response).get()
         }
         .mapError { error in
             error.requestError()

@@ -7,8 +7,6 @@
 
 import Foundation
 
-/// # RequestHeaders
-///
 /// `RequestHeaders` is a value type that stores mapping of header keys an their values.
 /// It is sent with a `Request` and recieved with a `RequestResponse`
 ///

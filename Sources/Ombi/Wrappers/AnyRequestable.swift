@@ -7,8 +7,6 @@
 
 import Foundation
 
-/// # AnyRequestable
-///
 /// A type erased `Requestable` wrapper, with no other functional differences.
 public struct AnyRequestable<RequestBody, ResponseBody, ResponseError>: Requestable where ResponseError: Error {
     
