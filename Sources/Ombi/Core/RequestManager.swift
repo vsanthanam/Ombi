@@ -95,7 +95,7 @@ open class RequestManager {
             .timeout(sla,
                      scheduler: scheduler,
                      options: nil) {
-                T.Failure.timeoutSlaExceeded
+                T.Failure.slaExceeded
             }
             .catch() { [log] error in
                 Future<T.Response, T.Failure> { promise in
@@ -207,8 +207,11 @@ open class RequestManager {
         request.timeoutInterval = requestable.timeoutInterval
 
         return session.dataTaskPublisher(for: request)
-            .mapError { error in
-                T.Failure.urlSessionFailed(error)
+            .mapError { error -> T.Failure in
+                if error.code == URLError.timedOut {
+                    return T.Failure.timedOut
+                }
+                return T.Failure.urlSessionFailed(error)
             }
             .tryMap { (data: Data, response: URLResponse) -> T.Response in
                 do {

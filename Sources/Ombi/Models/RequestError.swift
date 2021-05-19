@@ -19,14 +19,17 @@ public enum RequestError<T>: RequestErrorProtocol where T: Error {
     /// Unknown
     case unknownError
     
-    /// A response validation error
+    /// Response validation error
     case validationError(T)
     
     /// Session failed error
     case urlSessionFailed(_ error: URLError)
     
-    /// Timeout error
-    case timeoutSlaExceeded
+    /// SLA Exceeded
+    case slaExceeded
+    
+    /// Timeout
+    case timedOut
     
     // MARK: - LocalizedError
     
@@ -48,8 +51,10 @@ public enum RequestError<T>: RequestErrorProtocol where T: Error {
             return "The request failed validation: \(error)"
         case .urlSessionFailed(let error):
             return "The URL session failed: \(error)"
-        case .timeoutSlaExceeded:
-            return "The request exceeded the timeout sla"
+        case .slaExceeded:
+            return "The request exceeded the provided sla"
+        case .timedOut:
+            return "The request timed out"
         }
     }
 }
