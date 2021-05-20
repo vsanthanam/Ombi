@@ -1,6 +1,11 @@
 # Ombi
 Elegent reactive networking with Combine and Swift
 
+[![license](https://img.shields.io/github/license/vsanthanam/Ombi.svg)](https://en.wikipedia.org/wiki/MIT_License)
+[![documentation](https://docs.ombi.network/badge.svg)](https://docs.ombi.network)
+[![swift-version](https://img.shields.io/badge/Swift-5.4-orange)](https://www.swift.org)
+
+
 ## Introduction
 
 Ombi is a simple library built on top of `URLSession` and `Combine` that makes it very easy to make asynchronous network requests with reactive programming.
