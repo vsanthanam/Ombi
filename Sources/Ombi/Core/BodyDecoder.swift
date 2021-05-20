@@ -18,24 +18,24 @@ import Foundation
 /// ```
 /// extension BodyDecoder where Body == MyType {
 ///     static var `default`: Self {
-///         .init { body in
-///             // Convert `MyType?` into `Data?` or throw an error
+///         .init { datq in
+///             // Convert `Data?` into `MyType?` or throw an error
 ///         }
 ///     }
 /// }
 /// ```
 ///
-/// Then, declare a type-constrained extension [Requestable](x-source-tag://Requestable)
+/// Then, declare a type-constrained extension `Requestable`
 ///
 /// ```
 /// extension Requestable where RequestBody == MyType {
-///     var requestEncoder: BodyEncoder<RequestBody> {
+///     var responseDecoder: BodyDecoder<RequestBody> {
 ///         return .default
 ///     }
 /// }
 /// ```
 ///
-/// Ombi provides default body encoders for the following types:
+/// Ombi provides default body decoders for the following types:
 ///
 /// - `String`
 /// - `Data`

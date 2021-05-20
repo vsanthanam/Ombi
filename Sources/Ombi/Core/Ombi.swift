@@ -9,6 +9,7 @@ import Foundation
 
 public enum Ombi {
     
+    /// The library version
     public static let version: String = "1.0.0"
     
 }

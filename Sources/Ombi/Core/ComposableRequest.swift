@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-/// A `ComposableRequest` is a generic type used to execute HTTP requests without needing to type request-specific types.
+/// A `ComposableRequest` is a generic type used to execute HTTP requests without needing to create request-specific `Requestable` types.
 ///
 /// Basic usage might look like this:
 ///
@@ -44,6 +44,12 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
     // MARK: - API
     
     /// Set the request path
+    ///
+    /// ```
+    /// let request = ComposableRequest<Any, Any, Error>()
+    ///     .path("/posts/create")
+    /// ```
+    ///
     /// - Parameter path: The path
     /// - Returns: The request
     public func path(_ path: String) -> Self {
@@ -51,6 +57,15 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
     }
     
     /// Set the request path
+    ///
+    /// ```
+    /// let request = ComposableRequest<Any, Any, Error>()
+    ///     .path {
+    ///         ... logic to determine the request path ...
+    ///         return path
+    ///     }
+    /// ```
+    ///
     /// - Parameter pathBuilder: The closure that builds the request path
     /// - Returns: The request
     public func path(_ pathBuilder: @escaping () -> String) -> Self {
@@ -60,15 +75,30 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
     }
     
     /// Add a URL query
+    ///
+    /// ```
+    /// let request = ComposableRequest<Any, Any, Error>()
+    ///     .query("search", value: "test")
+    /// ```
+    ///
     /// - Parameters:
     ///   - query: The query parameter
     ///   - value: The parameter value
     /// - Returns: The request
-    public func query(query: String, value: String) -> Self {
+    public func query(_ query: String, value: String) -> Self {
         self.query { (query, value) }
     }
     
     /// Add a URL query
+    ///
+    /// ```
+    /// let request = ComposableRequest<Any, Any, Error>()
+    ///     .query {
+    ///         ... logic to determine the request query ...
+    ///         return (query: "search", value: "test")
+    ///     }
+    /// ```
+    ///
     /// - Parameter queryBuilder: The closure that returns the URL query
     /// - Returns: The requet
     public func query(_ queryBuilder: @escaping () -> (query: String, value: String)) -> Self {
@@ -78,6 +108,13 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
     }
     
     /// Add URL queries
+    ///
+    /// ```
+    /// let request = ComposableRequest<Any, Any, Error>()
+    ///     .queries((query: "key1", value: "value1"),
+    ///              (query: "key2", value: "value2"))
+    /// ```
+    ///
     /// - Parameter pairs: Query pairs
     /// - Returns: The request
     public func queries(_ pairs: (query: String, value: String) ...) -> Self {
@@ -85,6 +122,13 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
     }
     
     /// Add URL queries
+    ///
+    /// ```
+    /// let request = ComposableRequest<Any, Any, Error>()
+    ///     .queries([(query: "key1", value: "value1"),
+    ///               (query: "key2", value: "value2")])
+    /// ```
+    ///
     /// - Parameter pairs: Query pairs
     /// - Returns: The request
     public func queries(_ pairs: [(query: String, value: String)]) -> Self {
@@ -96,6 +140,13 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
     }
     
     /// Replace the exsting URL queries with new ones
+    ///
+    /// ```
+    /// let request = ComposableRequest<Any, Any, Error>()
+    ///     .queries(["key1" : "value1",
+    ///               "key2" : "value2"])
+    /// ```
+    ///
     /// - Parameter queries: The queries
     /// - Returns: The request
     public func queries(_ query: [String : String]) -> Self {
@@ -103,6 +154,16 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
     }
     
     /// Replace the existing URL queries with new ones
+    ///
+    /// ```
+    /// let request = ComposableRequest<Any, Any, Error>()
+    ///     .queries {
+    ///         ... logic to determine the request queries ...
+    ///         return ["key1" : "value1",
+    ///                 "key2" : "value2"]
+    ///     }
+    /// ```
+    ///
     /// - Parameter queryBuilder: The closure that builds the queries
     /// - Returns: The request
     public func queries(_ queryBuilder: @escaping () -> [String : String]) -> Self {
@@ -113,6 +174,12 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
     }
     
     /// Set the HTTP method
+    ///
+    /// ```
+    /// let request = ComposableRequest<Any, Any, Error>()
+    ///     .method(.post)
+    /// ```
+    ///
     /// - Parameter method: The method to use
     /// - Returns: The request
     public func method(_ method: RequestMethod) -> Self {
@@ -120,6 +187,15 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
     }
     
     /// Set the HTTP method
+    ///
+    /// ```
+    /// let request = ComposableRequest<Any, Any, Error>()
+    ///     .method {
+    ///         ... logic to determine the request method ...
+    ///         return .post
+    ///     }
+    /// ```
+    ///
     /// - Parameter methodBuilder: Closure that builds the request method
     /// - Returns: The request
     public func method(_ methodBuilder: @escaping () -> RequestMethod) -> Self {

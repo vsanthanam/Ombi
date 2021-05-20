@@ -17,7 +17,7 @@
     <a title="ComposableRequest Structure Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Ombi Docs</a> (84% documented)</p>
+        <p><a href="../index.html">Ombi Docs</a> (85% documented)</p>
         <p class="header-right">
           <form role="search" action="../search.json">
             <input type="text" placeholder="Search documentation" data-typeahead>
@@ -136,7 +136,7 @@
 
                 </div>
               </div>
-            <p>A <code>ComposableRequest</code> is a generic type used to execute HTTP requests without needing to type request-specific types.</p>
+            <p>A <code>ComposableRequest</code> is a generic type used to execute HTTP requests without needing to create request-specific <code><a href="../Protocols/Requestable.html">Requestable</a></code> types.</p>
 
 <p>Basic usage might look like this:</p>
 <pre class="highlight swift"><code><span class="n">cancellable</span> <span class="o">=</span> <span class="kt">ComposableRequest</span><span class="o">&lt;</span><span class="kt">AnyJSON</span><span class="p">,</span> <span class="kt">AnyJSON</span><span class="p">,</span> <span class="kt">HTTPError</span><span class="o">&gt;</span><span class="p">()</span>
@@ -229,6 +229,9 @@ If you provide your own error model, rember to provide a validator, as the defau
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Set the request path</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">request</span> <span class="o">=</span> <span class="kt">ComposableRequest</span><span class="o">&lt;</span><span class="kt">Any</span><span class="p">,</span> <span class="kt">Any</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">()</span>
+    <span class="o">.</span><span class="nf">path</span><span class="p">(</span><span class="s">"/posts/create"</span><span class="p">)</span>
+</code></pre>
 
                       </div>
                       <div class="declaration">
@@ -279,6 +282,12 @@ If you provide your own error model, rember to provide a validator, as the defau
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Set the request path</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">request</span> <span class="o">=</span> <span class="kt">ComposableRequest</span><span class="o">&lt;</span><span class="kt">Any</span><span class="p">,</span> <span class="kt">Any</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">path</span> <span class="p">{</span>
+        <span class="o">...</span> <span class="n">logic</span> <span class="n">to</span> <span class="n">determine</span> <span class="n">the</span> <span class="n">request</span> <span class="n">path</span> <span class="o">...</span>
+        <span class="k">return</span> <span class="n">path</span>
+    <span class="p">}</span>
+</code></pre>
 
                       </div>
                       <div class="declaration">
@@ -318,9 +327,9 @@ If you provide your own error model, rember to provide a validator, as the defau
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:4Ombi17ComposableRequestV5queryAD5valueACyxq_q0_GSS_SStF"></a>
-                    <a name="//apple_ref/swift/Method/query(query:value:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4Ombi17ComposableRequestV5queryAD5valueACyxq_q0_GSS_SStF">query(query:<wbr>value:<wbr>)</a>
+                    <a name="/s:4Ombi17ComposableRequestV5query_5valueACyxq_q0_GSS_SStF"></a>
+                    <a name="//apple_ref/swift/Method/query(_:value:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4Ombi17ComposableRequestV5query_5valueACyxq_q0_GSS_SStF">query(_:<wbr>value:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -329,13 +338,16 @@ If you provide your own error model, rember to provide a validator, as the defau
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Add a URL query</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">request</span> <span class="o">=</span> <span class="kt">ComposableRequest</span><span class="o">&lt;</span><span class="kt">Any</span><span class="p">,</span> <span class="kt">Any</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">()</span>
+    <span class="o">.</span><span class="nf">query</span><span class="p">(</span><span class="s">"search"</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="s">"test"</span><span class="p">)</span>
+</code></pre>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">query</span><span class="p">(</span><span class="nv">query</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">ComposableRequest</span><span class="o">&lt;</span><span class="kt">RequestBody</span><span class="p">,</span> <span class="kt">ResponseBody</span><span class="p">,</span> <span class="kt">ResponseError</span><span class="o">&gt;</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">query</span><span class="p">(</span><span class="n">_</span> <span class="nv">query</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">ComposableRequest</span><span class="o">&lt;</span><span class="kt">RequestBody</span><span class="p">,</span> <span class="kt">ResponseBody</span><span class="p">,</span> <span class="kt">ResponseError</span><span class="o">&gt;</span></code></pre>
 
                         </div>
                       </div>
@@ -391,6 +403,12 @@ If you provide your own error model, rember to provide a validator, as the defau
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Add a URL query</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">request</span> <span class="o">=</span> <span class="kt">ComposableRequest</span><span class="o">&lt;</span><span class="kt">Any</span><span class="p">,</span> <span class="kt">Any</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">query</span> <span class="p">{</span>
+        <span class="o">...</span> <span class="n">logic</span> <span class="n">to</span> <span class="n">determine</span> <span class="n">the</span> <span class="n">request</span> <span class="n">query</span> <span class="o">...</span>
+        <span class="nf">return</span> <span class="p">(</span><span class="nv">query</span><span class="p">:</span> <span class="s">"search"</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="s">"test"</span><span class="p">)</span>
+    <span class="p">}</span>
+</code></pre>
 
                       </div>
                       <div class="declaration">
@@ -441,6 +459,10 @@ If you provide your own error model, rember to provide a validator, as the defau
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Add URL queries</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">request</span> <span class="o">=</span> <span class="kt">ComposableRequest</span><span class="o">&lt;</span><span class="kt">Any</span><span class="p">,</span> <span class="kt">Any</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">()</span>
+    <span class="o">.</span><span class="nf">queries</span><span class="p">((</span><span class="nv">query</span><span class="p">:</span> <span class="s">"key1"</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="s">"value1"</span><span class="p">),</span>
+             <span class="p">(</span><span class="nv">query</span><span class="p">:</span> <span class="s">"key2"</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="s">"value2"</span><span class="p">))</span>
+</code></pre>
 
                       </div>
                       <div class="declaration">
@@ -491,6 +513,10 @@ If you provide your own error model, rember to provide a validator, as the defau
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Add URL queries</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">request</span> <span class="o">=</span> <span class="kt">ComposableRequest</span><span class="o">&lt;</span><span class="kt">Any</span><span class="p">,</span> <span class="kt">Any</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">()</span>
+    <span class="o">.</span><span class="nf">queries</span><span class="p">([(</span><span class="nv">query</span><span class="p">:</span> <span class="s">"key1"</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="s">"value1"</span><span class="p">),</span>
+              <span class="p">(</span><span class="nv">query</span><span class="p">:</span> <span class="s">"key2"</span><span class="p">,</span> <span class="nv">value</span><span class="p">:</span> <span class="s">"value2"</span><span class="p">)])</span>
+</code></pre>
 
                       </div>
                       <div class="declaration">
@@ -541,6 +567,10 @@ If you provide your own error model, rember to provide a validator, as the defau
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Replace the exsting URL queries with new ones</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">request</span> <span class="o">=</span> <span class="kt">ComposableRequest</span><span class="o">&lt;</span><span class="kt">Any</span><span class="p">,</span> <span class="kt">Any</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">()</span>
+    <span class="o">.</span><span class="nf">queries</span><span class="p">([</span><span class="s">"key1"</span> <span class="p">:</span> <span class="s">"value1"</span><span class="p">,</span>
+              <span class="s">"key2"</span> <span class="p">:</span> <span class="s">"value2"</span><span class="p">])</span>
+</code></pre>
 
                       </div>
                       <div class="declaration">
@@ -591,6 +621,13 @@ If you provide your own error model, rember to provide a validator, as the defau
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Replace the existing URL queries with new ones</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">request</span> <span class="o">=</span> <span class="kt">ComposableRequest</span><span class="o">&lt;</span><span class="kt">Any</span><span class="p">,</span> <span class="kt">Any</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">queries</span> <span class="p">{</span>
+        <span class="o">...</span> <span class="n">logic</span> <span class="n">to</span> <span class="n">determine</span> <span class="n">the</span> <span class="n">request</span> <span class="n">queries</span> <span class="o">...</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s">"key1"</span> <span class="p">:</span> <span class="s">"value1"</span><span class="p">,</span>
+                <span class="s">"key2"</span> <span class="p">:</span> <span class="s">"value2"</span><span class="p">]</span>
+    <span class="p">}</span>
+</code></pre>
 
                       </div>
                       <div class="declaration">
@@ -641,6 +678,9 @@ If you provide your own error model, rember to provide a validator, as the defau
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Set the HTTP method</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">request</span> <span class="o">=</span> <span class="kt">ComposableRequest</span><span class="o">&lt;</span><span class="kt">Any</span><span class="p">,</span> <span class="kt">Any</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">()</span>
+    <span class="o">.</span><span class="nf">method</span><span class="p">(</span><span class="o">.</span><span class="n">post</span><span class="p">)</span>
+</code></pre>
 
                       </div>
                       <div class="declaration">
@@ -691,6 +731,12 @@ If you provide your own error model, rember to provide a validator, as the defau
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Set the HTTP method</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">request</span> <span class="o">=</span> <span class="kt">ComposableRequest</span><span class="o">&lt;</span><span class="kt">Any</span><span class="p">,</span> <span class="kt">Any</span><span class="p">,</span> <span class="kt">Error</span><span class="o">&gt;</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">method</span> <span class="p">{</span>
+        <span class="o">...</span> <span class="n">logic</span> <span class="n">to</span> <span class="n">determine</span> <span class="n">the</span> <span class="n">request</span> <span class="n">method</span> <span class="o">...</span>
+        <span class="k">return</span> <span class="o">.</span><span class="n">post</span>
+    <span class="p">}</span>
+</code></pre>
 
                       </div>
                       <div class="declaration">

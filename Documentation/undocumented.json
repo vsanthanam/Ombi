@@ -1,31 +1,10 @@
 {
   "warnings": [
     {
-      "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Core/BodyEncoder.swift",
-      "line": 21,
-      "symbol": "BodyEncoder.Handler",
-      "symbol_kind": "source.lang.swift.decl.typealias",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Core/BodyEncoder.swift",
-      "line": 23,
-      "symbol": "BodyEncoder.encode",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
       "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Core/Ombi.swift",
       "line": 10,
       "symbol": "Ombi",
       "symbol_kind": "source.lang.swift.decl.enum",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Core/Ombi.swift",
-      "line": 12,
-      "symbol": "Ombi.version",
-      "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
@@ -191,7 +170,7 @@
     },
     {
       "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Models/RequestHeaders.swift",
-      "line": 206,
+      "line": 207,
       "symbol": "RequestHeaders.subscript(_:)",
       "symbol_kind": "source.lang.swift.decl.function.subscript",
       "warning": "undocumented"
