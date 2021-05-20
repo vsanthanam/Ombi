@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>RequestManager Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/RequestManager" class="dashAnchor"></a>
+    <a title="RequestManager Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">Ombi Docs</a> (82% documented)</p>
+        <p class="header-right">
+          <form role="search" action="../search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">Ombi Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        RequestManager Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/RequestManager.html">RequestManager</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/HTTPError.html">HTTPError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/Ombi.html">Ombi</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/RequestError.html">RequestError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/RequestMethod.html">RequestMethod</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/OSLog.html">OSLog</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Extensions/URLRequest.html">URLRequest</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/Requestable.html">Requestable</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/AnyJSON.html">AnyJSON</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AnyRequestable.html">AnyRequestable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/BodyDecoder.html">BodyDecoder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/BodyEncoder.html">BodyEncoder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ComposableRequest.html">ComposableRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RequestHeaders.html">RequestHeaders</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RequestHeaders/Key.html">– Key</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RequestHeaders/Value.html">– Value</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RequestParameters.html">RequestParameters</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RequestParameters/ParameterName.html">– ParameterName</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RequestParameters/ParameterValue.html">– ParameterValue</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RequestResponse.html">RequestResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ResponseValidator.html">ResponseValidator</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>RequestManager</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">open</span> <span class="kd">class</span> <span class="kt">RequestManager</span></code></pre>
+
+                </div>
+              </div>
+            <p>An object used to execute <code>Requestable(s)</code></p>
+
+<p>Basic usage might look like this:</p>
+<pre class="highlight swift"><code><span class="kd">struct</span> <span class="kt">MyRequest</span><span class="p">:</span> <span class="kt">Requestable</span> <span class="p">{</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+
+<span class="k">let</span> <span class="nv">manager</span> <span class="o">=</span> <span class="kt">RequestManager</span><span class="p">(</span><span class="nv">host</span><span class="p">:</span> <span class="s">"https://api.myapp.com"</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">request</span> <span class="o">=</span> <span class="kt">MyRequest</span><span class="p">()</span>
+<span class="k">let</span> <span class="nv">cancellable</span> <span class="o">=</span> <span class="n">manager</span><span class="o">.</span><span class="nf">makeRequest</span><span class="p">(</span><span class="n">request</span><span class="p">,</span>
+                                      <span class="nv">retries</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+                                      <span class="nv">sla</span><span class="p">:</span> <span class="o">.</span><span class="nf">seconds</span><span class="p">(</span><span class="mi">120</span><span class="p">),</span>
+                                      <span class="nv">on</span><span class="p">:</span> <span class="kt">DispathQueue</span><span class="o">.</span><span class="n">main</span><span class="p">)</span>
+    <span class="o">.</span><span class="nf">replaceError</span><span class="p">(</span><span class="nv">with</span><span class="p">:</span> <span class="o">.</span><span class="n">empty</span><span class="p">)</span>
+    <span class="o">.</span><span class="nf">map</span><span class="p">(\</span><span class="o">.</span><span class="n">body</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">sink</span> <span class="p">{</span> <span class="n">responseBody</span> <span class="k">in</span>
+        <span class="o">...</span>
+    <span class="p">}</span>
+</code></pre>
+<h2 id='publisher' class='heading'>Publisher</h2>
+
+<p>The publisher created by the <code>makeRequest</code> methods return a <code><a href="../Structs/RequestResponse.html">RequestResponse</a></code> and  a <code><a href="../Enums/RequestError.html">RequestError</a></code>.
+See the documentation on both of these generic types for more information.</p>
+<h2 id='error-handling' class='heading'>Error Handling</h2>
+<h2 id='validation' class='heading'>Validation</h2>
+<h2 id='additional-headers' class='heading'>Additional Headers</h2>
+<h2 id='default-headers' class='heading'>Default Headers</h2>
+<h2 id='logging' class='heading'>Logging</h2>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Initializers"></a>
+                <a name="//apple_ref/swift/Section/Initializers" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Initializers"></a>
+                  <h3 class="section-name"><p>Initializers</p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4Ombi14RequestManagerC4host3logACSS_So06OS_os_E0CSgtcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(host:log:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4Ombi14RequestManagerC4host3logACSS_So06OS_os_E0CSgtcfc">init(host:<wbr>log:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create a <code>RequestManager</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">host</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span>
+            <span class="nv">log</span><span class="p">:</span> <span class="kt">OSLog</span><span class="p">?</span> <span class="o">=</span> <span class="o">.</span><span class="n">defaultRequestManagerLog</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>host</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The host</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>log</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The log</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/API"></a>
+                <a name="//apple_ref/swift/Section/API" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/API"></a>
+                  <h3 class="section-name"><p>API</p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4Ombi14RequestManagerC4hostSSvp"></a>
+                    <a name="//apple_ref/swift/Property/host" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4Ombi14RequestManagerC4hostSSvp">host</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The host</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">host</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4Ombi14RequestManagerC3logSo06OS_os_D0CSgvp"></a>
+                    <a name="//apple_ref/swift/Property/log" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4Ombi14RequestManagerC3logSo06OS_os_D0CSgvp">log</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The log to use</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">log</span><span class="p">:</span> <span class="kt">OSLog</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4Ombi14RequestManagerC17additionalHeadersAA0bE0Vvp"></a>
+                    <a name="//apple_ref/swift/Property/additionalHeaders" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4Ombi14RequestManagerC17additionalHeadersAA0bE0Vvp">additionalHeaders</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Headers to add to every request</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">additionalHeaders</span><span class="p">:</span> <span class="kt"><a href="../Structs/RequestHeaders.html">RequestHeaders</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4Ombi14RequestManagerC26shouldInjectDefaultHeadersSbvp"></a>
+                    <a name="//apple_ref/swift/Property/shouldInjectDefaultHeaders" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4Ombi14RequestManagerC26shouldInjectDefaultHeadersSbvp">shouldInjectDefaultHeaders</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Whether or not to inject Ombi&rsquo;s default headers</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">open</span> <span class="k">var</span> <span class="nv">shouldInjectDefaultHeaders</span><span class="p">:</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4Ombi14RequestManagerC04makeB0_7retries3sla2on8fallback7Combine12AnyPublisherVyAA0B8ResponseVy0L4BodyQzGAA0B5ErrorOy0lN0QzGGx_Si17SchedulerTimeType_6StrideQY_q_APSgtAA11RequestableRzAI0O0R_r0_lF"></a>
+                    <a name="//apple_ref/swift/Method/makeRequest(_:retries:sla:on:fallback:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4Ombi14RequestManagerC04makeB0_7retries3sla2on8fallback7Combine12AnyPublisherVyAA0B8ResponseVy0L4BodyQzGAA0B5ErrorOy0lN0QzGGx_Si17SchedulerTimeType_6StrideQY_q_APSgtAA11RequestableRzAI0O0R_r0_lF">makeRequest(_:<wbr>retries:<wbr>sla:<wbr>on:<wbr>fallback:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Make a request</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">func</span> <span class="n">makeRequest</span><span class="o">&lt;</span><span class="kt">T</span><span class="p">,</span> <span class="kt">S</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">requestable</span><span class="p">:</span> <span class="kt">T</span><span class="p">,</span>
+                                    <span class="nv">retries</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+                                    <span class="nv">sla</span><span class="p">:</span> <span class="kt">S</span><span class="o">.</span><span class="kt">SchedulerTimeType</span><span class="o">.</span><span class="kt">Stride</span> <span class="o">=</span> <span class="o">.</span><span class="nf">seconds</span><span class="p">(</span><span class="mf">180.0</span><span class="p">),</span>
+                                    <span class="n">on</span> <span class="nv">scheduler</span><span class="p">:</span> <span class="kt">S</span><span class="p">,</span>
+                                    <span class="nv">fallback</span><span class="p">:</span> <span class="kt">T</span><span class="o">.</span><span class="kt">Response</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">.</span><span class="kt">Response</span><span class="p">,</span> <span class="kt">T</span><span class="o">.</span><span class="kt">Failure</span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">T</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Requestable.html">Requestable</a></span><span class="p">,</span> <span class="kt">S</span><span class="p">:</span> <span class="kt">Scheduler</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>requestable</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The <code><a href="../Protocols/Requestable.html">Requestable</a></code> to request</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>retries</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The number of retries</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>sla</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The SLA execute all retries before timing out</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>scheduler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The scheduler to use</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A <code>Publisher</code> to observe request responses or errors</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4Ombi14RequestManagerC04makeB0_7retries3sla8fallback7Combine12AnyPublisherVyAA0B8ResponseVy0K4BodyQzGAA0B5ErrorOy0kM0QzGGx_SiSdAOSgtAA11RequestableRzlF"></a>
+                    <a name="//apple_ref/swift/Method/makeRequest(_:retries:sla:fallback:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4Ombi14RequestManagerC04makeB0_7retries3sla8fallback7Combine12AnyPublisherVyAA0B8ResponseVy0K4BodyQzGAA0B5ErrorOy0kM0QzGGx_SiSdAOSgtAA11RequestableRzlF">makeRequest(_:<wbr>retries:<wbr>sla:<wbr>fallback:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Make a request</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">final</span> <span class="kd">func</span> <span class="n">makeRequest</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">requestable</span><span class="p">:</span> <span class="kt">T</span><span class="p">,</span>
+                                 <span class="nv">retries</span><span class="p">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+                                 <span class="nv">sla</span><span class="p">:</span> <span class="kt">TimeInterval</span> <span class="o">=</span> <span class="mf">180.0</span><span class="p">,</span>
+                                 <span class="nv">fallback</span><span class="p">:</span> <span class="kt">T</span><span class="o">.</span><span class="kt">Response</span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">AnyPublisher</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">.</span><span class="kt">Response</span><span class="p">,</span> <span class="kt">T</span><span class="o">.</span><span class="kt">Failure</span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">T</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Requestable.html">Requestable</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>requestable</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The <code><a href="../Protocols/Requestable.html">Requestable</a></code> to request</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>retries</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The number of retries</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>sla</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The SLA to use before timing out</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A <code>Publisher</code> to observe request responses or errors</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2021 <a class="link" href="https://www.vsanthanam.com" target="_blank" rel="external">Varun</a>. All rights reserved. (Last updated: 2021-05-19)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.7</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
