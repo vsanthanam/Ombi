@@ -154,8 +154,16 @@
 <h2 id='introduction' class='heading'>Introduction</h2>
 
 <p>Ombi is a simple library built on top of <code>URLSession</code> and <code>Combine</code> that makes it very easy to make asynchronous network requests with reactive programming.
-It requires Combine to work correctly, and cannot work with Swift runtime environments that do not support Combine.</p>
+It requires Combine to work correctly, and does not support Swift runtime environments that do not support Combine.</p>
 <h2 id='installation' class='heading'>Installation</h2>
+
+<p>Ombi uses the <a href="https://swift.org/package-manager/">The Swift Package Manager</a> for distrubition. For now, this is the only supported method of installation, but others will be added soon.</p>
+
+<p>Add <code>Ombi</code> to your <code>Package.swift</code> file like so:</p>
+<pre class="highlight swift"><code><span class="nv">dependencies</span><span class="p">:</span> <span class="p">[</span>
+    <span class="o">.</span><span class="nf">package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/Ombi/Ombi.git"</span><span class="p">,</span> <span class="o">.</span><span class="nf">upToNextMajor</span><span class="p">(</span><span class="nv">from</span><span class="p">:</span> <span class="s">"1.0.0"</span><span class="p">))</span>
+<span class="p">]</span>
+</code></pre>
 <h2 id='basics' class='heading'>Basics</h2>
 
 <p>Making a network request with ombi is pretty straight forward.

@@ -9,10 +9,19 @@ Elegent reactive networking with Combine and Swift
 ## Introduction
 
 Ombi is a simple library built on top of `URLSession` and `Combine` that makes it very easy to make asynchronous network requests with reactive programming.
-It requires Combine to work correctly, and cannot work with Swift runtime environments that do not support Combine.
+It requires Combine to work correctly, and does not support Swift runtime environments that do not support Combine.
 
 ## Installation
 
+Ombi uses the [The Swift Package Manager](https://swift.org/package-manager/) for distrubition. For now, this is the only supported method of installation, but others will be added soon.
+
+Add `Ombi` to your `Package.swift` file like so:
+
+```swift
+dependencies: [
+    .package(url: "https://github.com/Ombi/Ombi.git", .upToNextMajor(from: "1.0.0"))
+]
+```
 
 ## Basics
 
