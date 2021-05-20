@@ -185,3 +185,36 @@ All `RequestResponse`(s), including ones provided by the `RequestManager`'s `fal
 If you don't want to bother with validation at all, just specialize your `Requestable` with `Error`, and every completed `RequestResponse` will be allowed to pass.
 
 ## ComposableRequest
+
+If you don't want to create your own types that conform to `Requestable`, Ombi provides a reusable generic value type, `ComposableRequest`, that you dynamically configure at runtime. `ComposableRequest` has a closure-based syntax that allows your instance to capture unrelated values. The closures are not executed until the request is actually made. The first example in this document, written with a custom `Requestable` type, might look like this when expressed with a `ComposableRequest`
+
+```
+let cancellable = ComposableRequest<AnyJSON, String, HTTPError>()
+    .path("/posts/update")
+    .method(".post")
+    .headers {
+        // ... capture some things or do some work ...
+        [
+            .contentType: .contentType(.json),
+            .acceptType: .contentType(.json)
+        ]
+    }
+    .body {
+        // ... capture some things or do some work ...
+        [
+            "title" : "My New Post",
+            "body" : "lorem ipsum dolor sit amit"
+        ]
+    }
+    .send(on: https://api.myapp.com)
+    sink(receiveCompletion: { completion in
+        switch completion {
+        case .finished:
+            break
+        case .failure(let error):
+            // ... handle error here ...
+        }
+    }, recieveValue: { response in
+        // ... handle response here ...
+    })
+```

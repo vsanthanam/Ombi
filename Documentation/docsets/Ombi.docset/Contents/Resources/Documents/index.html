@@ -226,6 +226,37 @@ You will recieve a <code>Publisher</code> which will allow you to handle network
 <p>If you don&rsquo;t want to bother with validation at all, just specialize your <code><a href="Protocols/Requestable.html">Requestable</a></code> with <code>Error</code>, and every completed <code><a href="Structs/RequestResponse.html">RequestResponse</a></code> will be allowed to pass.</p>
 <h2 id='composablerequest' class='heading'>ComposableRequest</h2>
 
+<p>If you don&rsquo;t want to create your own types that conform to <code><a href="Protocols/Requestable.html">Requestable</a></code>, Ombi provides a reusable generic value type, <code><a href="Structs/ComposableRequest.html">ComposableRequest</a></code>, that you dynamically configure at runtime. <code><a href="Structs/ComposableRequest.html">ComposableRequest</a></code> has a closure-based syntax that allows your instance to capture unrelated values. The closures are not executed until the request is actually made. The first example in this document, written with a custom <code><a href="Protocols/Requestable.html">Requestable</a></code> type, might look like this when expressed with a <code><a href="Structs/ComposableRequest.html">ComposableRequest</a></code></p>
+<pre class="highlight plaintext"><code>let cancellable = ComposableRequest&lt;AnyJSON, String, HTTPError&gt;()
+    .path("/posts/update")
+    .method(".post")
+    .headers {
+        // ... capture some things or do some work ...
+        [
+            .contentType: .contentType(.json),
+            .acceptType: .contentType(.json)
+        ]
+    }
+    .body {
+        // ... capture some things or do some work ...
+        [
+            "title" : "My New Post",
+            "body" : "lorem ipsum dolor sit amit"
+        ]
+    }
+    .send(on: https://api.myapp.com)
+    sink(receiveCompletion: { completion in
+        switch completion {
+        case .finished:
+            break
+        case .failure(let error):
+            // ... handle error here ...
+        }
+    }, recieveValue: { response in
+        // ... handle response here ...
+    })
+</code></pre>
+
             </section>
           </section>
         </article>
