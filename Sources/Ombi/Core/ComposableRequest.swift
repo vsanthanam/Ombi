@@ -489,7 +489,7 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
         } else if RequestBody.self is AnyJSON.Type {
             return unsafeBitCast(BodyEncoder<AnyJSON>.default, to: BodyEncoder<RequestBody>.self)
         } else if RequestBody.self is RequestParameters.Type {
-            return BodyEncoder<RequestParameters>.default as! BodyEncoder<RequestBody>
+            return unsafeBitCast(BodyEncoder<RequestParameters>.default, to: BodyEncoder<RequestBody>.self)
         } else if RequestBody.self is Encodable.Type {
             return .init { body in
                 guard let body = (body as? Encodable) else { return nil }
@@ -517,12 +517,14 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
         } else if let desiredType = ResponseBody.self as? Decodable.Type {
             return .init { data in
                 guard let data = data else { return nil }
-                return try desiredType.decoded(from: data) as! ResponseBody?
+                let decoded = try desiredType.decoded(from: data)
+                return unsafeBitCast(decoded, to: ResponseBody?.self)
             }
         } else if let desiredType = ResponseBody.self as? AutomaticBodyDecoding.Type {
             return .init { data in
                 guard let data = data else { return nil }
-                return try desiredType.init(fromData: data) as! ResponseBody?
+                let decoded = try desiredType.init(fromData: data)
+                return unsafeBitCast(decoded, to: ResponseBody?.self)
             }
         } else {
             return BodyDecoder<ResponseBody>.fatal
@@ -533,7 +535,7 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
         if let customResponseValidator = customResponseValidator {
             return customResponseValidator
         } else if ResponseError.self is HTTPError.Type {
-            return ResponseValidator<ResponseBody, HTTPError>.default as! ResponseValidator<ResponseBody, ResponseError>
+            return unsafeBitCast(ResponseValidator<ResponseBody, HTTPError>.default, to: ResponseValidator<ResponseBody, ResponseError>.self)
         } else {
             return .unsafe
         }
