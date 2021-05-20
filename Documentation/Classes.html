@@ -17,7 +17,7 @@
     <a title="Classes  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">Ombi Docs</a> (82% documented)</p>
+        <p><a href="index.html">Ombi Docs</a> (84% documented)</p>
         <p class="header-right">
           <form role="search" action="search.json">
             <input type="text" placeholder="Search documentation" data-typeahead>
@@ -171,11 +171,32 @@
 
 <p>The publisher created by the <code>makeRequest</code> methods return a <code><a href="Structs/RequestResponse.html">RequestResponse</a></code> and  a <code><a href="Enums/RequestError.html">RequestError</a></code>.
 See the documentation on both of these generic types for more information.</p>
-<h2 id='error-handling' class='heading'>Error Handling</h2>
-<h2 id='validation' class='heading'>Validation</h2>
+<h2 id='request-lifecycle-amp-error-handling' class='heading'>Request Lifecycle &amp; Error Handling</h2>
+
+<p>The request lifecycle creates many different points of failure, and provides users with a robust error model to determin what went wrong and where</p>
+
+<ol>
+<li>The request is created. Possible failures inlcude an invalid URL, or a failure to encode the <code>RequestBody</code>, if one is present</li>
+<li>The request is excecuted. Possible failures include a broken network connection, a missing host, or a timeout.</li>
+<li>The request is parsed. The only possible failure here would be an attempt to decode the response data</li>
+<li>The request is validated. The provided <code><a href="Structs/ResponseValidator.html">ResponseValidator</a></code> examines the response&rsquo;s headers, status code, and body and choose to manipulate it or throw and error. See the &ldquo;Validation step below for more information.</li>
+</ol>
+
+<p>When the manager encounters any of the errors describer above, you can choose to retry to request. The number of retries is specified as a paramater in the <code>makeRequest&lt;T, S&gt;(_:retries:sla:on:fallback:)</code> method. You can also specify an SLA by which all retries must complete, and an optional fallback response to use. The request object itself can also contain a fallback response.</p>
 <h2 id='additional-headers' class='heading'>Additional Headers</h2>
+
+<p>In addition to the headers specified in the <code><a href="Protocols/Requestable.html">Requestable</a></code>, you can have the manager inject its own headers on every request it makes. This can be useful for handling things like authentication.</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">manager</span> <span class="o">=</span> <span class="kt">RequestManager</span><span class="p">(</span><span class="nv">host</span><span class="p">:</span> <span class="s">"https://www.apple.com"</span><span class="p">)</span>
+<span class="n">manager</span><span class="o">.</span><span class="n">additionalHeaders</span> <span class="o">=</span> <span class="p">[</span><span class="o">.</span><span class="n">authorization</span><span class="p">,</span> <span class="o">.</span><span class="nf">authorization</span><span class="p">(</span><span class="nv">username</span><span class="p">:</span> <span class="s">"myusername"</span><span class="p">,</span> <span class="nv">password</span><span class="p">:</span> <span class="s">"mypassword"</span><span class="p">]</span>
+<span class="c1">// these headers will be injected into every request</span>
+</code></pre>
 <h2 id='default-headers' class='heading'>Default Headers</h2>
+
+<p><code>RequestManager</code> automatically injects <code>User-Agent</code>, <code>Accept-Encoding</code>, and <code>Accept-Language</code> headers into every request it makes by default.
+You can disable this behavior by setting the <code>shouldInjectDefaultHeaders</code> property to <code>false</code></p>
 <h2 id='logging' class='heading'>Logging</h2>
+
+<p>&hellip; TBC &hellip;</p>
 
                         <a href="Classes/RequestManager.html" class="slightly-smaller">See more</a>
                       </div>

@@ -15,13 +15,6 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Core/ComposableRequest.swift",
-      "line": 397,
-      "symbol": "ComposableRequest.timeoutInterval",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
       "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Core/Ombi.swift",
       "line": 10,
       "symbol": "Ombi",
@@ -33,13 +26,6 @@
       "line": 12,
       "symbol": "Ombi.version",
       "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Core/Requestable.swift",
-      "line": 56,
-      "symbol": "Requestable.timeoutInterval",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
@@ -187,13 +173,6 @@
       "line": 67,
       "symbol": "RequestHeaders.Value.double(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Extensions/Requestable+Ombi.swift",
-      "line": 17,
-      "symbol": "Requestable.timeoutInterval",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
@@ -383,13 +362,6 @@
       "line": 102,
       "symbol": "AnyJSON.subscript(_:)",
       "symbol_kind": "source.lang.swift.decl.function.subscript",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Wrappers/AnyRequestable.swift",
-      "line": 50,
-      "symbol": "AnyRequestable.timeoutInterval",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     }
   ],
