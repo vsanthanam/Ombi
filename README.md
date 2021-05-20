@@ -1,5 +1,5 @@
 # Ombi
-Elegent Networking with Combine and Swift
+Elegent reactive networking with Combine and Swift
 
 ## Introduction
 
