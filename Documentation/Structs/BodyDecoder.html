@@ -5,61 +5,154 @@
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
-	<meta name="viewport" content="width=device-width, viewport-fit=cover, initial-scale=1.0" />
     <script src="../js/jquery.min.js" defer></script>
     <script src="../js/jazzy.js" defer></script>
     
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
   </head>
   <body>
     <a name="//apple_ref/swift/Struct/BodyDecoder" class="dashAnchor"></a>
     <a title="BodyDecoder Structure Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p>
-          <a href="../index.html">Ombi 1.0.0 Docs</a>
-          <span class="no-mobile"> (95% documented)</span>
-        </p>
-    
+        <p><a href="../index.html">Ombi 1.0.0 Docs</a> (95% documented)</p>
+        <p class="header-right"><a href="https://ombi.network"><img src="../img/gh.png"/>View on GitHub</a></p>
+        <p class="header-right"><a href="dash-feed://https%3A%2F%2Fdocs.ombi.network%2Fdocsets%2FOmbi.xml"><img src="../img/dash.png"/>Install in Dash</a></p>
         <p class="header-right">
-          <a href="https://ombi.network">
-            <img src="../img/gh.png"/>
-            <span class="no-mobile">View on GitHub</span>
-          </a>
-        </p>
-    
-        <p class="header-right">
-          <a href="dash-feed://https%3A%2F%2Fdocs.ombi.network%2Fdocsets%2FOmbi.xml">
-            <img src="../img/dash.png"/>
-            <span class="no-mobile">Install in Dash</span>
-          </a>
+          <form role="search" action="../search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
         </p>
       </div>
     </header>
-    <div id="breadcrumbs-container">
-      <div class="content-wrapper">
-        <p id="breadcrumbs">
-          <span class="no-mobile">
-            <a href="../index.html">Ombi Reference</a>
-            <img id="carat" src="../img/carat.png" />
-          </span>
-          BodyDecoder Structure Reference
-        </p>
-      </div>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">Ombi Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        BodyDecoder Structure Reference
+      </p>
     </div>
-    <div class="wrapper">
-      <div class="article-wrapper">
-        <article class="main-content">
-          <section>
-            <section class="section">
-              <h1>BodyDecoder</h1>
-                <div class="declaration">
-                  <div class="language">
-                    
-                    <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">BodyDecoder</span><span class="o">&lt;</span><span class="kt">Body</span><span class="o">&gt;</span></code></pre>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/RequestManager.html">RequestManager</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/HTTPError.html">HTTPError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/RequestError.html">RequestError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/RequestMethod.html">RequestMethod</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/URLRequest.html">URLRequest</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/AutomaticBodyDecoding.html">AutomaticBodyDecoding</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/AutomaticBodyEncoding.html">AutomaticBodyEncoding</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:4Ombi11HTTPRequestP">HTTPRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:4Ombi7RequestP">Request</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Requestable.html">Requestable</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/AnyJSON.html">AnyJSON</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AnyRequestable.html">AnyRequestable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/BodyDecoder.html">BodyDecoder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/BodyEncoder.html">BodyEncoder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ComposableRequest.html">ComposableRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RequestHeaders.html">RequestHeaders</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RequestHeaders/Key.html">– Key</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RequestHeaders/Value.html">– Value</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RequestParameters.html">RequestParameters</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RequestParameters/ParameterName.html">– ParameterName</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RequestParameters/ParameterValue.html">– ParameterValue</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RequestResponse.html">RequestResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ResponseValidator.html">ResponseValidator</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:4Ombi19AutomaticBodyCodinga">AutomaticBodyCoding</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>BodyDecoder</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">BodyDecoder</span><span class="o">&lt;</span><span class="kt">Body</span><span class="o">&gt;</span></code></pre>
 
-                  </div>
                 </div>
-              <p>A generic value type to decode response body content from <code>Data</code></p>
+              </div>
+            <p>A generic value type to decode response body content from <code>Data</code></p>
 <h1 id='usage' class='heading'>Usage</h1>
 
 <p>You specilize the <code>Decoder</code> with the type you want to decode, and pass in a closure to convert <code>Data</code> into the type:</p>
@@ -116,562 +209,451 @@ A <code>default</code> decoder is created for you automatically, and added by de
 
 <p>See similar types <code><a href="../Structs/BodyEncoder.html">BodyEncoder</a></code> and <code><a href="../Structs/ResponseValidator.html">ResponseValidator</a></code></p>
 
-            </section>
-            <section class="section task-group-section">
-              <div class="task-group">
-                <div class="task-name-container">
-                  <a name="/API"></a>
-                  <a name="//apple_ref/swift/Section/API" class="dashAnchor"></a>
-                  <div class="section-name-container">
-                    <a class="section-name-link" href="#/API"></a>
-                    <h3 class="section-name"><p>API</p>
-</h3>
-                  </div>
-                </div>
-                <ul>
-                  <li class="item">
-                    <div>
-                      <code>
-                      <a name="/s:4Ombi11BodyDecoderV7Handlera"></a>
-                      <a name="//apple_ref/swift/Alias/Handler" class="dashAnchor"></a>
-                      <a class="token" href="#/s:4Ombi11BodyDecoderV7Handlera">Handler</a>
-                      </code>
-                    </div>
-                    <div class="height-container">
-                      <div class="pointer-container"></div>
-                      <section class="section">
-                        <div class="pointer"></div>
-                        <div class="abstract">
-                          <p>Closure used to decode <code>Body</code> from <code>Data</code></p>
-
-                        </div>
-                        <div class="declaration">
-                          <h4>Declaration</h4>
-                          <div class="language">
-                            <p class="aside-title">Swift</p>
-                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">Handler</span> <span class="o">=</span> <span class="p">(</span><span class="kt">Data</span><span class="p">?)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Body</span><span class="p">?</span></code></pre>
-
-                          </div>
-                        </div>
-                      </section>
-                    </div>
-                  </li>
-                  <li class="item">
-                    <div>
-                      <code>
-                      <a name="/s:4Ombi11BodyDecoderV6decodeyxSg10Foundation4DataVSgKcvp"></a>
-                      <a name="//apple_ref/swift/Property/decode" class="dashAnchor"></a>
-                      <a class="token" href="#/s:4Ombi11BodyDecoderV6decodeyxSg10Foundation4DataVSgKcvp">decode</a>
-                      </code>
-                    </div>
-                    <div class="height-container">
-                      <div class="pointer-container"></div>
-                      <section class="section">
-                        <div class="pointer"></div>
-                        <div class="abstract">
-                          <p>The handler that decodes <code>Data</code></p>
-
-                        </div>
-                        <div class="declaration">
-                          <h4>Declaration</h4>
-                          <div class="language">
-                            <p class="aside-title">Swift</p>
-                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">decode</span><span class="p">:</span> <span class="kt"><a href="../Structs/BodyDecoder.html#/s:4Ombi11BodyDecoderV7Handlera">Handler</a></span></code></pre>
-
-                          </div>
-                        </div>
-                      </section>
-                    </div>
-                  </li>
-                  <li class="item">
-                    <div>
-                      <code>
-                      <a name="/s:4Ombi11BodyDecoderV5fatalACyxGvpZ"></a>
-                      <a name="//apple_ref/swift/Variable/fatal" class="dashAnchor"></a>
-                      <a class="token" href="#/s:4Ombi11BodyDecoderV5fatalACyxGvpZ">fatal</a>
-                      </code>
-                    </div>
-                    <div class="height-container">
-                      <div class="pointer-container"></div>
-                      <section class="section">
-                        <div class="pointer"></div>
-                        <div class="abstract">
-                          <p>A fatal decoder that will cause a runtime failure</p>
-
-                        </div>
-                        <div class="declaration">
-                          <h4>Declaration</h4>
-                          <div class="language">
-                            <p class="aside-title">Swift</p>
-                            <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">fatal</span><span class="p">:</span> <span class="p">`</span><span class="nv">Self</span><span class="p">`</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                          </div>
-                        </div>
-                      </section>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-              <div class="task-group">
-                <div class="task-name-container">
-                  <a name="/Available%20where%20%60Body%60%20%3D%3D%20%60String%60"></a>
-                  <a name="//apple_ref/swift/Section/Available where `Body` == `String`" class="dashAnchor"></a>
-                  <div class="section-name-container">
-                    <a class="section-name-link" href="#/Available%20where%20%60Body%60%20%3D%3D%20%60String%60"></a>
-                    <h3 class="section-name"><p>Available where <code>Body</code> == <code>String</code></p>
-</h3>
-                  </div>
-                </div>
-                <ul>
-                  <li class="item">
-                    <div>
-                      <code>
-                      <a name="/s:4Ombi11BodyDecoderVAASSRszlE8encodingACySSGSS10FoundationE8EncodingV_tcfc"></a>
-                      <a name="//apple_ref/swift/Method/init(encoding:)" class="dashAnchor"></a>
-                      <a class="token" href="#/s:4Ombi11BodyDecoderVAASSRszlE8encodingACySSGSS10FoundationE8EncodingV_tcfc">init(encoding:<wbr>)</a>
-                      </code>
-                    </div>
-                    <div class="height-container">
-                      <div class="pointer-container"></div>
-                      <section class="section">
-                        <div class="pointer"></div>
-                        <div class="abstract">
-                          <p>Create a <code>String</code> body decoder with specified encoding</p>
-
-                        </div>
-                        <div class="declaration">
-                          <h4>Declaration</h4>
-                          <div class="language">
-                            <p class="aside-title">Swift</p>
-                            <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="nv">encoding</span><span class="p">:</span> <span class="kt">String</span><span class="o">.</span><span class="kt">Encoding</span> <span class="o">=</span> <span class="o">.</span><span class="n">utf8</span><span class="p">)</span></code></pre>
-
-                          </div>
-                        </div>
-                        <div>
-                          <h4>Parameters</h4>
-                          <table class="graybox">
-                            <tbody>
-                              <tr>
-                                <td>
-                                  <code>
-                                  <em>encoding</em>
-                                  </code>
-                                </td>
-                                <td>
-                                  <div>
-                                    <p>The encoding of the <code>String</code></p>
-                                  </div>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </section>
-                    </div>
-                  </li>
-                  <li class="item">
-                    <div>
-                      <code>
-                      <a name="/s:4Ombi11BodyDecoderVAASSRszlE7defaultACySSGvpZ"></a>
-                      <a name="//apple_ref/swift/Variable/default" class="dashAnchor"></a>
-                      <a class="token" href="#/s:4Ombi11BodyDecoderVAASSRszlE7defaultACySSGvpZ">default</a>
-                      </code>
-                    </div>
-                    <div class="height-container">
-                      <div class="pointer-container"></div>
-                      <section class="section">
-                        <div class="pointer"></div>
-                        <div class="abstract">
-                          <p>The default <code>String</code> body decoder</p>
-
-                        </div>
-                        <div class="declaration">
-                          <h4>Declaration</h4>
-                          <div class="language">
-                            <p class="aside-title">Swift</p>
-                            <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">var</span> <span class="p">`</span><span class="nv">default</span><span class="p">`:</span> <span class="p">`</span><span class="nv">Self</span><span class="p">`</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                          </div>
-                        </div>
-                      </section>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-              <div class="task-group">
-                <div class="task-name-container">
-                  <a name="/Available%20where%20%60Body%60%20%3D%3D%20%60Data%60"></a>
-                  <a name="//apple_ref/swift/Section/Available where `Body` == `Data`" class="dashAnchor"></a>
-                  <div class="section-name-container">
-                    <a class="section-name-link" href="#/Available%20where%20%60Body%60%20%3D%3D%20%60Data%60"></a>
-                    <h3 class="section-name"><p>Available where <code>Body</code> == <code>Data</code></p>
-</h3>
-                  </div>
-                </div>
-                <ul>
-                  <li class="item">
-                    <div>
-                      <code>
-                      <a name="/s:4Ombi11BodyDecoderVAA10Foundation4DataVRszlE7defaultACyAFGvpZ"></a>
-                      <a name="//apple_ref/swift/Variable/default" class="dashAnchor"></a>
-                      <a class="token" href="#/s:4Ombi11BodyDecoderVAA10Foundation4DataVRszlE7defaultACyAFGvpZ">default</a>
-                      </code>
-                    </div>
-                    <div class="height-container">
-                      <div class="pointer-container"></div>
-                      <section class="section">
-                        <div class="pointer"></div>
-                        <div class="abstract">
-                          <p>The default <code>Data</code> body decoder</p>
-
-                        </div>
-                        <div class="declaration">
-                          <h4>Declaration</h4>
-                          <div class="language">
-                            <p class="aside-title">Swift</p>
-                            <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">var</span> <span class="p">`</span><span class="nv">default</span><span class="p">`:</span> <span class="p">`</span><span class="nv">Self</span><span class="p">`</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                          </div>
-                        </div>
-                      </section>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-              <div class="task-group">
-                <div class="task-name-container">
-                  <a name="/Available%20where%20%60Body%60%20%3D%3D%20%60AnyJSON%60"></a>
-                  <a name="//apple_ref/swift/Section/Available where `Body` == `AnyJSON`" class="dashAnchor"></a>
-                  <div class="section-name-container">
-                    <a class="section-name-link" href="#/Available%20where%20%60Body%60%20%3D%3D%20%60AnyJSON%60"></a>
-                    <h3 class="section-name"><p>Available where <code>Body</code> == <code><a href="../Structs/AnyJSON.html">AnyJSON</a></code></p>
-</h3>
-                  </div>
-                </div>
-                <ul>
-                  <li class="item">
-                    <div>
-                      <code>
-                      <a name="/s:4Ombi11BodyDecoderVA2A7AnyJSONVRszlE7optionsACyAEGSo20NSJSONReadingOptionsV_tcfc"></a>
-                      <a name="//apple_ref/swift/Method/init(options:)" class="dashAnchor"></a>
-                      <a class="token" href="#/s:4Ombi11BodyDecoderVA2A7AnyJSONVRszlE7optionsACyAEGSo20NSJSONReadingOptionsV_tcfc">init(options:<wbr>)</a>
-                      </code>
-                    </div>
-                    <div class="height-container">
-                      <div class="pointer-container"></div>
-                      <section class="section">
-                        <div class="pointer"></div>
-                        <div class="abstract">
-                          <p>Create a decoder for an <code><a href="../Structs/AnyJSON.html">AnyJSON</a></code></p>
-
-                        </div>
-                        <div class="declaration">
-                          <h4>Declaration</h4>
-                          <div class="language">
-                            <p class="aside-title">Swift</p>
-                            <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="nv">options</span><span class="p">:</span> <span class="kt">JSONSerialization</span><span class="o">.</span><span class="kt">ReadingOptions</span><span class="p">)</span></code></pre>
-
-                          </div>
-                        </div>
-                        <div>
-                          <h4>Parameters</h4>
-                          <table class="graybox">
-                            <tbody>
-                              <tr>
-                                <td>
-                                  <code>
-                                  <em>options</em>
-                                  </code>
-                                </td>
-                                <td>
-                                  <div>
-                                    <p>The reading options to use when deserializing the JSON</p>
-                                  </div>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </section>
-                    </div>
-                  </li>
-                  <li class="item">
-                    <div>
-                      <code>
-                      <a name="/s:4Ombi11BodyDecoderVA2A7AnyJSONVRszlE7defaultACyAEGvpZ"></a>
-                      <a name="//apple_ref/swift/Variable/default" class="dashAnchor"></a>
-                      <a class="token" href="#/s:4Ombi11BodyDecoderVA2A7AnyJSONVRszlE7defaultACyAEGvpZ">default</a>
-                      </code>
-                    </div>
-                    <div class="height-container">
-                      <div class="pointer-container"></div>
-                      <section class="section">
-                        <div class="pointer"></div>
-                        <div class="abstract">
-                          <p>The default <code><a href="../Structs/AnyJSON.html">AnyJSON</a></code> decoder</p>
-
-                        </div>
-                        <div class="declaration">
-                          <h4>Declaration</h4>
-                          <div class="language">
-                            <p class="aside-title">Swift</p>
-                            <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">var</span> <span class="p">`</span><span class="nv">default</span><span class="p">`:</span> <span class="p">`</span><span class="nv">Self</span><span class="p">`</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                          </div>
-                        </div>
-                      </section>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-              <div class="task-group">
-                <div class="task-name-container">
-                  <a name="/Available%20where%20%60Body%60%3A%20%60Decodable%60"></a>
-                  <a name="//apple_ref/swift/Section/Available where `Body`: `Decodable`" class="dashAnchor"></a>
-                  <div class="section-name-container">
-                    <a class="section-name-link" href="#/Available%20where%20%60Body%60%3A%20%60Decodable%60"></a>
-                    <h3 class="section-name"><p>Available where <code>Body</code>: <code>Decodable</code></p>
-</h3>
-                  </div>
-                </div>
-                <ul>
-                  <li class="item">
-                    <div>
-                      <code>
-                      <a name="/s:4Ombi11BodyDecoderVAASeRzlE4json7decoderACyxG10Foundation11JSONDecoderC_tFZ"></a>
-                      <a name="//apple_ref/swift/Method/json(decoder:)" class="dashAnchor"></a>
-                      <a class="token" href="#/s:4Ombi11BodyDecoderVAASeRzlE4json7decoderACyxG10Foundation11JSONDecoderC_tFZ">json(decoder:<wbr>)</a>
-                      </code>
-                    </div>
-                    <div class="height-container">
-                      <div class="pointer-container"></div>
-                      <section class="section">
-                        <div class="pointer"></div>
-                        <div class="abstract">
-                          <p>Create a decoder for a <code>Codable</code> using a <code>JSONDecoder</code></p>
-
-                        </div>
-                        <div class="declaration">
-                          <h4>Declaration</h4>
-                          <div class="language">
-                            <p class="aside-title">Swift</p>
-                            <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">func</span> <span class="nf">json</span><span class="p">(</span><span class="nv">decoder</span><span class="p">:</span> <span class="kt">JSONDecoder</span> <span class="o">=</span> <span class="kt">JSONDecoder</span><span class="p">())</span> <span class="o">-&gt;</span> <span class="kt">BodyDecoder</span><span class="o">&lt;</span><span class="kt">Body</span><span class="o">&gt;</span></code></pre>
-
-                          </div>
-                        </div>
-                        <div>
-                          <h4>Parameters</h4>
-                          <table class="graybox">
-                            <tbody>
-                              <tr>
-                                <td>
-                                  <code>
-                                  <em>decoder</em>
-                                  </code>
-                                </td>
-                                <td>
-                                  <div>
-                                    <p>The <code>JSONDecoder</code> to use for decoding</p>
-                                  </div>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                        <div>
-                          <h4>Return Value</h4>
-                          <p>The decoder</p>
-                        </div>
-                      </section>
-                    </div>
-                  </li>
-                  <li class="item">
-                    <div>
-                      <code>
-                      <a name="/s:4Ombi11BodyDecoderVAASeRzlE7defaultACyxGvpZ"></a>
-                      <a name="//apple_ref/swift/Variable/default" class="dashAnchor"></a>
-                      <a class="token" href="#/s:4Ombi11BodyDecoderVAASeRzlE7defaultACyxGvpZ">default</a>
-                      </code>
-                    </div>
-                    <div class="height-container">
-                      <div class="pointer-container"></div>
-                      <section class="section">
-                        <div class="pointer"></div>
-                        <div class="abstract">
-                          <p>The default <code>Codable</code> decoder</p>
-
-                        </div>
-                        <div class="declaration">
-                          <h4>Declaration</h4>
-                          <div class="language">
-                            <p class="aside-title">Swift</p>
-                            <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">var</span> <span class="p">`</span><span class="nv">default</span><span class="p">`:</span> <span class="p">`</span><span class="nv">Self</span><span class="p">`</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                          </div>
-                        </div>
-                      </section>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-              <div class="task-group">
-                <div class="task-name-container">
-                  <a name="/Available%20where%20%60Body%60%3A%20%60AutomaticBodyDecoding%60"></a>
-                  <a name="//apple_ref/swift/Section/Available where `Body`: `AutomaticBodyDecoding`" class="dashAnchor"></a>
-                  <div class="section-name-container">
-                    <a class="section-name-link" href="#/Available%20where%20%60Body%60%3A%20%60AutomaticBodyDecoding%60"></a>
-                    <h3 class="section-name"><p>Available where <code>Body</code>: <code><a href="../Protocols/AutomaticBodyDecoding.html">AutomaticBodyDecoding</a></code></p>
-</h3>
-                  </div>
-                </div>
-                <ul>
-                  <li class="item">
-                    <div>
-                      <code>
-                      <a name="/s:4Ombi11BodyDecoderVA2A09AutomaticB8DecodingRzlE7defaultACyxGvpZ"></a>
-                      <a name="//apple_ref/swift/Variable/default" class="dashAnchor"></a>
-                      <a class="token" href="#/s:4Ombi11BodyDecoderVA2A09AutomaticB8DecodingRzlE7defaultACyxGvpZ">default</a>
-                      </code>
-                    </div>
-                    <div class="height-container">
-                      <div class="pointer-container"></div>
-                      <section class="section">
-                        <div class="pointer"></div>
-                        <div class="abstract">
-                          <p>The default decoder for types that conform to <code><a href="../Protocols/AutomaticBodyDecoding.html">AutomaticBodyDecoding</a></code></p>
-
-                        </div>
-                        <div class="declaration">
-                          <h4>Declaration</h4>
-                          <div class="language">
-                            <p class="aside-title">Swift</p>
-                            <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">var</span> <span class="p">`</span><span class="nv">default</span><span class="p">`:</span> <span class="p">`</span><span class="nv">Self</span><span class="p">`</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                          </div>
-                        </div>
-                      </section>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </section>
           </section>
-        </article>
-      </div>
-      <div class="nav-wrapper">
-        <nav class="nav-bottom">
-          <ul class="nav-groups">
-            <li class="nav-group-name">
-              <a href="../Classes.html">Classes</a>
-              <ul class="nav-group-tasks">
-                <li class="nav-group-task">
-                  <a href="../Classes/RequestManager.html">RequestManager</a>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/API"></a>
+                <a name="//apple_ref/swift/Section/API" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/API"></a>
+                  <h3 class="section-name"><p>API</p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4Ombi11BodyDecoderV7Handlera"></a>
+                    <a name="//apple_ref/swift/Alias/Handler" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4Ombi11BodyDecoderV7Handlera">Handler</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Closure used to decode <code>Body</code> from <code>Data</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">typealias</span> <span class="kt">Handler</span> <span class="o">=</span> <span class="p">(</span><span class="kt">Data</span><span class="p">?)</span> <span class="k">throws</span> <span class="o">-&gt;</span> <span class="kt">Body</span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4Ombi11BodyDecoderV6decodeyxSg10Foundation4DataVSgKcvp"></a>
+                    <a name="//apple_ref/swift/Property/decode" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4Ombi11BodyDecoderV6decodeyxSg10Foundation4DataVSgKcvp">decode</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The handler that decodes <code>Data</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">let</span> <span class="nv">decode</span><span class="p">:</span> <span class="kt"><a href="../Structs/BodyDecoder.html#/s:4Ombi11BodyDecoderV7Handlera">Handler</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4Ombi11BodyDecoderV5fatalACyxGvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/fatal" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4Ombi11BodyDecoderV5fatalACyxGvpZ">fatal</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>A fatal decoder that will cause a runtime failure</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">fatal</span><span class="p">:</span> <span class="p">`</span><span class="nv">Self</span><span class="p">`</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
                 </li>
               </ul>
-            </li>
-            <li class="nav-group-name">
-              <a href="../Enums.html">Enumerations</a>
-              <ul class="nav-group-tasks">
-                <li class="nav-group-task">
-                  <a href="../Enums/HTTPError.html">HTTPError</a>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Available%20where%20%60Body%60%20%3D%3D%20%60String%60"></a>
+                <a name="//apple_ref/swift/Section/Available where `Body` == `String`" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Available%20where%20%60Body%60%20%3D%3D%20%60String%60"></a>
+                  <h3 class="section-name"><p>Available where <code>Body</code> == <code>String</code></p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4Ombi11BodyDecoderVAASSRszlE8encodingACySSGSS10FoundationE8EncodingV_tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(encoding:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4Ombi11BodyDecoderVAASSRszlE8encodingACySSGSS10FoundationE8EncodingV_tcfc">init(encoding:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create a <code>String</code> body decoder with specified encoding</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="nv">encoding</span><span class="p">:</span> <span class="kt">String</span><span class="o">.</span><span class="kt">Encoding</span> <span class="o">=</span> <span class="o">.</span><span class="n">utf8</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>encoding</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The encoding of the <code>String</code></p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
                 </li>
-                <li class="nav-group-task">
-                  <a href="../Enums/RequestError.html">RequestError</a>
-                </li>
-                <li class="nav-group-task">
-                  <a href="../Enums/RequestMethod.html">RequestMethod</a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-group-name">
-              <a href="../Extensions.html">Extensions</a>
-              <ul class="nav-group-tasks">
-                <li class="nav-group-task">
-                  <a href="../Extensions/URLRequest.html">URLRequest</a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-group-name">
-              <a href="../Protocols.html">Protocols</a>
-              <ul class="nav-group-tasks">
-                <li class="nav-group-task">
-                  <a href="../Protocols/AutomaticBodyDecoding.html">AutomaticBodyDecoding</a>
-                </li>
-                <li class="nav-group-task">
-                  <a href="../Protocols/AutomaticBodyEncoding.html">AutomaticBodyEncoding</a>
-                </li>
-                <li class="nav-group-task">
-                  <a href="../Protocols.html#/s:4Ombi11HTTPRequestP">HTTPRequest</a>
-                </li>
-                <li class="nav-group-task">
-                  <a href="../Protocols.html#/s:4Ombi7RequestP">Request</a>
-                </li>
-                <li class="nav-group-task">
-                  <a href="../Protocols/Requestable.html">Requestable</a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-group-name">
-              <a href="../Structs.html">Structures</a>
-              <ul class="nav-group-tasks">
-                <li class="nav-group-task">
-                  <a href="../Structs/AnyJSON.html">AnyJSON</a>
-                </li>
-                <li class="nav-group-task">
-                  <a href="../Structs/AnyRequestable.html">AnyRequestable</a>
-                </li>
-                <li class="nav-group-task">
-                  <a href="../Structs/BodyDecoder.html">BodyDecoder</a>
-                </li>
-                <li class="nav-group-task">
-                  <a href="../Structs/BodyEncoder.html">BodyEncoder</a>
-                </li>
-                <li class="nav-group-task">
-                  <a href="../Structs/ComposableRequest.html">ComposableRequest</a>
-                </li>
-                <li class="nav-group-task">
-                  <a href="../Structs/RequestHeaders.html">RequestHeaders</a>
-                </li>
-                <li class="nav-group-task">
-                  <a href="../Structs/RequestHeaders/Key.html">– Key</a>
-                </li>
-                <li class="nav-group-task">
-                  <a href="../Structs/RequestHeaders/Value.html">– Value</a>
-                </li>
-                <li class="nav-group-task">
-                  <a href="../Structs/RequestParameters.html">RequestParameters</a>
-                </li>
-                <li class="nav-group-task">
-                  <a href="../Structs/RequestParameters/ParameterName.html">– ParameterName</a>
-                </li>
-                <li class="nav-group-task">
-                  <a href="../Structs/RequestParameters/ParameterValue.html">– ParameterValue</a>
-                </li>
-                <li class="nav-group-task">
-                  <a href="../Structs/RequestResponse.html">RequestResponse</a>
-                </li>
-                <li class="nav-group-task">
-                  <a href="../Structs/ResponseValidator.html">ResponseValidator</a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-group-name">
-              <a href="../Typealiases.html">Type Aliases</a>
-              <ul class="nav-group-tasks">
-                <li class="nav-group-task">
-                  <a href="../Typealiases.html#/s:4Ombi19AutomaticBodyCodinga">AutomaticBodyCoding</a>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4Ombi11BodyDecoderVAASSRszlE7defaultACySSGvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/default" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4Ombi11BodyDecoderVAASSRszlE7defaultACySSGvpZ">default</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The default <code>String</code> body decoder</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">var</span> <span class="p">`</span><span class="nv">default</span><span class="p">`:</span> <span class="p">`</span><span class="nv">Self</span><span class="p">`</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
                 </li>
               </ul>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <div class="footer-wrapper">
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Available%20where%20%60Body%60%20%3D%3D%20%60Data%60"></a>
+                <a name="//apple_ref/swift/Section/Available where `Body` == `Data`" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Available%20where%20%60Body%60%20%3D%3D%20%60Data%60"></a>
+                  <h3 class="section-name"><p>Available where <code>Body</code> == <code>Data</code></p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4Ombi11BodyDecoderVAA10Foundation4DataVRszlE7defaultACyAFGvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/default" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4Ombi11BodyDecoderVAA10Foundation4DataVRszlE7defaultACyAFGvpZ">default</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The default <code>Data</code> body decoder</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">var</span> <span class="p">`</span><span class="nv">default</span><span class="p">`:</span> <span class="p">`</span><span class="nv">Self</span><span class="p">`</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Available%20where%20%60Body%60%20%3D%3D%20%60AnyJSON%60"></a>
+                <a name="//apple_ref/swift/Section/Available where `Body` == `AnyJSON`" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Available%20where%20%60Body%60%20%3D%3D%20%60AnyJSON%60"></a>
+                  <h3 class="section-name"><p>Available where <code>Body</code> == <code><a href="../Structs/AnyJSON.html">AnyJSON</a></code></p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4Ombi11BodyDecoderVA2A7AnyJSONVRszlE7optionsACyAEGSo20NSJSONReadingOptionsV_tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(options:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4Ombi11BodyDecoderVA2A7AnyJSONVRszlE7optionsACyAEGSo20NSJSONReadingOptionsV_tcfc">init(options:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create a decoder for an <code><a href="../Structs/AnyJSON.html">AnyJSON</a></code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="nf">init</span><span class="p">(</span><span class="nv">options</span><span class="p">:</span> <span class="kt">JSONSerialization</span><span class="o">.</span><span class="kt">ReadingOptions</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>options</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The reading options to use when deserializing the JSON</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4Ombi11BodyDecoderVA2A7AnyJSONVRszlE7defaultACyAEGvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/default" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4Ombi11BodyDecoderVA2A7AnyJSONVRszlE7defaultACyAEGvpZ">default</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The default <code><a href="../Structs/AnyJSON.html">AnyJSON</a></code> decoder</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">var</span> <span class="p">`</span><span class="nv">default</span><span class="p">`:</span> <span class="p">`</span><span class="nv">Self</span><span class="p">`</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Available%20where%20%60Body%60%3A%20%60Decodable%60"></a>
+                <a name="//apple_ref/swift/Section/Available where `Body`: `Decodable`" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Available%20where%20%60Body%60%3A%20%60Decodable%60"></a>
+                  <h3 class="section-name"><p>Available where <code>Body</code>: <code>Decodable</code></p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4Ombi11BodyDecoderVAASeRzlE4json7decoderACyxG10Foundation11JSONDecoderC_tFZ"></a>
+                    <a name="//apple_ref/swift/Method/json(decoder:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4Ombi11BodyDecoderVAASeRzlE4json7decoderACyxG10Foundation11JSONDecoderC_tFZ">json(decoder:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create a decoder for a <code>Codable</code> using a <code>JSONDecoder</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">func</span> <span class="nf">json</span><span class="p">(</span><span class="nv">decoder</span><span class="p">:</span> <span class="kt">JSONDecoder</span> <span class="o">=</span> <span class="kt">JSONDecoder</span><span class="p">())</span> <span class="o">-&gt;</span> <span class="kt">BodyDecoder</span><span class="o">&lt;</span><span class="kt">Body</span><span class="o">&gt;</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>decoder</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The <code>JSONDecoder</code> to use for decoding</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The decoder</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4Ombi11BodyDecoderVAASeRzlE7defaultACyxGvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/default" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4Ombi11BodyDecoderVAASeRzlE7defaultACyxGvpZ">default</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The default <code>Codable</code> decoder</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">var</span> <span class="p">`</span><span class="nv">default</span><span class="p">`:</span> <span class="p">`</span><span class="nv">Self</span><span class="p">`</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Available%20where%20%60Body%60%3A%20%60AutomaticBodyDecoding%60"></a>
+                <a name="//apple_ref/swift/Section/Available where `Body`: `AutomaticBodyDecoding`" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Available%20where%20%60Body%60%3A%20%60AutomaticBodyDecoding%60"></a>
+                  <h3 class="section-name"><p>Available where <code>Body</code>: <code><a href="../Protocols/AutomaticBodyDecoding.html">AutomaticBodyDecoding</a></code></p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4Ombi11BodyDecoderVA2A09AutomaticB8DecodingRzlE7defaultACyxGvpZ"></a>
+                    <a name="//apple_ref/swift/Variable/default" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4Ombi11BodyDecoderVA2A09AutomaticB8DecodingRzlE7defaultACyxGvpZ">default</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The default decoder for types that conform to <code><a href="../Protocols/AutomaticBodyDecoding.html">AutomaticBodyDecoding</a></code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="kd">var</span> <span class="p">`</span><span class="nv">default</span><span class="p">`:</span> <span class="p">`</span><span class="nv">Self</span><span class="p">`</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
         <section id="footer">
           <p>&copy; 2021 <a class="link" href="https://www.vsanthanam.com" target="_blank" rel="external">Varun</a>. All rights reserved. (Last updated: 2021-05-20)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.7</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
-      </div>
+      </article>
     </div>
   </body>
 </div>

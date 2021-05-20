@@ -10,4 +10,3 @@ jazzy \
     --github_url https://ombi.network \
     --root-url https://docs.ombi.network \
     --output Documentation \
-    --theme jony

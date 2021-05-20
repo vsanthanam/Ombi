@@ -5,514 +5,496 @@
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
-	<meta name="viewport" content="width=device-width, viewport-fit=cover, initial-scale=1.0" />
     <script src="../js/jquery.min.js" defer></script>
     <script src="../js/jazzy.js" defer></script>
     
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
   </head>
   <body>
     <a name="//apple_ref/swift/Struct/AnyRequestable" class="dashAnchor"></a>
     <a title="AnyRequestable Structure Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p>
-          <a href="../index.html">Ombi 1.0.0 Docs</a>
-          <span class="no-mobile"> (95% documented)</span>
-        </p>
-    
+        <p><a href="../index.html">Ombi 1.0.0 Docs</a> (95% documented)</p>
+        <p class="header-right"><a href="https://ombi.network"><img src="../img/gh.png"/>View on GitHub</a></p>
+        <p class="header-right"><a href="dash-feed://https%3A%2F%2Fdocs.ombi.network%2Fdocsets%2FOmbi.xml"><img src="../img/dash.png"/>Install in Dash</a></p>
         <p class="header-right">
-          <a href="https://ombi.network">
-            <img src="../img/gh.png"/>
-            <span class="no-mobile">View on GitHub</span>
-          </a>
-        </p>
-    
-        <p class="header-right">
-          <a href="dash-feed://https%3A%2F%2Fdocs.ombi.network%2Fdocsets%2FOmbi.xml">
-            <img src="../img/dash.png"/>
-            <span class="no-mobile">Install in Dash</span>
-          </a>
+          <form role="search" action="../search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
         </p>
       </div>
     </header>
-    <div id="breadcrumbs-container">
-      <div class="content-wrapper">
-        <p id="breadcrumbs">
-          <span class="no-mobile">
-            <a href="../index.html">Ombi Reference</a>
-            <img id="carat" src="../img/carat.png" />
-          </span>
-          AnyRequestable Structure Reference
-        </p>
-      </div>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">Ombi Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        AnyRequestable Structure Reference
+      </p>
     </div>
-    <div class="wrapper">
-      <div class="article-wrapper">
-        <article class="main-content">
-          <section>
-            <section class="section">
-              <h1>AnyRequestable</h1>
-                <div class="declaration">
-                  <div class="language">
-                    
-                    <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">AnyRequestable</span><span class="o">&lt;</span><span class="kt">RequestBody</span><span class="p">,</span> <span class="kt">ResponseBody</span><span class="p">,</span> <span class="kt">ResponseError</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/Requestable.html">Requestable</a></span> <span class="k">where</span> <span class="kt">ResponseError</span> <span class="p">:</span> <span class="kt">Error</span></code></pre>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/RequestManager.html">RequestManager</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/HTTPError.html">HTTPError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/RequestError.html">RequestError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/RequestMethod.html">RequestMethod</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/URLRequest.html">URLRequest</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/AutomaticBodyDecoding.html">AutomaticBodyDecoding</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/AutomaticBodyEncoding.html">AutomaticBodyEncoding</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:4Ombi11HTTPRequestP">HTTPRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:4Ombi7RequestP">Request</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Requestable.html">Requestable</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/AnyJSON.html">AnyJSON</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/AnyRequestable.html">AnyRequestable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/BodyDecoder.html">BodyDecoder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/BodyEncoder.html">BodyEncoder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ComposableRequest.html">ComposableRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RequestHeaders.html">RequestHeaders</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RequestHeaders/Key.html">– Key</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RequestHeaders/Value.html">– Value</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RequestParameters.html">RequestParameters</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RequestParameters/ParameterName.html">– ParameterName</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RequestParameters/ParameterValue.html">– ParameterValue</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/RequestResponse.html">RequestResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/ResponseValidator.html">ResponseValidator</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:4Ombi19AutomaticBodyCodinga">AutomaticBodyCoding</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>AnyRequestable</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">struct</span> <span class="kt">AnyRequestable</span><span class="o">&lt;</span><span class="kt">RequestBody</span><span class="p">,</span> <span class="kt">ResponseBody</span><span class="p">,</span> <span class="kt">ResponseError</span><span class="o">&gt;</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/Requestable.html">Requestable</a></span> <span class="k">where</span> <span class="kt">ResponseError</span> <span class="p">:</span> <span class="kt">Error</span></code></pre>
 
-                  </div>
                 </div>
-              <p>A type erased <code><a href="../Protocols/Requestable.html">Requestable</a></code> wrapper, with no other functional differences.</p>
-
-            </section>
-            <section class="section task-group-section">
-              <div class="task-group">
-                <div class="task-name-container">
-                  <a name="/Initializers"></a>
-                  <a name="//apple_ref/swift/Section/Initializers" class="dashAnchor"></a>
-                  <div class="section-name-container">
-                    <a class="section-name-link" href="#/Initializers"></a>
-                    <h3 class="section-name"><p>Initializers</p>
-</h3>
-                  </div>
-                </div>
-                <ul>
-                  <li class="item">
-                    <div>
-                      <code>
-                      <a name="/s:4Ombi14AnyRequestableVyACyxq_q0_Gqd__c11RequestBodyQyd__Rsz08ResponseE0Qyd__Rs_0F5ErrorQyd__Rs0_AA0C0Rd__lufc"></a>
-                      <a name="//apple_ref/swift/Method/init(_:)" class="dashAnchor"></a>
-                      <a class="token" href="#/s:4Ombi14AnyRequestableVyACyxq_q0_Gqd__c11RequestBodyQyd__Rsz08ResponseE0Qyd__Rs_0F5ErrorQyd__Rs0_AA0C0Rd__lufc">init(_:<wbr>)</a>
-                      </code>
-                    </div>
-                    <div class="height-container">
-                      <div class="pointer-container"></div>
-                      <section class="section">
-                        <div class="pointer"></div>
-                        <div class="abstract">
-                          <p>Create an <code>AnyRequestable</code> from something that conforms to <code><a href="../Protocols/Requestable.html">Requestable</a></code></p>
-
-                        </div>
-                        <div class="declaration">
-                          <h4>Declaration</h4>
-                          <div class="language">
-                            <p class="aside-title">Swift</p>
-                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">init</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">requestable</span><span class="p">:</span> <span class="kt">T</span><span class="p">)</span> <span class="k">where</span> <span class="kt">RequestBody</span> <span class="o">==</span> <span class="kt">T</span><span class="o">.</span><span class="kt">RequestBody</span><span class="p">,</span> <span class="kt">ResponseBody</span> <span class="o">==</span> <span class="kt">T</span><span class="o">.</span><span class="kt">ResponseBody</span><span class="p">,</span> <span class="kt">ResponseError</span> <span class="o">==</span> <span class="kt">T</span><span class="o">.</span><span class="kt">ResponseError</span><span class="p">,</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/Requestable.html">Requestable</a></span></code></pre>
-
-                          </div>
-                        </div>
-                        <div>
-                          <h4>Parameters</h4>
-                          <table class="graybox">
-                            <tbody>
-                              <tr>
-                                <td>
-                                  <code>
-                                  <em>requestable</em>
-                                  </code>
-                                </td>
-                                <td>
-                                  <div>
-                                    <p>The <code><a href="../Protocols/Requestable.html">Requestable</a></code> to type-erase</p>
-                                  </div>
-                                </td>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </section>
-                    </div>
-                  </li>
-                </ul>
               </div>
-              <div class="task-group">
-                <div class="task-name-container">
-                  <a name="/Requestable"></a>
-                  <a name="//apple_ref/swift/Section/Requestable" class="dashAnchor"></a>
-                  <div class="section-name-container">
-                    <a class="section-name-link" href="#/Requestable"></a>
-                    <h3 class="section-name"><p>Requestable</p>
-</h3>
-                  </div>
-                </div>
-                <ul>
-                  <li class="item">
-                    <div>
-                      <code>
-                      <a name="/s:4Ombi11RequestableP4pathSSvp"></a>
-                      <a name="//apple_ref/swift/Property/path" class="dashAnchor"></a>
-                      <a class="token" href="#/s:4Ombi11RequestableP4pathSSvp">path</a>
-                      </code>
-                    </div>
-                    <div class="height-container">
-                      <div class="pointer-container"></div>
-                      <section class="section">
-                        <div class="pointer"></div>
-                        <div class="abstract">
-                          
-                        </div>
-                        <div class="declaration">
-                          <h4>Declaration</h4>
-                          <div class="language">
-                            <p class="aside-title">Swift</p>
-                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+            <p>A type erased <code><a href="../Protocols/Requestable.html">Requestable</a></code> wrapper, with no other functional differences.</p>
 
-                          </div>
-                        </div>
-                      </section>
-                    </div>
-                  </li>
-                  <li class="item">
-                    <div>
-                      <code>
-                      <a name="/s:4Ombi11RequestableP5querySDyS2SGvp"></a>
-                      <a name="//apple_ref/swift/Property/query" class="dashAnchor"></a>
-                      <a class="token" href="#/s:4Ombi11RequestableP5querySDyS2SGvp">query</a>
-                      </code>
-                    </div>
-                    <div class="height-container">
-                      <div class="pointer-container"></div>
-                      <section class="section">
-                        <div class="pointer"></div>
-                        <div class="abstract">
-                          
-                        </div>
-                        <div class="declaration">
-                          <h4>Declaration</h4>
-                          <div class="language">
-                            <p class="aside-title">Swift</p>
-                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">query</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">String</span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                          </div>
-                        </div>
-                      </section>
-                    </div>
-                  </li>
-                  <li class="item">
-                    <div>
-                      <code>
-                      <a name="/s:4Ombi11RequestableP6methodAA13RequestMethodOvp"></a>
-                      <a name="//apple_ref/swift/Property/method" class="dashAnchor"></a>
-                      <a class="token" href="#/s:4Ombi11RequestableP6methodAA13RequestMethodOvp">method</a>
-                      </code>
-                    </div>
-                    <div class="height-container">
-                      <div class="pointer-container"></div>
-                      <section class="section">
-                        <div class="pointer"></div>
-                        <div class="abstract">
-                          
-                        </div>
-                        <div class="declaration">
-                          <h4>Declaration</h4>
-                          <div class="language">
-                            <p class="aside-title">Swift</p>
-                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">method</span><span class="p">:</span> <span class="kt"><a href="../Enums/RequestMethod.html">RequestMethod</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                          </div>
-                        </div>
-                      </section>
-                    </div>
-                  </li>
-                  <li class="item">
-                    <div>
-                      <code>
-                      <a name="/s:4Ombi11RequestableP7headersAA14RequestHeadersVvp"></a>
-                      <a name="//apple_ref/swift/Property/headers" class="dashAnchor"></a>
-                      <a class="token" href="#/s:4Ombi11RequestableP7headersAA14RequestHeadersVvp">headers</a>
-                      </code>
-                    </div>
-                    <div class="height-container">
-                      <div class="pointer-container"></div>
-                      <section class="section">
-                        <div class="pointer"></div>
-                        <div class="abstract">
-                          
-                        </div>
-                        <div class="declaration">
-                          <h4>Declaration</h4>
-                          <div class="language">
-                            <p class="aside-title">Swift</p>
-                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">headers</span><span class="p">:</span> <span class="kt"><a href="../Structs/RequestHeaders.html">RequestHeaders</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                          </div>
-                        </div>
-                      </section>
-                    </div>
-                  </li>
-                  <li class="item">
-                    <div>
-                      <code>
-                      <a name="/s:4Ombi11RequestableP4body11RequestBodyQzSgvp"></a>
-                      <a name="//apple_ref/swift/Property/body" class="dashAnchor"></a>
-                      <a class="token" href="#/s:4Ombi11RequestableP4body11RequestBodyQzSgvp">body</a>
-                      </code>
-                    </div>
-                    <div class="height-container">
-                      <div class="pointer-container"></div>
-                      <section class="section">
-                        <div class="pointer"></div>
-                        <div class="abstract">
-                          
-                        </div>
-                        <div class="declaration">
-                          <h4>Declaration</h4>
-                          <div class="language">
-                            <p class="aside-title">Swift</p>
-                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kt">RequestBody</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                          </div>
-                        </div>
-                      </section>
-                    </div>
-                  </li>
-                  <li class="item">
-                    <div>
-                      <code>
-                      <a name="/s:4Ombi11RequestableP16fallbackResponseAA07RequestD0Vy0D4BodyQzGSgvp"></a>
-                      <a name="//apple_ref/swift/Property/fallbackResponse" class="dashAnchor"></a>
-                      <a class="token" href="#/s:4Ombi11RequestableP16fallbackResponseAA07RequestD0Vy0D4BodyQzGSgvp">fallbackResponse</a>
-                      </code>
-                    </div>
-                    <div class="height-container">
-                      <div class="pointer-container"></div>
-                      <section class="section">
-                        <div class="pointer"></div>
-                        <div class="abstract">
-                          
-                        </div>
-                        <div class="declaration">
-                          <h4>Declaration</h4>
-                          <div class="language">
-                            <p class="aside-title">Swift</p>
-                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">fallbackResponse</span><span class="p">:</span> <span class="kt">Response</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                          </div>
-                        </div>
-                      </section>
-                    </div>
-                  </li>
-                  <li class="item">
-                    <div>
-                      <code>
-                      <a name="/s:4Ombi11RequestableP14requestEncoderAA04BodyD0Vy07RequestE0QzGvp"></a>
-                      <a name="//apple_ref/swift/Property/requestEncoder" class="dashAnchor"></a>
-                      <a class="token" href="#/s:4Ombi11RequestableP14requestEncoderAA04BodyD0Vy07RequestE0QzGvp">requestEncoder</a>
-                      </code>
-                    </div>
-                    <div class="height-container">
-                      <div class="pointer-container"></div>
-                      <section class="section">
-                        <div class="pointer"></div>
-                        <div class="abstract">
-                          
-                        </div>
-                        <div class="declaration">
-                          <h4>Declaration</h4>
-                          <div class="language">
-                            <p class="aside-title">Swift</p>
-                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">requestEncoder</span><span class="p">:</span> <span class="kt"><a href="../Structs/BodyEncoder.html">BodyEncoder</a></span><span class="o">&lt;</span><span class="kt">RequestBody</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                          </div>
-                        </div>
-                      </section>
-                    </div>
-                  </li>
-                  <li class="item">
-                    <div>
-                      <code>
-                      <a name="/s:4Ombi11RequestableP15responseDecoderAA04BodyD0Vy08ResponseE0QzGvp"></a>
-                      <a name="//apple_ref/swift/Property/responseDecoder" class="dashAnchor"></a>
-                      <a class="token" href="#/s:4Ombi11RequestableP15responseDecoderAA04BodyD0Vy08ResponseE0QzGvp">responseDecoder</a>
-                      </code>
-                    </div>
-                    <div class="height-container">
-                      <div class="pointer-container"></div>
-                      <section class="section">
-                        <div class="pointer"></div>
-                        <div class="abstract">
-                          
-                        </div>
-                        <div class="declaration">
-                          <h4>Declaration</h4>
-                          <div class="language">
-                            <p class="aside-title">Swift</p>
-                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">responseDecoder</span><span class="p">:</span> <span class="kt"><a href="../Structs/BodyDecoder.html">BodyDecoder</a></span><span class="o">&lt;</span><span class="kt">ResponseBody</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                          </div>
-                        </div>
-                      </section>
-                    </div>
-                  </li>
-                  <li class="item">
-                    <div>
-                      <code>
-                      <a name="/s:4Ombi11RequestableP17responseValidatorAA08ResponseD0Vy0E4BodyQz0E5ErrorQzGvp"></a>
-                      <a name="//apple_ref/swift/Property/responseValidator" class="dashAnchor"></a>
-                      <a class="token" href="#/s:4Ombi11RequestableP17responseValidatorAA08ResponseD0Vy0E4BodyQz0E5ErrorQzGvp">responseValidator</a>
-                      </code>
-                    </div>
-                    <div class="height-container">
-                      <div class="pointer-container"></div>
-                      <section class="section">
-                        <div class="pointer"></div>
-                        <div class="abstract">
-                          
-                        </div>
-                        <div class="declaration">
-                          <h4>Declaration</h4>
-                          <div class="language">
-                            <p class="aside-title">Swift</p>
-                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">responseValidator</span><span class="p">:</span> <span class="kt"><a href="../Structs/ResponseValidator.html">ResponseValidator</a></span><span class="o">&lt;</span><span class="kt">ResponseBody</span><span class="p">,</span> <span class="kt">ResponseError</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                          </div>
-                        </div>
-                      </section>
-                    </div>
-                  </li>
-                  <li class="item">
-                    <div>
-                      <code>
-                      <a name="/s:4Ombi11RequestableP15timeoutIntervalSdvp"></a>
-                      <a name="//apple_ref/swift/Property/timeoutInterval" class="dashAnchor"></a>
-                      <a class="token" href="#/s:4Ombi11RequestableP15timeoutIntervalSdvp">timeoutInterval</a>
-                      </code>
-                    </div>
-                    <div class="height-container">
-                      <div class="pointer-container"></div>
-                      <section class="section">
-                        <div class="pointer"></div>
-                        <div class="abstract">
-                          
-                        </div>
-                        <div class="declaration">
-                          <h4>Declaration</h4>
-                          <div class="language">
-                            <p class="aside-title">Swift</p>
-                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">timeoutInterval</span><span class="p">:</span> <span class="kt">TimeInterval</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
-
-                          </div>
-                        </div>
-                      </section>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </section>
           </section>
-        </article>
-      </div>
-      <div class="nav-wrapper">
-        <nav class="nav-bottom">
-          <ul class="nav-groups">
-            <li class="nav-group-name">
-              <a href="../Classes.html">Classes</a>
-              <ul class="nav-group-tasks">
-                <li class="nav-group-task">
-                  <a href="../Classes/RequestManager.html">RequestManager</a>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Initializers"></a>
+                <a name="//apple_ref/swift/Section/Initializers" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Initializers"></a>
+                  <h3 class="section-name"><p>Initializers</p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4Ombi14AnyRequestableVyACyxq_q0_Gqd__c11RequestBodyQyd__Rsz08ResponseE0Qyd__Rs_0F5ErrorQyd__Rs0_AA0C0Rd__lufc"></a>
+                    <a name="//apple_ref/swift/Method/init(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4Ombi14AnyRequestableVyACyxq_q0_Gqd__c11RequestBodyQyd__Rsz08ResponseE0Qyd__Rs_0F5ErrorQyd__Rs0_AA0C0Rd__lufc">init(_:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Create an <code>AnyRequestable</code> from something that conforms to <code><a href="../Protocols/Requestable.html">Requestable</a></code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">init</span><span class="o">&lt;</span><span class="kt">T</span><span class="o">&gt;</span><span class="p">(</span><span class="n">_</span> <span class="nv">requestable</span><span class="p">:</span> <span class="kt">T</span><span class="p">)</span> <span class="k">where</span> <span class="kt">RequestBody</span> <span class="o">==</span> <span class="kt">T</span><span class="o">.</span><span class="kt">RequestBody</span><span class="p">,</span> <span class="kt">ResponseBody</span> <span class="o">==</span> <span class="kt">T</span><span class="o">.</span><span class="kt">ResponseBody</span><span class="p">,</span> <span class="kt">ResponseError</span> <span class="o">==</span> <span class="kt">T</span><span class="o">.</span><span class="kt">ResponseError</span><span class="p">,</span> <span class="kt">T</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/Requestable.html">Requestable</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>requestable</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The <code><a href="../Protocols/Requestable.html">Requestable</a></code> to type-erase</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
                 </li>
               </ul>
-            </li>
-            <li class="nav-group-name">
-              <a href="../Enums.html">Enumerations</a>
-              <ul class="nav-group-tasks">
-                <li class="nav-group-task">
-                  <a href="../Enums/HTTPError.html">HTTPError</a>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Requestable"></a>
+                <a name="//apple_ref/swift/Section/Requestable" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Requestable"></a>
+                  <h3 class="section-name"><p>Requestable</p>
+</h3>
+                </div>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4Ombi11RequestableP4pathSSvp"></a>
+                    <a name="//apple_ref/swift/Property/path" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4Ombi11RequestableP4pathSSvp">path</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">path</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
                 </li>
-                <li class="nav-group-task">
-                  <a href="../Enums/RequestError.html">RequestError</a>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4Ombi11RequestableP5querySDyS2SGvp"></a>
+                    <a name="//apple_ref/swift/Property/query" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4Ombi11RequestableP5querySDyS2SGvp">query</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">query</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span> <span class="p">:</span> <span class="kt">String</span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
                 </li>
-                <li class="nav-group-task">
-                  <a href="../Enums/RequestMethod.html">RequestMethod</a>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4Ombi11RequestableP6methodAA13RequestMethodOvp"></a>
+                    <a name="//apple_ref/swift/Property/method" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4Ombi11RequestableP6methodAA13RequestMethodOvp">method</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">method</span><span class="p">:</span> <span class="kt"><a href="../Enums/RequestMethod.html">RequestMethod</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4Ombi11RequestableP7headersAA14RequestHeadersVvp"></a>
+                    <a name="//apple_ref/swift/Property/headers" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4Ombi11RequestableP7headersAA14RequestHeadersVvp">headers</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">headers</span><span class="p">:</span> <span class="kt"><a href="../Structs/RequestHeaders.html">RequestHeaders</a></span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4Ombi11RequestableP4body11RequestBodyQzSgvp"></a>
+                    <a name="//apple_ref/swift/Property/body" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4Ombi11RequestableP4body11RequestBodyQzSgvp">body</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">body</span><span class="p">:</span> <span class="kt">RequestBody</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4Ombi11RequestableP16fallbackResponseAA07RequestD0Vy0D4BodyQzGSgvp"></a>
+                    <a name="//apple_ref/swift/Property/fallbackResponse" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4Ombi11RequestableP16fallbackResponseAA07RequestD0Vy0D4BodyQzGSgvp">fallbackResponse</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">fallbackResponse</span><span class="p">:</span> <span class="kt">Response</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4Ombi11RequestableP14requestEncoderAA04BodyD0Vy07RequestE0QzGvp"></a>
+                    <a name="//apple_ref/swift/Property/requestEncoder" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4Ombi11RequestableP14requestEncoderAA04BodyD0Vy07RequestE0QzGvp">requestEncoder</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">requestEncoder</span><span class="p">:</span> <span class="kt"><a href="../Structs/BodyEncoder.html">BodyEncoder</a></span><span class="o">&lt;</span><span class="kt">RequestBody</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4Ombi11RequestableP15responseDecoderAA04BodyD0Vy08ResponseE0QzGvp"></a>
+                    <a name="//apple_ref/swift/Property/responseDecoder" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4Ombi11RequestableP15responseDecoderAA04BodyD0Vy08ResponseE0QzGvp">responseDecoder</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">responseDecoder</span><span class="p">:</span> <span class="kt"><a href="../Structs/BodyDecoder.html">BodyDecoder</a></span><span class="o">&lt;</span><span class="kt">ResponseBody</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4Ombi11RequestableP17responseValidatorAA08ResponseD0Vy0E4BodyQz0E5ErrorQzGvp"></a>
+                    <a name="//apple_ref/swift/Property/responseValidator" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4Ombi11RequestableP17responseValidatorAA08ResponseD0Vy0E4BodyQz0E5ErrorQzGvp">responseValidator</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">responseValidator</span><span class="p">:</span> <span class="kt"><a href="../Structs/ResponseValidator.html">ResponseValidator</a></span><span class="o">&lt;</span><span class="kt">ResponseBody</span><span class="p">,</span> <span class="kt">ResponseError</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:4Ombi11RequestableP15timeoutIntervalSdvp"></a>
+                    <a name="//apple_ref/swift/Property/timeoutInterval" class="dashAnchor"></a>
+                    <a class="token" href="#/s:4Ombi11RequestableP15timeoutIntervalSdvp">timeoutInterval</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">timeoutInterval</span><span class="p">:</span> <span class="kt">TimeInterval</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
                 </li>
               </ul>
-            </li>
-            <li class="nav-group-name">
-              <a href="../Extensions.html">Extensions</a>
-              <ul class="nav-group-tasks">
-                <li class="nav-group-task">
-                  <a href="../Extensions/URLRequest.html">URLRequest</a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-group-name">
-              <a href="../Protocols.html">Protocols</a>
-              <ul class="nav-group-tasks">
-                <li class="nav-group-task">
-                  <a href="../Protocols/AutomaticBodyDecoding.html">AutomaticBodyDecoding</a>
-                </li>
-                <li class="nav-group-task">
-                  <a href="../Protocols/AutomaticBodyEncoding.html">AutomaticBodyEncoding</a>
-                </li>
-                <li class="nav-group-task">
-                  <a href="../Protocols.html#/s:4Ombi11HTTPRequestP">HTTPRequest</a>
-                </li>
-                <li class="nav-group-task">
-                  <a href="../Protocols.html#/s:4Ombi7RequestP">Request</a>
-                </li>
-                <li class="nav-group-task">
-                  <a href="../Protocols/Requestable.html">Requestable</a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-group-name">
-              <a href="../Structs.html">Structures</a>
-              <ul class="nav-group-tasks">
-                <li class="nav-group-task">
-                  <a href="../Structs/AnyJSON.html">AnyJSON</a>
-                </li>
-                <li class="nav-group-task">
-                  <a href="../Structs/AnyRequestable.html">AnyRequestable</a>
-                </li>
-                <li class="nav-group-task">
-                  <a href="../Structs/BodyDecoder.html">BodyDecoder</a>
-                </li>
-                <li class="nav-group-task">
-                  <a href="../Structs/BodyEncoder.html">BodyEncoder</a>
-                </li>
-                <li class="nav-group-task">
-                  <a href="../Structs/ComposableRequest.html">ComposableRequest</a>
-                </li>
-                <li class="nav-group-task">
-                  <a href="../Structs/RequestHeaders.html">RequestHeaders</a>
-                </li>
-                <li class="nav-group-task">
-                  <a href="../Structs/RequestHeaders/Key.html">– Key</a>
-                </li>
-                <li class="nav-group-task">
-                  <a href="../Structs/RequestHeaders/Value.html">– Value</a>
-                </li>
-                <li class="nav-group-task">
-                  <a href="../Structs/RequestParameters.html">RequestParameters</a>
-                </li>
-                <li class="nav-group-task">
-                  <a href="../Structs/RequestParameters/ParameterName.html">– ParameterName</a>
-                </li>
-                <li class="nav-group-task">
-                  <a href="../Structs/RequestParameters/ParameterValue.html">– ParameterValue</a>
-                </li>
-                <li class="nav-group-task">
-                  <a href="../Structs/RequestResponse.html">RequestResponse</a>
-                </li>
-                <li class="nav-group-task">
-                  <a href="../Structs/ResponseValidator.html">ResponseValidator</a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-group-name">
-              <a href="../Typealiases.html">Type Aliases</a>
-              <ul class="nav-group-tasks">
-                <li class="nav-group-task">
-                  <a href="../Typealiases.html#/s:4Ombi19AutomaticBodyCodinga">AutomaticBodyCoding</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <div class="footer-wrapper">
+            </div>
+          </section>
+        </section>
         <section id="footer">
           <p>&copy; 2021 <a class="link" href="https://www.vsanthanam.com" target="_blank" rel="external">Varun</a>. All rights reserved. (Last updated: 2021-05-20)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.7</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
-      </div>
+      </article>
     </div>
   </body>
 </div>
