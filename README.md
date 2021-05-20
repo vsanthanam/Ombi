@@ -221,7 +221,7 @@ let cancellable = ComposableRequest<AnyJSON, String, HTTPError>()
         ]
     }
     .send(on: https://api.myapp.com)
-    sink(receiveCompletion: { completion in
+    .sink(receiveCompletion: { completion in
         switch completion {
         case .finished:
             break
