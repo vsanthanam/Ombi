@@ -14,6 +14,9 @@ public extension Requestable {
     var fallbackResponse: Response? {
         nil
     }
+    var timeoutInterval: TimeInterval {
+        120.0
+    }
 }
 
 public extension Requestable where ResponseError == HTTPError {

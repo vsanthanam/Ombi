@@ -190,6 +190,13 @@
       "warning": "undocumented"
     },
     {
+      "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Extensions/Requestable+Ombi.swift",
+      "line": 17,
+      "symbol": "Requestable.timeoutInterval",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
       "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Extensions/ResponseValidator+Ombi.swift",
       "line": 12,
       "symbol": "ResponseValidator.default",
