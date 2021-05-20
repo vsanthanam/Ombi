@@ -483,11 +483,11 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
         if let customRequestEncoder = customRequestEncoder {
             return customRequestEncoder
         } else if RequestBody.self is String.Type {
-            return BodyEncoder<String>.default as! BodyEncoder<RequestBody>
+            return unsafeBitCast(BodyEncoder<String>.default, to: BodyEncoder<RequestBody>.self)
         } else if RequestBody.self is Data.Type {
-            return BodyEncoder<Data>.default as! BodyEncoder<RequestBody>
+            return unsafeBitCast(BodyEncoder<Data>.default, to: BodyEncoder<RequestBody>.self)
         } else if RequestBody.self is AnyJSON.Type {
-            return BodyEncoder<AnyJSON>.default as! BodyEncoder<RequestBody>
+            return unsafeBitCast(BodyEncoder<AnyJSON>.default, to: BodyEncoder<RequestBody>.self)
         } else if RequestBody.self is RequestParameters.Type {
             return BodyEncoder<RequestParameters>.default as! BodyEncoder<RequestBody>
         } else if RequestBody.self is Encodable.Type {
@@ -509,11 +509,11 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
         if let customResponseDecoder = customResponseDecoder {
             return customResponseDecoder
         } else if ResponseBody.self is String.Type {
-            return BodyDecoder<String>.default as! BodyDecoder<ResponseBody>
+            return unsafeBitCast(BodyDecoder<String>.default, to: BodyDecoder<ResponseBody>.self)
         } else if ResponseBody.self is Data.Type {
-            return BodyDecoder<Data>.default as! BodyDecoder<ResponseBody>
+            return unsafeBitCast(BodyDecoder<Data>.default, to: BodyDecoder<ResponseBody>.self)
         } else if ResponseBody.self is AnyJSON.Type {
-            return BodyDecoder<AnyJSON>.default as! BodyDecoder<ResponseBody>
+            return unsafeBitCast(BodyDecoder<AnyJSON>.default, to: BodyDecoder<ResponseBody>.self)
         } else if let desiredType = ResponseBody.self as? Decodable.Type {
             return .init { data in
                 guard let data = data else { return nil }

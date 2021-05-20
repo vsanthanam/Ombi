@@ -53,10 +53,12 @@
               
               <h1 id='ombi' class='heading'>Ombi</h1>
 
-<p>Elegent Networking with Combine and Swift</p>
+<p>Elegent reactive networking with Combine and Swift</p>
 <h2 id='introduction' class='heading'>Introduction</h2>
 
-<p>Ombi is a simple library built on top of <code>URLSession</code> and <code>Combine</code> that makes it very easy to make asynchronous network requests with reactive programming.</p>
+<p>Ombi is a simple library built on top of <code>URLSession</code> and <code>Combine</code> that makes it very easy to make asynchronous network requests with reactive programming.
+It requires Combine to work correctly, and cannot work with Swift runtime environments that do not support Combine.</p>
+<h2 id='installation' class='heading'>Installation</h2>
 <h2 id='basics' class='heading'>Basics</h2>
 
 <p>Making a network request with ombi is pretty straight forward.
@@ -208,8 +210,20 @@ You will recieve a <code>Publisher</code> which will allow you to handle network
     <span class="p">})</span>
 </code></pre>
 <h2 id='responses-errors-and-validation' class='heading'>Responses, Errors and Validation</h2>
+
+<p>The publisher returned by <code>makeRequest</code> uses a generic types for its <code>Output</code> and its <code>Error</code>. The output is a <code><a href="Structs/RequestResponse.html">RequestResponse</a></code>, a generic type specialized using the <code><a href="Protocols/Requestable.html">Requestable</a></code>&lsquo;s <code>ResponseBody</code> constraint. The error is a <code><a href="Enums/RequestError.html">RequestError</a></code> specialized using the <code><a href="Protocols/Requestable.html">Requestable</a></code>&rsquo;s <code>ResponseError</code> containt.</p>
 <h3 id='requestresponse' class='heading'>RequestResponse</h3>
+
+<p>If the request doesnt fail, the publisher will emit a single <code><a href="Structs/RequestResponse.html">RequestResponse</a></code> value before completing. This value type contains the URL, headers, status code, and decoded body content of the request. </p>
 <h3 id='requesterror-and-validation' class='heading'>RequestError and Validation</h3>
+
+<p>The <code><a href="Enums/RequestError.html">RequestError</a></code> type describes a number of errors that could occur when making a request, from a broken connection, to failed encoding // decoding, to timeouts and SLA violations.</p>
+
+<p>However, a request could complete and still fail. Once a <code><a href="Structs/RequestResponse.html">RequestResponse</a></code> is generated, the <code><a href="Protocols/Requestable.html">Requestable</a></code>(s) <code>responseValidator</code> is used to examine the contents of the request for <code>ResponseError</code>(s). The default response validator allows any request to complete, regardless of its content. If you specialize your <code><a href="Protocols/Requestable.html">Requestable</a></code> with <code>ResponseError == HTTPError</code>, the default response validator will perform basic validation based on the HTTP status code. If you choose to provide your own error model, remember to provide a <code><a href="Structs/ResponseValidator.html">ResponseValidator</a></code> with the <code><a href="Protocols/Requestable.html">Requestable</a></code> as well.</p>
+
+<p>All <code><a href="Structs/RequestResponse.html">RequestResponse</a></code>(s), including ones provided by the <code><a href="Classes/RequestManager.html">RequestManager</a></code>&rsquo;s <code>fallbackResponse</code> parameter, will go through validation step. This means that even your backup response provided from disk could still result in an error, for example, of that response&rsquo;s status code is 404 and the <code><a href="Protocols/Requestable.html">Requestable</a></code> has been specialized with a <code>ResponseError</code> of type <code><a href="Enums/HTTPError.html">HTTPError</a></code>.</p>
+
+<p>If you don&rsquo;t want to bother with validation at all, just specialize your <code><a href="Protocols/Requestable.html">Requestable</a></code> with <code>Error</code>, and every completed <code><a href="Structs/RequestResponse.html">RequestResponse</a></code> will be allowed to pass.</p>
 <h2 id='composablerequest' class='heading'>ComposableRequest</h2>
 
             </section>
@@ -259,13 +273,13 @@ You will recieve a <code>Publisher</code> which will allow you to handle network
                   <a href="Protocols/AutomaticBodyEncoding.html">AutomaticBodyEncoding</a>
                 </li>
                 <li class="nav-group-task">
-                  <a href="Protocols.html#/s:4Ombi15HTTPRequestableP">HTTPRequestable</a>
+                  <a href="Protocols.html#/s:4Ombi11HTTPRequestP">HTTPRequest</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Protocols.html#/s:4Ombi7RequestP">Request</a>
                 </li>
                 <li class="nav-group-task">
                   <a href="Protocols/Requestable.html">Requestable</a>
-                </li>
-                <li class="nav-group-task">
-                  <a href="Protocols.html#/s:4Ombi17UnsafeRequestableP">UnsafeRequestable</a>
                 </li>
               </ul>
             </li>

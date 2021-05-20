@@ -90,7 +90,7 @@ public protocol Requestable {
 
 
 /// A `Requestable` with basic HTTP status code based response validation
-public protocol HTTPRequestable: Requestable where ResponseError == HTTPError {}
+public protocol HTTPRequest: Requestable where ResponseError == HTTPError {}
 
 /// A `Requestable` with no validated -- all completed requests will be considered safe regardless of status code, headers, or body
-public protocol UnsafeRequestable: Requestable where ResponseError == Error {}
+public protocol Request: Requestable where ResponseError == Error {}
