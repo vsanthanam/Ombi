@@ -53,5 +53,6 @@ public protocol Requestable {
     /// Validator used to check a fully constructoed `RequestResponse` for errors
     var responseValidator: ResponseValidator<ResponseBody, ResponseError> { get }
     
+    /// Interval before the `RequestManager` times out.
     var timeoutInterval: TimeInterval { get }
 }
