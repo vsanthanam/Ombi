@@ -5,187 +5,73 @@
     <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="css/highlight.css" />
     <meta charset='utf-8'>
+	<meta name="viewport" content="width=device-width, viewport-fit=cover, initial-scale=1.0" />
     <script src="js/jquery.min.js" defer></script>
     <script src="js/jazzy.js" defer></script>
     
-    <script src="js/lunr.min.js" defer></script>
-    <script src="js/typeahead.jquery.js" defer></script>
-    <script src="js/jazzy.search.js" defer></script>
   </head>
   <body>
     <a name="//apple_ref/swift/Section/Protocols" class="dashAnchor"></a>
     <a title="Protocols  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html">Ombi 1.0.0 Docs</a> (90% documented)</p>
-        <p class="header-right"><a href="https://ombi.network"><img src="img/gh.png"/>View on GitHub</a></p>
-        <p class="header-right"><a href="dash-feed://https%3A%2F%2Fdocs.ombi.network%2Fdocsets%2FOmbi.xml"><img src="img/dash.png"/>Install in Dash</a></p>
+        <p>
+          <a href="index.html">Ombi 1.0.0 Docs</a>
+          <span class="no-mobile"> (95% documented)</span>
+        </p>
+    
         <p class="header-right">
-          <form role="search" action="search.json">
-            <input type="text" placeholder="Search documentation" data-typeahead>
-          </form>
+          <a href="https://ombi.network">
+            <img src="img/gh.png"/>
+            <span class="no-mobile">View on GitHub</span>
+          </a>
+        </p>
+    
+        <p class="header-right">
+          <a href="dash-feed://https%3A%2F%2Fdocs.ombi.network%2Fdocsets%2FOmbi.xml">
+            <img src="img/dash.png"/>
+            <span class="no-mobile">Install in Dash</span>
+          </a>
         </p>
       </div>
     </header>
-    <div class="content-wrapper">
-      <p id="breadcrumbs">
-        <a href="index.html">Ombi Reference</a>
-        <img id="carat" src="img/carat.png" />
-        Protocols  Reference
-      </p>
+    <div id="breadcrumbs-container">
+      <div class="content-wrapper">
+        <p id="breadcrumbs">
+          <span class="no-mobile">
+            <a href="index.html">Ombi Reference</a>
+            <img id="carat" src="img/carat.png" />
+          </span>
+          Protocols  Reference
+        </p>
+      </div>
     </div>
-    <div class="content-wrapper">
-      <nav class="sidebar">
-        <ul class="nav-groups">
-          <li class="nav-group-name">
-            <a href="Classes.html">Classes</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="Classes/RequestManager.html">RequestManager</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="Enums.html">Enumerations</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="Enums/HTTPError.html">HTTPError</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Enums/Ombi.html">Ombi</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Enums/RequestError.html">RequestError</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Enums/RequestMethod.html">RequestMethod</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="Extensions.html">Extensions</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="Extensions/URLRequest.html">URLRequest</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="Protocols.html">Protocols</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="Protocols.html#/s:4Ombi14AnyJSONRequestP">AnyJSONRequest</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Protocols/AutomaticBodyDecoding.html">AutomaticBodyDecoding</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Protocols/AutomaticBodyEncoding.html">AutomaticBodyEncoding</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Protocols.html#/s:4Ombi14CodableRequestP">CodableRequest</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Protocols.html#/s:4Ombi11DataRequestP">DataRequest</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Protocols/Requestable.html">Requestable</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Protocols.html#/s:4Ombi13StringRequestP">StringRequest</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Protocols.html#/s:4Ombi20UnsafeAnyJSONRequestP">UnsafeAnyJSONRequest</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Protocols.html#/s:4Ombi20UnsafeCodableRequestP">UnsafeCodableRequest</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Protocols.html#/s:4Ombi17UnsafeDataRequestP">UnsafeDataRequest</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Protocols.html#/s:4Ombi19UnsafeStringRequestP">UnsafeStringRequest</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="Structs.html">Structures</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="Structs/AnyJSON.html">AnyJSON</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/AnyRequestable.html">AnyRequestable</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/BodyDecoder.html">BodyDecoder</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/BodyEncoder.html">BodyEncoder</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/ComposableRequest.html">ComposableRequest</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/RequestHeaders.html">RequestHeaders</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/RequestHeaders/Key.html">– Key</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/RequestHeaders/Value.html">– Value</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/RequestParameters.html">RequestParameters</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/RequestParameters/ParameterName.html">– ParameterName</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/RequestParameters/ParameterValue.html">– ParameterValue</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/RequestResponse.html">RequestResponse</a>
-              </li>
-              <li class="nav-group-task">
-                <a href="Structs/ResponseValidator.html">ResponseValidator</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a href="Typealiases.html">Type Aliases</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a href="Typealiases.html#/s:4Ombi19AutomaticBodyCodinga">AutomaticBodyCoding</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
-      <article class="main-content">
-        <section>
-          <section class="section">
-            <h1>Protocols</h1>
-            <p>The following protocols are available globally.</p>
+    <div class="wrapper">
+      <div class="article-wrapper">
+        <article class="main-content">
+          <section>
+            <section class="section">
+              <h1>Protocols</h1>
+              <p>The following protocols are available globally.</p>
 
-          </section>
-          <section class="section task-group-section">
-            <div class="task-group">
-              <ul>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:4Ombi11RequestableP"></a>
-                    <a name="//apple_ref/swift/Protocol/Requestable" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4Ombi11RequestableP">Requestable</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>A <code>Requestable</code> is an interfaces for types that express the details of an HTTP request</p>
+            </section>
+            <section class="section task-group-section">
+              <div class="task-group">
+                <ul>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:4Ombi11RequestableP"></a>
+                      <a name="//apple_ref/swift/Protocol/Requestable" class="dashAnchor"></a>
+                      <a class="token" href="#/s:4Ombi11RequestableP">Requestable</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>A <code>Requestable</code> is an interfaces for types that express the details of an HTTP request</p>
 
 <p>Types that conform to <code>Requestable</code> can be used as a paramater in <code><a href="Classes/RequestManager.html">RequestManager</a></code>&lsquo;s <code>makeRequest</code> method, to create an observable combine publisher.
 <code>Requestable</code> is a generic procol that requires to you specify the request body, respose body, and error model.</p>
@@ -193,300 +79,249 @@
 <p>Depending on what types you use to specialize the protocol, parts of the interface maybe already implemented for you.
 See the documentation on each protocol requirement for more information.</p>
 
-                        <a href="Protocols/Requestable.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Requestable</span></code></pre>
+                          <a href="Protocols/Requestable.html" class="slightly-smaller">See more</a>
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">Requestable</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:4Ombi21AutomaticBodyEncodingP"></a>
+                      <a name="//apple_ref/swift/Protocol/AutomaticBodyEncoding" class="dashAnchor"></a>
+                      <a class="token" href="#/s:4Ombi21AutomaticBodyEncodingP">AutomaticBodyEncoding</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>A protocol for types that can be expressed as  <code>Data</code></p>
+
+                          <a href="Protocols/AutomaticBodyEncoding.html" class="slightly-smaller">See more</a>
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">AutomaticBodyEncoding</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:4Ombi21AutomaticBodyDecodingP"></a>
+                      <a name="//apple_ref/swift/Protocol/AutomaticBodyDecoding" class="dashAnchor"></a>
+                      <a class="token" href="#/s:4Ombi21AutomaticBodyDecodingP">AutomaticBodyDecoding</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>A protocol for types that can be initialized from  <code>Data</code> provided by a network response</p>
+
+                          <a href="Protocols/AutomaticBodyDecoding.html" class="slightly-smaller">See more</a>
+                        </div>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">AutomaticBodyDecoding</span></code></pre>
+
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:4Ombi15HTTPRequestableP"></a>
+                      <a name="//apple_ref/swift/Protocol/HTTPRequestable" class="dashAnchor"></a>
+                      <a class="token" href="#/s:4Ombi15HTTPRequestableP">HTTPRequestable</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>A <code><a href="Protocols/Requestable.html">Requestable</a></code> with basic HTTP status code based response validation</p>
 
                         </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:4Ombi21AutomaticBodyEncodingP"></a>
-                    <a name="//apple_ref/swift/Protocol/AutomaticBodyEncoding" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4Ombi21AutomaticBodyEncodingP">AutomaticBodyEncoding</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>A protocol for types that can be expressed as  <code>Data</code></p>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">HTTPRequestable</span> <span class="p">:</span> <span class="kt"><a href="Protocols/Requestable.html">Requestable</a></span> <span class="k">where</span> <span class="k">Self</span><span class="o">.</span><span class="kt">ResponseError</span> <span class="o">==</span> <span class="kt"><a href="Enums/HTTPError.html">HTTPError</a></span></code></pre>
 
-                        <a href="Protocols/AutomaticBodyEncoding.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">AutomaticBodyEncoding</span></code></pre>
+                          </div>
+                        </div>
+                      </section>
+                    </div>
+                  </li>
+                  <li class="item">
+                    <div>
+                      <code>
+                      <a name="/s:4Ombi17UnsafeRequestableP"></a>
+                      <a name="//apple_ref/swift/Protocol/UnsafeRequestable" class="dashAnchor"></a>
+                      <a class="token" href="#/s:4Ombi17UnsafeRequestableP">UnsafeRequestable</a>
+                      </code>
+                    </div>
+                    <div class="height-container">
+                      <div class="pointer-container"></div>
+                      <section class="section">
+                        <div class="pointer"></div>
+                        <div class="abstract">
+                          <p>A <code><a href="Protocols/Requestable.html">Requestable</a></code> with no validated &ndash; all completed requests will be considered safe regardless of status code, headers, or body</p>
 
                         </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:4Ombi21AutomaticBodyDecodingP"></a>
-                    <a name="//apple_ref/swift/Protocol/AutomaticBodyDecoding" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4Ombi21AutomaticBodyDecodingP">AutomaticBodyDecoding</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>A protocol for types that can be initialized from  <code>Data</code> provided by a network response</p>
+                        <div class="declaration">
+                          <h4>Declaration</h4>
+                          <div class="language">
+                            <p class="aside-title">Swift</p>
+                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">UnsafeRequestable</span> <span class="p">:</span> <span class="kt"><a href="Protocols/Requestable.html">Requestable</a></span> <span class="k">where</span> <span class="k">Self</span><span class="o">.</span><span class="kt">ResponseError</span> <span class="o">==</span> <span class="kt">Error</span></code></pre>
 
-                        <a href="Protocols/AutomaticBodyDecoding.html" class="slightly-smaller">See more</a>
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">AutomaticBodyDecoding</span></code></pre>
-
+                          </div>
                         </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:4Ombi14AnyJSONRequestP"></a>
-                    <a name="//apple_ref/swift/Protocol/AnyJSONRequest" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4Ombi14AnyJSONRequestP">AnyJSONRequest</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>A <code><a href="Protocols/Requestable.html">Requestable</a></code> with <code><a href="Structs/AnyJSON.html">AnyJSON</a></code> body content</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">AnyJSONRequest</span> <span class="p">:</span> <span class="kt"><a href="Protocols/Requestable.html">Requestable</a></span> <span class="k">where</span> <span class="k">Self</span><span class="o">.</span><span class="kt">ResponseError</span> <span class="o">==</span> <span class="kt"><a href="Enums/HTTPError.html">HTTPError</a></span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:4Ombi20UnsafeAnyJSONRequestP"></a>
-                    <a name="//apple_ref/swift/Protocol/UnsafeAnyJSONRequest" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4Ombi20UnsafeAnyJSONRequestP">UnsafeAnyJSONRequest</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>A <code><a href="Protocols/Requestable.html">Requestable</a></code> with <code><a href="Structs/AnyJSON.html">AnyJSON</a></code> body content and no validation</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">UnsafeAnyJSONRequest</span> <span class="p">:</span> <span class="kt"><a href="Protocols/Requestable.html">Requestable</a></span> <span class="k">where</span> <span class="k">Self</span><span class="o">.</span><span class="kt">RequestBody</span> <span class="o">==</span> <span class="kt"><a href="Structs/AnyJSON.html">AnyJSON</a></span><span class="p">,</span> <span class="k">Self</span><span class="o">.</span><span class="kt">ResponseBody</span> <span class="o">==</span> <span class="kt"><a href="Structs/AnyJSON.html">AnyJSON</a></span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:4Ombi13StringRequestP"></a>
-                    <a name="//apple_ref/swift/Protocol/StringRequest" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4Ombi13StringRequestP">StringRequest</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>A <code><a href="Protocols/Requestable.html">Requestable</a></code> with <code>String</code> body content</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">StringRequest</span> <span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:4Ombi19UnsafeStringRequestP">UnsafeStringRequest</a></span> <span class="k">where</span> <span class="k">Self</span><span class="o">.</span><span class="kt">ResponseError</span> <span class="o">==</span> <span class="kt"><a href="Enums/HTTPError.html">HTTPError</a></span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:4Ombi19UnsafeStringRequestP"></a>
-                    <a name="//apple_ref/swift/Protocol/UnsafeStringRequest" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4Ombi19UnsafeStringRequestP">UnsafeStringRequest</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>A <code><a href="Protocols/Requestable.html">Requestable</a></code> with <code>String</code> body content and no validation</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">UnsafeStringRequest</span> <span class="p">:</span> <span class="kt"><a href="Protocols/Requestable.html">Requestable</a></span> <span class="k">where</span> <span class="k">Self</span><span class="o">.</span><span class="kt">RequestBody</span> <span class="o">==</span> <span class="kt">String</span><span class="p">,</span> <span class="k">Self</span><span class="o">.</span><span class="kt">ResponseBody</span> <span class="o">==</span> <span class="kt">String</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:4Ombi11DataRequestP"></a>
-                    <a name="//apple_ref/swift/Protocol/DataRequest" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4Ombi11DataRequestP">DataRequest</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>A <code><a href="Protocols/Requestable.html">Requestable</a></code> with <code>Data</code> body content</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">DataRequest</span> <span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:4Ombi19UnsafeStringRequestP">UnsafeStringRequest</a></span> <span class="k">where</span> <span class="k">Self</span><span class="o">.</span><span class="kt">ResponseError</span> <span class="o">==</span> <span class="kt"><a href="Enums/HTTPError.html">HTTPError</a></span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:4Ombi17UnsafeDataRequestP"></a>
-                    <a name="//apple_ref/swift/Protocol/UnsafeDataRequest" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4Ombi17UnsafeDataRequestP">UnsafeDataRequest</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>A <code><a href="Protocols/Requestable.html">Requestable</a></code> with <code>Data</code> body content and no validation</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">UnsafeDataRequest</span> <span class="p">:</span> <span class="kt"><a href="Protocols/Requestable.html">Requestable</a></span> <span class="k">where</span> <span class="k">Self</span><span class="o">.</span><span class="kt">RequestBody</span> <span class="o">==</span> <span class="kt">Data</span><span class="p">,</span> <span class="k">Self</span><span class="o">.</span><span class="kt">ResponseBody</span> <span class="o">==</span> <span class="kt">Data</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:4Ombi14CodableRequestP"></a>
-                    <a name="//apple_ref/swift/Protocol/CodableRequest" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4Ombi14CodableRequestP">CodableRequest</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>A <code><a href="Protocols/Requestable.html">Requestable</a></code> with <code>Codable</code> body content</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">CodableRequest</span> <span class="p">:</span> <span class="kt"><a href="Protocols.html#/s:4Ombi19UnsafeStringRequestP">UnsafeStringRequest</a></span> <span class="k">where</span> <span class="k">Self</span><span class="o">.</span><span class="kt">ResponseError</span> <span class="o">==</span> <span class="kt"><a href="Enums/HTTPError.html">HTTPError</a></span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
-                </li>
-                <li class="item">
-                  <div>
-                    <code>
-                    <a name="/s:4Ombi20UnsafeCodableRequestP"></a>
-                    <a name="//apple_ref/swift/Protocol/UnsafeCodableRequest" class="dashAnchor"></a>
-                    <a class="token" href="#/s:4Ombi20UnsafeCodableRequestP">UnsafeCodableRequest</a>
-                    </code>
-                  </div>
-                  <div class="height-container">
-                    <div class="pointer-container"></div>
-                    <section class="section">
-                      <div class="pointer"></div>
-                      <div class="abstract">
-                        <p>A <code><a href="Protocols/Requestable.html">Requestable</a></code> with <code>Codable</code> body content and no validation</p>
-
-                      </div>
-                      <div class="declaration">
-                        <h4>Declaration</h4>
-                        <div class="language">
-                          <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">UnsafeCodableRequest</span> <span class="p">:</span> <span class="kt"><a href="Protocols/Requestable.html">Requestable</a></span> <span class="k">where</span> <span class="k">Self</span><span class="o">.</span><span class="kt">RequestBody</span> <span class="p">:</span> <span class="kt">Encodable</span><span class="p">,</span> <span class="k">Self</span><span class="o">.</span><span class="kt">ResponseBody</span> <span class="p">:</span> <span class="kt">Decodable</span></code></pre>
-
-                        </div>
-                      </div>
-                    </section>
-                  </div>
+                      </section>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </section>
+          </section>
+        </article>
+      </div>
+      <div class="nav-wrapper">
+        <nav class="nav-bottom">
+          <ul class="nav-groups">
+            <li class="nav-group-name">
+              <a href="Classes.html">Classes</a>
+              <ul class="nav-group-tasks">
+                <li class="nav-group-task">
+                  <a href="Classes/RequestManager.html">RequestManager</a>
                 </li>
               </ul>
-            </div>
-          </section>
-        </section>
+            </li>
+            <li class="nav-group-name">
+              <a href="Enums.html">Enumerations</a>
+              <ul class="nav-group-tasks">
+                <li class="nav-group-task">
+                  <a href="Enums/HTTPError.html">HTTPError</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Enums/RequestError.html">RequestError</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Enums/RequestMethod.html">RequestMethod</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-group-name">
+              <a href="Extensions.html">Extensions</a>
+              <ul class="nav-group-tasks">
+                <li class="nav-group-task">
+                  <a href="Extensions/URLRequest.html">URLRequest</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-group-name">
+              <a href="Protocols.html">Protocols</a>
+              <ul class="nav-group-tasks">
+                <li class="nav-group-task">
+                  <a href="Protocols/AutomaticBodyDecoding.html">AutomaticBodyDecoding</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Protocols/AutomaticBodyEncoding.html">AutomaticBodyEncoding</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Protocols.html#/s:4Ombi15HTTPRequestableP">HTTPRequestable</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Protocols/Requestable.html">Requestable</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Protocols.html#/s:4Ombi17UnsafeRequestableP">UnsafeRequestable</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-group-name">
+              <a href="Structs.html">Structures</a>
+              <ul class="nav-group-tasks">
+                <li class="nav-group-task">
+                  <a href="Structs/AnyJSON.html">AnyJSON</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/AnyRequestable.html">AnyRequestable</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/BodyDecoder.html">BodyDecoder</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/BodyEncoder.html">BodyEncoder</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/ComposableRequest.html">ComposableRequest</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/RequestHeaders.html">RequestHeaders</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/RequestHeaders/Key.html">– Key</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/RequestHeaders/Value.html">– Value</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/RequestParameters.html">RequestParameters</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/RequestParameters/ParameterName.html">– ParameterName</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/RequestParameters/ParameterValue.html">– ParameterValue</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/RequestResponse.html">RequestResponse</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Structs/ResponseValidator.html">ResponseValidator</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-group-name">
+              <a href="Typealiases.html">Type Aliases</a>
+              <ul class="nav-group-tasks">
+                <li class="nav-group-task">
+                  <a href="Typealiases.html#/s:4Ombi19AutomaticBodyCodinga">AutomaticBodyCoding</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-wrapper">
         <section id="footer">
           <p>&copy; 2021 <a class="link" href="https://www.vsanthanam.com" target="_blank" rel="external">Varun</a>. All rights reserved. (Last updated: 2021-05-20)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.7</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
-      </article>
+      </div>
     </div>
   </body>
 </div>

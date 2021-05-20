@@ -9,6 +9,8 @@ import Foundation
 import Combine
 import os.log
 
+/// ## Introduction
+///
 /// An object used to execute `Requestable(s)`
 ///
 /// Basic usage might look like this:
@@ -31,12 +33,12 @@ import os.log
 ///     }
 /// ```
 ///
-/// ## Publisher
+/// ### Publisher
 ///
 /// The publisher created by the `makeRequest` methods return a `RequestResponse` and  a `RequestError`.
 /// See the documentation on both of these generic types for more information.
 ///
-/// ## Request Lifecycle & Error Handling
+/// ### Request Lifecycle & Error Handling
 ///
 /// The request lifecycle creates many different points of failure, and provides users with a robust error model to determin what went wrong and where
 ///
@@ -47,7 +49,7 @@ import os.log
 ///
 /// When the manager encounters any of the errors describer above, you can choose to retry to request. The number of retries is specified as a paramater in the `makeRequest<T, S>(_:retries:sla:on:fallback:)` method. You can also specify an SLA by which all retries must complete, and an optional fallback response to use. The request object itself can also contain a fallback response.
 ///
-/// ## Additional Headers
+/// ### Additional Headers
 ///
 /// In addition to the headers specified in the `Requestable`, you can have the manager inject its own headers on every request it makes. This can be useful for handling things like authentication.
 ///
@@ -57,12 +59,12 @@ import os.log
 /// // these headers will be injected into every request
 /// ```
 ///
-/// ## Default Headers
+/// ### Default Headers
 ///
 /// `RequestManager` automatically injects `User-Agent`, `Accept-Encoding`, and `Accept-Language` headers into every request it makes by default.
 /// You can disable this behavior by setting the `shouldInjectDefaultHeaders` property to `false`
 ///
-/// ## Logging
+/// ### Logging
 ///
 /// `RequestManager` support logging via [Apple Unified Logging](https://developer.apple.com/documentation/oslog)
 /// To enable this, use one of the initializers that accept a log subsystem or an `OSLog` instance
@@ -349,7 +351,7 @@ open class RequestManager {
             return "\(osName) \(versionString)"
         }()
 
-        let ombiTag = "Ombi/\(Ombi.version)"
+        let ombiTag = "Ombi/1.0.0"
 
         return .init(host + "/" + version + " (" + identifier + ";" + "build:" + build + ";" + " " + os + ")" + " " + ombiTag)
     }

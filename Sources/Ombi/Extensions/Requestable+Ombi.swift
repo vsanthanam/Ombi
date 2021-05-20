@@ -17,6 +17,9 @@ public extension Requestable {
     var timeoutInterval: TimeInterval {
         120.0
     }
+    var query: [String : String] {
+        [:]
+    }
 }
 
 public extension Requestable where ResponseError == HTTPError {

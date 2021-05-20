@@ -9,4 +9,5 @@ jazzy \
     --module-version 1.0.0 \
     --github_url https://ombi.network \
     --root-url https://docs.ombi.network \
-    --output Documentation
+    --output Documentation \
+    --theme jony

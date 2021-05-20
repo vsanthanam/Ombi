@@ -1,13 +1,6 @@
 {
   "warnings": [
     {
-      "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Core/Ombi.swift",
-      "line": 10,
-      "symbol": "Ombi",
-      "symbol_kind": "source.lang.swift.decl.enum",
-      "warning": "undocumented"
-    },
-    {
       "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Extensions/RequestHeaders+Ombi.swift",
       "line": 59,
       "symbol": "RequestHeaders.Value.string(_:)",
@@ -29,87 +22,10 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Extensions/ResponseValidator+Ombi.swift",
-      "line": 12,
-      "symbol": "ResponseValidator.default",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Extensions/ResponseValidator+Ombi.swift",
-      "line": 28,
-      "symbol": "ResponseValidator.unsafe",
-      "symbol_kind": "source.lang.swift.decl.var.static",
-      "warning": "undocumented"
-    },
-    {
       "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Models/RequestHeaders.swift",
       "line": 207,
       "symbol": "RequestHeaders.subscript(_:)",
       "symbol_kind": "source.lang.swift.decl.function.subscript",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Models/RequestMethod.swift",
-      "line": 15,
-      "symbol": "RequestMethod.get",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Models/RequestMethod.swift",
-      "line": 16,
-      "symbol": "RequestMethod.post",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Models/RequestMethod.swift",
-      "line": 17,
-      "symbol": "RequestMethod.put",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Models/RequestMethod.swift",
-      "line": 18,
-      "symbol": "RequestMethod.delete",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Models/RequestMethod.swift",
-      "line": 19,
-      "symbol": "RequestMethod.connect",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Models/RequestMethod.swift",
-      "line": 20,
-      "symbol": "RequestMethod.head",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Models/RequestMethod.swift",
-      "line": 21,
-      "symbol": "RequestMethod.options",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Models/RequestMethod.swift",
-      "line": 22,
-      "symbol": "RequestMethod.patch",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Models/RequestMethod.swift",
-      "line": 23,
-      "symbol": "RequestMethod.trace",
-      "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
@@ -190,43 +106,15 @@
       "warning": "undocumented"
     },
     {
-      "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Protocols/AutomaticBodyCoding.swift",
-      "line": 15,
-      "symbol": "AutomaticBodyEncoding.asData()",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Protocols/AutomaticBodyCoding.swift",
-      "line": 20,
-      "symbol": "AutomaticBodyDecoding.init(fromData:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
       "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Wrappers/AnyJSON.swift",
-      "line": 15,
-      "symbol": "AnyJSON.init(_:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Wrappers/AnyJSON.swift",
-      "line": 24,
-      "symbol": "AnyJSON.obj",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Wrappers/AnyJSON.swift",
-      "line": 83,
+      "line": 86,
       "symbol": "AnyJSON.subscript(_:)",
       "symbol_kind": "source.lang.swift.decl.function.subscript",
       "warning": "undocumented"
     },
     {
       "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Wrappers/AnyJSON.swift",
-      "line": 102,
+      "line": 105,
       "symbol": "AnyJSON.subscript(_:)",
       "symbol_kind": "source.lang.swift.decl.function.subscript",
       "warning": "undocumented"

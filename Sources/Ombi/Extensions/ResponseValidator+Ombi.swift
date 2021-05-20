@@ -9,6 +9,7 @@ import Foundation
 
 public extension ResponseValidator where Error == HTTPError {
     
+    /// The default response validator for `HTTPError` types, which returns an error based on the status code
     static var `default`: Self {
         .init { response in
             guard let code = response.statusCode else {
@@ -25,6 +26,7 @@ public extension ResponseValidator where Error == HTTPError {
 
 public extension ResponseValidator {
     
+    /// An unsafe response validator, which never returns an error, regardless of the content of the response
     static var `unsafe`: Self {
         .init { .success($0) }
     }

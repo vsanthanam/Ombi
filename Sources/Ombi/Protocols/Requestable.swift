@@ -42,6 +42,7 @@ public protocol Requestable {
     var path: String { get }
     
     /// The URL query to request
+    /// A default empty url query is implemented for you
     var query: [String : String] { get }
     
     /// The HTTP method to use
@@ -87,26 +88,9 @@ public protocol Requestable {
     var timeoutInterval: TimeInterval { get }
 }
 
-/// A `Requestable` with `AnyJSON` body content
-public protocol AnyJSONRequest: Requestable where ResponseError == HTTPError {}
 
-/// A `Requestable` with `AnyJSON` body content and no validation
-public protocol UnsafeAnyJSONRequest: Requestable where RequestBody == AnyJSON, ResponseBody == AnyJSON {}
+/// A `Requestable` with basic HTTP status code based response validation
+public protocol HTTPRequestable: Requestable where ResponseError == HTTPError {}
 
-/// A `Requestable` with `String` body content
-public protocol StringRequest: UnsafeStringRequest where ResponseError == HTTPError {}
- 
-/// A `Requestable` with `String` body content and no validation
-public protocol UnsafeStringRequest: Requestable where RequestBody == String, ResponseBody == String {}
-
-/// A `Requestable` with `Data` body content
-public protocol DataRequest: UnsafeStringRequest where ResponseError == HTTPError {}
-
-/// A `Requestable` with `Data` body content and no validation
-public protocol UnsafeDataRequest: Requestable where RequestBody == Data, ResponseBody == Data {}
-
-/// A `Requestable` with `Codable` body content
-public protocol CodableRequest: UnsafeStringRequest where ResponseError == HTTPError {}
-
-/// A `Requestable` with `Codable` body content and no validation
-public protocol UnsafeCodableRequest: Requestable where RequestBody: Encodable, ResponseBody: Decodable {}
+/// A `Requestable` with no validated -- all completed requests will be considered safe regardless of status code, headers, or body
+public protocol UnsafeRequestable: Requestable where ResponseError == Error {}

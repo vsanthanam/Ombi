@@ -12,14 +12,31 @@ public enum RequestMethod: String, Equatable, Hashable, CustomStringConvertible 
     
     // MARK: - API
     
+    /// The "GET" method
     case get     = "GET"
+    
+    /// The "POST" method
     case post    = "POST"
+    
+    /// The "PUT" method
     case put     = "PUT"
+    
+    /// The "DELETE" method
     case delete  = "DELETE"
+    
+    /// The "CONNECT" method
     case connect = "CONNECT"
+    
+    /// The "HEAD" method
     case head    = "HEAD"
+    
+    /// The "OPTIONS" method
     case options = "OPTIONS"
+    
+    /// The "PATCH" method
     case patch   = "PATCH"
+    
+    /// The "TRACE" method
     case trace   = "TRACE"
     
     // MARK: - Equatable

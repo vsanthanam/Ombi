@@ -12,6 +12,8 @@ public struct AnyJSON: ExpressibleByStringLiteral, ExpressibleByArrayLiteral, Ex
     
     // MARK: - Initializers
     
+    /// Create an `AnyJSON` from any type
+    /// - Parameter obj: The object
     public init(_ obj: Any) {
         if !JSONSerialization.isValidJSONObject(obj) {
             assertionFailure("Attempting to wrap an invalid object using AnyJSON wrapper! This could lead to undefined behavior in production")
@@ -21,6 +23,7 @@ public struct AnyJSON: ExpressibleByStringLiteral, ExpressibleByArrayLiteral, Ex
     
     // MARK: - API
     
+    /// The object wrapped by this `AnyJSON` wrapper
     public private(set) var obj: Any
     
     // MARK: - ExpressibleByDictionaryLiteral
