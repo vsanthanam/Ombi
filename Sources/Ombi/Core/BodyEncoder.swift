@@ -11,28 +11,53 @@ import Foundation
 ///
 /// # Usage
 ///
+/// You specilize the `Encoder` with the type you want to encoder, and pass in a closure to convert the type into `Data`
+///
+/// ```
+/// let encoder = BodyEncoder<MyType> { body in
+///     // return `Data?` or throw an error
+/// }
+/// ```
+///
+/// # Reusability
+///
 /// Typically, you will want to re-use body encoders for a given type.
 ///
 /// The best way to do this is to declare a your encoder in a type-constrained extensions
 ///
 /// ```
 /// extension BodyEncoder where Body == MyType {
-///     static var `default`: Self {
+///     static var myEncoder: Self {
 ///         .init { body in
 ///             // Convert `MyType?` into `Data?` or throw an error
 ///         }
 ///     }
 /// }
-/// ```
 ///
-/// Then, declare a type-constrained extension `Requestable`
+/// // You can now use this encoder with a `ComposableRequest`, or when creating type that conform to `Requestable`
 ///
-/// ```
-/// extension Requestable where RequestBody == MyType {
-///     var requestEncoder: BodyEncoder<RequestBody> {
-///         return .default
+/// let request = ComposableRequest<Any, MyType, Error>
+///     .encode(with: .myEncoder)
+///
+/// struct MyRequest: Requestable {
+///     var requestEncoder: BodyEncoder<MyType> {
+///         .myEncoder
 ///     }
 /// }
+/// ```
+///
+/// Alternatively, if you want to create an encoder for a type you have control over, simply have that type conform to`AutomaticBodyEncoding`.
+/// A `default` encoder is created for you automatically, and added by default to every `Requestable` or `ComposableRequest` type that has been specialized with your type as its `RequestBody`
+///
+/// ```
+/// extension MyType: AutomaticBodyEncoding {
+///     func asData() throws -> Data? {
+///         // Return `Data?` or throw an error
+///     }
+/// }
+///
+/// // `default` is created for you automatically, and need not be added to `Requestable` or `ComposableRequest` instances.
+/// let encoder = BodyEncoder<MyType>.default
 /// ```
 ///
 /// Ombi provides default body encoders for the following types:
@@ -40,8 +65,9 @@ import Foundation
 /// - `String`
 /// - `Data`
 /// - `AnyJSON`
-/// - Models that conform to`Encodable`
 /// - `RequestParameters`
+/// - Types that conform to`Encodable`
+/// - Types that conform to `AutomaticBodyEncoding`
 ///
 /// See similar types `BodyDecoder` and `ResponseValidator`
 public struct BodyEncoder<Body> {

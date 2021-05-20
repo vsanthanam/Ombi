@@ -64,23 +64,32 @@ import os.log
 ///
 /// ## Logging
 ///
-/// ... TBC ...
+/// `RequestManager` support logging via [Apple Unified Logging](https://developer.apple.com/documentation/oslog)
+/// To enable this, use one of the initializers that accept a log subsystem or an `OSLog` instance
 open class RequestManager {
     
     // MARK: - Initializers
     
     /// Create a `RequestManager`
+    /// - Parameter host: The host to send requests
+    public convenience init(host: String) {
+        self.init(host, log: nil)
+    }
+    
+    /// Create a `RequestManager` using the default log
     /// - Parameters:
-    ///   - host: The host
+    ///   - host: The host to send requests
+    ///   - subsystem: The subsystem to send logs
+    public convenience init(host: String, subsystem: String) {
+        self.init(host, log: OSLog(subsystem: subsystem, category: "OmbiRequestManager"))
+    }
+    
+    /// Create a `RequestManager` using a custom log
+    /// - Parameters:
+    ///   - host: The host to send requests
     ///   - log: The log
-    public init(host: String,
-                log: OSLog? = .defaultRequestManagerLog) {
-        let configuration = URLSessionConfiguration.default
-        configuration.timeoutIntervalForRequest = 7200
-        configuration.timeoutIntervalForResource = 7200
-        self.session = .init(configuration: configuration)
-        self.host = host
-        self.log = log
+    public convenience init(host: String, log: OSLog) {
+        self.init(host, log: log)
     }
     
     // MARK: - API
@@ -161,6 +170,16 @@ open class RequestManager {
     }
     
     // MARK: - Private
+    
+    private init(_ host: String,
+                 log: OSLog?) {
+        let configuration = URLSessionConfiguration.default
+        configuration.timeoutIntervalForRequest = 7200
+        configuration.timeoutIntervalForResource = 7200
+        self.session = .init(configuration: configuration)
+        self.host = host
+        self.log = log
+    }
     
     private let session: URLSession
     

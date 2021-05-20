@@ -9,29 +9,38 @@ import Foundation
 
 public extension BodyDecoder {
     
+    /// A fatal decoder that will cause a runtime failure
     static var `fatal`: Self {
-        .init { _ in fatalError() }
+        .init { _ in
+            assertionFailure("This response is contains body data but is missing a decoder!")
+            return nil
+        }
     }
     
 }
 
 public extension BodyDecoder where Body == String {
     
-    init(encoding: String.Encoding) {
+    /// Create a `String` body decoder with specified encoding
+    /// - Parameter encoding: The encoding of the `String`
+    init(encoding: String.Encoding = .utf8) {
         self = .init { data in
             guard let data = data else { return nil }
             return String(data: data, encoding: encoding)
         }
     }
     
+    
+    /// The default `String` body decoder
     static var `default`: Self {
-        .init(encoding: .utf8)
+        .init()
     }
     
 }
 
 public extension BodyDecoder where Body == Data {
     
+    /// The default `Data` body decoder
     static var `default`: Self {
         .init { data in data }
     }
@@ -40,6 +49,8 @@ public extension BodyDecoder where Body == Data {
 
 public extension BodyDecoder where Body == AnyJSON {
     
+    /// Create a decoder for an `AnyJSON`
+    /// - Parameter options: The reading options to use when deserializing the JSON
     init(options: JSONSerialization.ReadingOptions) {
         self = .init { data in
             guard let data = data else { return nil }
@@ -47,6 +58,7 @@ public extension BodyDecoder where Body == AnyJSON {
         }
     }
     
+    /// The default `AnyJSON` decoder
     static var `default`: Self {
         .init(options: [])
     }
@@ -54,6 +66,9 @@ public extension BodyDecoder where Body == AnyJSON {
 
 public extension BodyDecoder where Body: Decodable {
     
+    /// Create a decoder for a `Codable` using a `JSONDecoder`
+    /// - Parameter decoder: The `JSONDecoder` to use for decoding
+    /// - Returns: The decoder
     static func json(decoder: JSONDecoder = JSONDecoder()) -> Self {
         .init { data in
             guard let data = data else { return nil }
@@ -61,8 +76,17 @@ public extension BodyDecoder where Body: Decodable {
         }
     }
     
+    /// The default `Codable` decoder
     static var `default`: Self {
         .json()
     }
     
+}
+
+public extension BodyDecoder where Body: AutomaticBodyDecoding {
+    
+    /// The default decoder for types that conform to `AutomaticBodyDecoding`
+    static var `default`: Self {
+        .init(Body.init)
+    }
 }

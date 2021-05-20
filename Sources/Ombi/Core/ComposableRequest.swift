@@ -495,6 +495,11 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
                 guard let body = (body as? Encodable) else { return nil }
                 return try body.encoded()
             }
+        } else if RequestBody.self is AutomaticBodyEncoding.Type {
+            return .init { body in
+                guard let body = (body as? AutomaticBodyEncoding) else { return nil }
+                return try body.asData()
+            }
         } else {
             return BodyEncoder<RequestBody>.fatal
         }
@@ -513,6 +518,11 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
             return .init { data in
                 guard let data = data else { return nil }
                 return try desiredType.decoded(from: data) as! ResponseBody?
+            }
+        } else if let desiredType = ResponseBody.self as? AutomaticBodyDecoding.Type {
+            return .init { data in
+                guard let data = data else { return nil }
+                return try desiredType.init(fromData: data) as! ResponseBody?
             }
         } else {
             return BodyDecoder<ResponseBody>.fatal

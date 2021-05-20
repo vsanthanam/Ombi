@@ -17,7 +17,7 @@
     <a title="Requestable Protocol Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html">Ombi 1.0.0 Docs</a> (85% documented)</p>
+        <p><a href="../index.html">Ombi 1.0.0 Docs</a> (90% documented)</p>
         <p class="header-right"><a href="https://ombi.network"><img src="../img/gh.png"/>View on GitHub</a></p>
         <p class="header-right"><a href="dash-feed://https%3A%2F%2Fdocs.ombi.network%2Fdocsets%2FOmbi.xml"><img src="../img/dash.png"/>Install in Dash</a></p>
         <p class="header-right">
@@ -66,9 +66,6 @@
             <a href="../Extensions.html">Extensions</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
-                <a href="../Extensions/OSLog.html">OSLog</a>
-              </li>
-              <li class="nav-group-task">
                 <a href="../Extensions/URLRequest.html">URLRequest</a>
               </li>
             </ul>
@@ -77,7 +74,37 @@
             <a href="../Protocols.html">Protocols</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="../Protocols.html#/s:4Ombi14AnyJSONRequestP">AnyJSONRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/AutomaticBodyDecoding.html">AutomaticBodyDecoding</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/AutomaticBodyEncoding.html">AutomaticBodyEncoding</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:4Ombi14CodableRequestP">CodableRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:4Ombi11DataRequestP">DataRequest</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Protocols/Requestable.html">Requestable</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:4Ombi13StringRequestP">StringRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:4Ombi20UnsafeAnyJSONRequestP">UnsafeAnyJSONRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:4Ombi20UnsafeCodableRequestP">UnsafeCodableRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:4Ombi17UnsafeDataRequestP">UnsafeDataRequest</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:4Ombi19UnsafeStringRequestP">UnsafeStringRequest</a>
               </li>
             </ul>
           </li>
@@ -125,6 +152,14 @@
               </li>
             </ul>
           </li>
+          <li class="nav-group-name">
+            <a href="../Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:4Ombi19AutomaticBodyCodinga">AutomaticBodyCoding</a>
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
       <article class="main-content">
@@ -138,11 +173,26 @@
 
                 </div>
               </div>
-            <p>A protocol for requests</p>
+            <p>A <code>Requestable</code> is an interfaces for types that express the details of an HTTP request</p>
+
+<p>Types that conform to <code>Requestable</code> can be used as a paramater in <code><a href="../Classes/RequestManager.html">RequestManager</a></code>&lsquo;s <code>makeRequest</code> method, to create an observable combine publisher.
+<code>Requestable</code> is a generic procol that requires to you specify the request body, respose body, and error model.</p>
+
+<p>Depending on what types you use to specialize the protocol, parts of the interface maybe already implemented for you.
+See the documentation on each protocol requirement for more information.</p>
 
           </section>
           <section class="section task-group-section">
             <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Generic%20Constraints"></a>
+                <a name="//apple_ref/swift/Section/Generic Constraints" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Generic%20Constraints"></a>
+                  <h3 class="section-name"><p>Generic Constraints</p>
+</h3>
+                </div>
+              </div>
               <ul>
                 <li class="item">
                   <div>
@@ -225,6 +275,19 @@
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Typealiases"></a>
+                <a name="//apple_ref/swift/Section/Typealiases" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Typealiases"></a>
+                  <h3 class="section-name"><p>Typealiases</p>
+</h3>
+                </div>
+              </div>
+              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -279,6 +342,19 @@
                     </section>
                   </div>
                 </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Requirements"></a>
+                <a name="//apple_ref/swift/Section/Requirements" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Requirements"></a>
+                  <h3 class="section-name"><p>Requirements</p>
+</h3>
+                </div>
+              </div>
+              <ul>
                 <li class="item">
                   <div>
                     <code>
@@ -430,7 +506,8 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The response to use if the request fails</p>
+                        <p>The response to use if the request fails
+A default fallback response of <code>nil</code> is implemented for you.</p>
 
                       </div>
                       <h4>Default Implementation</h4>
@@ -461,7 +538,17 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Encoder used to encode <code><a href="../Protocols/Requestable.html#/s:4Ombi11RequestableP11RequestBodyQa">RequestBody</a></code> into <code>Data</code></p>
+                        <p>Encoder used to encode <code><a href="../Protocols/Requestable.html#/s:4Ombi11RequestableP11RequestBodyQa">RequestBody</a></code> into <code>Data</code>
+A default encoder is provided for you when <code><a href="../Protocols/Requestable.html#/s:4Ombi11RequestableP11RequestBodyQa">RequestBody</a></code> is one of the following:</p>
+
+<ul>
+<li><code>String</code></li>
+<li><code>Data</code></li>
+<li><code><a href="../Structs/AnyJSON.html">AnyJSON</a></code></li>
+<li><code><a href="../Structs/RequestParameters.html">RequestParameters</a></code></li>
+<li>Types that conform to <code>Encodable</code></li>
+<li>Types that conform to <code><a href="../Protocols/AutomaticBodyEncoding.html">AutomaticBodyEncoding</a></code></li>
+</ul>
 
                       </div>
                       <div class="declaration">
@@ -488,7 +575,16 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Decoder used to decode <code>Data</code> into <code><a href="../Protocols/Requestable.html#/s:4Ombi11RequestableP12ResponseBodyQa">ResponseBody</a></code></p>
+                        <p>Decoder used to decode <code>Data</code> into <code><a href="../Protocols/Requestable.html#/s:4Ombi11RequestableP12ResponseBodyQa">ResponseBody</a></code>
+A default decoder is provided for you when <code><a href="../Protocols/Requestable.html#/s:4Ombi11RequestableP12ResponseBodyQa">ResponseBody</a></code> is one of the following:</p>
+
+<ul>
+<li><code>String</code></li>
+<li><code>Data</code></li>
+<li><code><a href="../Structs/AnyJSON.html">AnyJSON</a></code></li>
+<li>Types that conform to <code>Decodable</code></li>
+<li>Types that conform to <code><a href="../Protocols/AutomaticBodyDecoding.html">AutomaticBodyDecoding</a></code></li>
+</ul>
 
                       </div>
                       <div class="declaration">
@@ -518,7 +614,8 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Validator used to check a fully constructoed <code><a href="../Structs/RequestResponse.html">RequestResponse</a></code> for errors</p>
+                        <p>Validator used to check a fully constructoed <code><a href="../Structs/RequestResponse.html">RequestResponse</a></code> for errors
+A default validator is implemented for you that automatically accepts all response as valid and makes no manipulations</p>
 
                       </div>
                       <h4>Default Implementation</h4>
@@ -552,7 +649,8 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Interval before the <code><a href="../Classes/RequestManager.html">RequestManager</a></code> times out.</p>
+                        <p>Interval before the <code><a href="../Classes/RequestManager.html">RequestManager</a></code> times out.
+A default timeout interval of 120 seconds is implemented for you</p>
 
                       </div>
                       <h4>Default Implementation</h4>

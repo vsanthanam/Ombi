@@ -78,3 +78,15 @@ public extension Requestable where RequestBody == RequestParameters {
         .default
     }
 }
+
+public extension Requestable where RequestBody: AutomaticBodyEncoding {
+    var requestEncoder: BodyEncoder<RequestBody> {
+        .default
+    }
+}
+
+public extension Requestable where ResponseBody: AutomaticBodyDecoding {
+    var responseDecoder: BodyDecoder<ResponseBody> {
+        .default
+    }
+}
