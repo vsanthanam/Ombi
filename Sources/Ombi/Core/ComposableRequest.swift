@@ -61,7 +61,7 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
     /// ```
     /// let request = ComposableRequest<Any, Any, Error>()
     ///     .path {
-    ///         ... logic to determine the request path ...
+    ///         // ... logic to determine the request path ...
     ///         return path
     ///     }
     /// ```
@@ -94,7 +94,7 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
     /// ```
     /// let request = ComposableRequest<Any, Any, Error>()
     ///     .query {
-    ///         ... logic to determine the request query ...
+    ///         // ... logic to determine the request query ...
     ///         return (query: "search", value: "test")
     ///     }
     /// ```
@@ -158,7 +158,7 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
     /// ```
     /// let request = ComposableRequest<Any, Any, Error>()
     ///     .queries {
-    ///         ... logic to determine the request queries ...
+    ///         // ... logic to determine the request queries ...
     ///         return ["key1" : "value1",
     ///                 "key2" : "value2"]
     ///     }
@@ -205,6 +205,12 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
     }
     
     /// Add a header
+    ///
+    /// ```
+    /// let request = ComposableRequest<Any, Any, Error>()
+    ///     .header(key: "User-Agent", value: "MyUserAgentValue")
+    /// ```
+    ///
     /// - Parameters:
     ///   - key: The header field
     ///   - value: The header value
@@ -214,6 +220,15 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
     }
     
     /// Add a header
+    ///
+    /// ```
+    /// let request = ComposableRequest<Any, Any, Error>()
+    ///     .header {
+    ///         /// ... logic to determine header ...
+    ///         return (key: "User-Agent", value: "MyUserAgentValue")
+    ///     }
+    /// ```
+    ///
     /// - Parameter headerBuilder: The closure that builds the header
     /// - Returns: The request
     public func header(_ headerBuilder: @escaping () -> (RequestHeaders.Key, RequestHeaders.Value?)) -> Self {
@@ -223,6 +238,12 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
     }
     
     /// Add headers
+    ///
+    /// ```
+    /// let request = ComposableRequest<Any, Any, Error>()
+    ///     .headers(pair1, pair2, pair3)
+    /// ```
+    ///
     /// - Parameter pairs: The pairs of headers to add
     /// - Returns: The request
     public func headers(_ pairs: (key: RequestHeaders.Key, value: RequestHeaders.Value) ...) -> Self {
@@ -230,6 +251,12 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
     }
     
     /// Add headers
+    ///
+    /// ```
+    /// let request = ComposableRequest<Any, Any, Error>()
+    ///     .headers([pair1, pair2, pair3])
+    /// ```
+    ///
     /// - Parameter pairs: The pairs of headers to add
     /// - Returns: The request
     public func headers(_ pairs: [(key: RequestHeaders.Key, value: RequestHeaders.Value)]) -> Self {
@@ -241,6 +268,13 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
     }
     
     /// Replace the existing headers with new ones
+    ///
+    /// ```
+    /// let request = ComposableRequest<Any, Any, Error>()
+    ///     .headers(["User-Agent" : "MyAgent",
+    ///               "ContentType": "application/json"])
+    /// ```
+    ///
     /// - Parameter headers: The new headers
     /// - Returns: The request
     public func headers(_ headers: RequestHeaders) -> Self {
@@ -248,6 +282,16 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
     }
     
     /// Replace the existing headers with new ones
+    ///
+    /// ```
+    /// let request = ComposableRequest<Any, Any, Error>()
+    ///     .headers {
+    ///         /// ... logic to determine header ...
+    ///         return ["User-Agent" : "MyAgent",
+    ///                 "ContentType": "application/json"]
+    ///     }
+    /// ```
+    ///
     /// - Parameter headersBuilder: The closure that builds the headers
     /// - Returns: The request
     public func headers(_ headersBuilder: @escaping () -> RequestHeaders) -> Self {
@@ -258,6 +302,12 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
     }
     
     /// Set the request body
+    ///
+    /// ```
+    /// let request = ComposableRequest<Any, Any, Error>()
+    ///     .body(myBody)
+    /// ```
+    ///
     /// - Parameter body: The body
     /// - Returns: The request
     public func body(_ body: RequestBody?) -> Self {
@@ -265,6 +315,15 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
     }
     
     /// Set the request body
+    ///
+    /// ```
+    /// let request = ComposableRequest<Any, Any, Error>()
+    ///     .body {
+    ///         // ... logic to determine body ...
+    ///         return myBody
+    ///     }
+    /// ```
+    ///
     /// - Parameter bodyBuilder: The closure that builds the body
     /// - Returns: The request
     public func body(_ bodyBuilder: @escaping () -> RequestBody?) -> Self {
