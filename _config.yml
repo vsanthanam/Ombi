@@ -21,7 +21,7 @@ links:
         url: https://www.github.com/vsanthanam/Ombi
     footer:
       - title: GitHub
-        url: https://www.github.com/vsanthanam/VSAlert/jekyll-docs-theme
+        url: https://www.github.com/vsanthanam/Ombi
       - title: Issues
         url: https://www.github.com/vsanthanam/Ombi/issues?state=open
       - title: About Me
@@ -41,7 +41,7 @@ social:
         enabled: false
         via:
         hash:
-        account: 
+        account:
     facebook:
         enabled: false
         profileUrl:
