@@ -1,12 +1,30 @@
+// Ombi
+// RequestManager.swift
 //
-//  File.swift
-//  
+// MIT License
 //
-//  Created by Varun Santhanam on 5/8/21.
+// Copyright (c) 2021 Varun Santhanam
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the  Software), to deal
 //
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED  AS IS, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
 
-import Foundation
 import Combine
+import Foundation
 import os.log
 
 /// ## Introduction
@@ -69,15 +87,15 @@ import os.log
 /// `RequestManager` support logging via [Apple Unified Logging](https://developer.apple.com/documentation/oslog)
 /// To enable this, use one of the initializers that accept a log subsystem or an `OSLog` instance
 open class RequestManager {
-    
+
     // MARK: - Initializers
-    
+
     /// Create a `RequestManager`
     /// - Parameter host: The host to send requests
     public convenience init(host: String) {
         self.init(host, log: nil)
     }
-    
+
     /// Create a `RequestManager` using the default log
     /// - Parameters:
     ///   - host: The host to send requests
@@ -85,7 +103,7 @@ open class RequestManager {
     public convenience init(host: String, subsystem: String) {
         self.init(host, log: OSLog(subsystem: subsystem, category: "OmbiRequestManager"))
     }
-    
+
     /// Create a `RequestManager` using a custom log
     /// - Parameters:
     ///   - host: The host to send requests
@@ -93,21 +111,21 @@ open class RequestManager {
     public convenience init(host: String, log: OSLog) {
         self.init(host, log: log)
     }
-    
+
     // MARK: - API
-    
+
     /// The host
     public let host: String
-    
+
     /// The log to use
     public let log: OSLog?
-    
+
     /// Headers to add to every request
     open var additionalHeaders: RequestHeaders = [:]
-    
+
     /// Whether or not to inject Ombi's default headers
     open var shouldInjectDefaultHeaders: Bool = true
-    
+
     /// Make a request
     /// - Parameters:
     ///   - requestable: The `Requestable` to request
@@ -147,13 +165,13 @@ open class RequestManager {
                 switch completion {
                 case .finished:
                     break
-                case .failure(let error):
+                case let .failure(error):
                     os_log(.error, log: log, "Request Failed: %@", error.localizedDescription)
                 }
             })
             .eraseToAnyPublisher()
     }
-    
+
     /// Make a request
     /// - Parameters:
     ///   - requestable: The `Requestable` to request
@@ -170,21 +188,21 @@ open class RequestManager {
                     on: DispatchQueue.global(),
                     fallback: fallback)
     }
-    
+
     // MARK: - Private
-    
+
     private init(_ host: String,
                  log: OSLog?) {
         let configuration = URLSessionConfiguration.default
         configuration.timeoutIntervalForRequest = 7200
         configuration.timeoutIntervalForResource = 7200
-        self.session = .init(configuration: configuration)
+        session = .init(configuration: configuration)
         self.host = host
         self.log = log
     }
-    
+
     private let session: URLSession
-    
+
     private var defaultHeaders: RequestHeaders {
         guard shouldInjectDefaultHeaders else {
             return [:]
@@ -193,7 +211,7 @@ open class RequestManager {
                 .acceptEncoding: "br;q=1.0, gzip;q=0.8, deflate;q=0.6",
                 .acceptLanguage: RequestManager.defaultAcceptLanguage]
     }
-    
+
     private func publisher<T, S>(for requestable: T, scheduler: S) -> AnyPublisher<T.Response, T.Failure> where T: Requestable, S: Scheduler {
         typealias InstantFailure = Fail<T.Response, T.Failure>
         guard var urlComponents = URLComponents(string: host) else {
@@ -229,7 +247,7 @@ open class RequestManager {
                 next[key.description] = value.description
                 return next
             }
-        
+
         dict = requestable.headers
             .reduce(dict) { prev, pair in
                 let (key, value) = pair
@@ -237,7 +255,7 @@ open class RequestManager {
                 next[key.description] = value.description
                 return next
             }
-        
+
         request.allHTTPHeaderFields = additionalHeaders
             .reduce(dict) { prev, pair in
                 let (key, value) = pair
@@ -313,7 +331,7 @@ open class RequestManager {
             })
             .eraseToAnyPublisher()
     }
-    
+
     private static var defaultUserAgent: RequestHeaders.Value {
         let bundle = Bundle.main.infoDictionary
         let host = (bundle?[kCFBundleExecutableKey as String] as? String) ??
@@ -355,7 +373,7 @@ open class RequestManager {
 
         return .init(host + "/" + version + " (" + identifier + ";" + "build:" + build + ";" + " " + os + ")" + " " + ombiTag)
     }
-    
+
     private static var defaultAcceptLanguage: RequestHeaders.Value {
         let str = Locale.preferredLanguages
             .prefix(6)
@@ -369,7 +387,7 @@ open class RequestManager {
     }
 }
 
-fileprivate extension Publisher {
+private extension Publisher {
     func validate<T, E>(using validator: ResponseValidator<T, E>) -> AnyPublisher<RequestResponse<T>, RequestError<E>> where Output == RequestResponse<T> {
         tryMap { response in
             try validator.validate(response).get()
