@@ -1,47 +1,12 @@
 ---
-title: Home
-homepage: true
+title: Get Started
+homepage: false
 description: Elegant Swift Networking with Combine
 layout: page
-navorder: 0
+navorder: 1
 ---
 
-# Ombi
-Elegant reactive networking with Combine and Swift
-
-[![release](https://img.shields.io/github/v/release/vsanthanam/Ombi)](https://github.com/vsanthanam/Ombi/releases)
-[![license](https://img.shields.io/github/license/vsanthanam/Ombi.svg)](https://en.wikipedia.org/wiki/MIT_License)
-[![documentation](https://docs.ombi.network/badge.svg)](https://docs.ombi.network)
-[![swift-version](https://img.shields.io/badge/Swift-5.4-orange)](https://www.swift.org)
-
-
-## Introduction
-
-Ombi is a simple library built on top of `URLSession` and `Combine` that makes it very easy to make asynchronous network requests with reactive programming.
-It requires Combine to work correctly, and does not support Swift runtime environments that do not support Combine.
-
-### Installation
-
-Ombi uses the [The Swift Package Manager](https://swift.org/package-manager/) for distrubition. For now, this is the only supported method of installation, but others will be added soon.
-
-Add `Ombi` to your `Package.swift` file like so:
-
-```swift
-dependencies: [
-    .package(url: "https://github.com/Ombi/Ombi.git", .upToNextMajor(from: "1.0.0"))
-]
-```
-
-### Documentation
-
-You can view the documentation for the latest stable release at [docs.ombi.network](https://docs.ombi.network). For any given copy of the repository, you can generate version specific docs using `jazzy` and the included script:
-
-```
-$ cd path to repo
-$ ./gen-docs.sh
-```
-
-## Basic Usage
+# Get Started
 
 Making a network request with ombi is pretty straight forward.
 Create a `Requestable`, initialize a `RequestManager`, and invoke the `makeRequest` method using your `Requestable`
@@ -49,7 +14,7 @@ You will recieve a `Publisher` which will allow you to handle network responses 
 
 There are two main ways to use the framework: Creating your own types that conform to `Requestable`, or using the provided `ComposableRequest` type, which already conform to `Requestable`. This document will cover both strategies.
 
-### Requestable Interface
+## Requestable Interface
 
 The  `Requestable`  protocol defines everything the `RequestManager` needs to make the HTTP request.
 
@@ -164,7 +129,7 @@ let cancellable = manager.makeRequest(request)
     }
 ```
 
-### RequestManager
+## RequestManager
 
 While most of the properties of the request are definied within the `Requestable` a few are properties of the request manager, and a few other are additional parameters in the `makeRequest` method.
 
