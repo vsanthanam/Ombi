@@ -191,17 +191,24 @@ open class RequestManager {
 
     // MARK: - Private
 
-    private init(_ host: String,
-                 log: OSLog?) {
-        let configuration = URLSessionConfiguration.default
-        configuration.timeoutIntervalForRequest = 7200
-        configuration.timeoutIntervalForResource = 7200
-        session = .init(configuration: configuration)
+    init(host: String,
+         session: ResponsePublisherProviding,
+         log: OSLog?) {
         self.host = host
+        self.session = session
         self.log = log
     }
 
-    private let session: URLSession
+    private convenience init(_ host: String,
+                             log: OSLog?) {
+        let configuration = URLSessionConfiguration.default
+        configuration.timeoutIntervalForRequest = 7200
+        configuration.timeoutIntervalForResource = 7200
+        let session = URLSession(configuration: configuration)
+        self.init(host: host, session: session, log: log)
+    }
+
+    private let session: ResponsePublisherProviding
 
     private var defaultHeaders: RequestHeaders {
         guard shouldInjectDefaultHeaders else {
@@ -265,7 +272,7 @@ open class RequestManager {
             }
         request.timeoutInterval = requestable.timeoutInterval
 
-        return session.dataTaskPublisher(for: request)
+        return session.publisher(for: request)
             .mapError { error -> T.Failure in
                 if error.code == URLError.timedOut {
                     return T.Failure.timedOut
@@ -397,4 +404,18 @@ private extension Publisher {
         }
         .eraseToAnyPublisher()
     }
+}
+
+protocol ResponsePublisherProviding {
+
+    func publisher(for urlRequest: URLRequest) -> AnyPublisher<(data: Data, response: URLResponse), URLError>
+
+}
+
+extension URLSession: ResponsePublisherProviding {
+    func publisher(for urlRequest: URLRequest) -> AnyPublisher<(data: Data, response: URLResponse), URLError> {
+        dataTaskPublisher(for: urlRequest)
+            .eraseToAnyPublisher()
+    }
+
 }

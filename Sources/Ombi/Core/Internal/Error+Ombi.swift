@@ -28,10 +28,10 @@ import Foundation
 extension Error {
     func requestError<T: Error>() -> RequestError<T> {
         switch self {
-        case is T:
-            return .validationError(self as! T)
         case is RequestError<T>:
             return self as! RequestError<T>
+        case is T:
+            return .validationError(self as! T)
         default:
             return .unknownError
         }
