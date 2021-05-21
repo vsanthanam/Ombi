@@ -350,7 +350,7 @@ You will recieve a <code>Publisher</code> which will allow you to handle network
         <span class="p">]</span>
     <span class="p">}</span>
     <span class="o">.</span><span class="nf">send</span><span class="p">(</span><span class="nv">on</span><span class="p">:</span> <span class="nv">https</span><span class="p">:</span><span class="c1">//api.myapp.com)</span>
-    <span class="nf">sink</span><span class="p">(</span><span class="nv">receiveCompletion</span><span class="p">:</span> <span class="p">{</span> <span class="n">completion</span> <span class="k">in</span>
+    <span class="o">.</span><span class="nf">sink</span><span class="p">(</span><span class="nv">receiveCompletion</span><span class="p">:</span> <span class="p">{</span> <span class="n">completion</span> <span class="k">in</span>
         <span class="k">switch</span> <span class="n">completion</span> <span class="p">{</span>
         <span class="k">case</span> <span class="o">.</span><span class="nv">finished</span><span class="p">:</span>
             <span class="k">break</span>
