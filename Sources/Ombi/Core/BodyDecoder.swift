@@ -27,7 +27,7 @@ import Foundation
 
 /// A generic value type to decode response body content from `Data`
 ///
-/// # Usage
+/// ## Usage
 ///
 /// You specilize the `Decoder` with the type you want to decode, and pass in a closure to convert `Data` into the type:
 ///
@@ -37,7 +37,7 @@ import Foundation
 /// }
 /// ```
 ///
-/// # Reusability
+/// ## Reusability
 ///
 /// Typically, you will want to re-use body decoders for a given type.
 ///

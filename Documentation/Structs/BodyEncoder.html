@@ -153,14 +153,14 @@
                 </div>
               </div>
             <p>A generic value type to encode request body content as <code>Data</code></p>
-<h1 id='usage' class='heading'>Usage</h1>
+<h2 id='usage' class='heading'>Usage</h2>
 
 <p>You specilize the <code>Encoder</code> with the type you want to encoder, and pass in a closure to convert the type into <code>Data</code></p>
 <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">encoder</span> <span class="o">=</span> <span class="kt">BodyEncoder</span><span class="o">&lt;</span><span class="kt">MyType</span><span class="o">&gt;</span> <span class="p">{</span> <span class="n">body</span> <span class="k">in</span>
     <span class="c1">// return `Data?` or throw an error</span>
 <span class="p">}</span>
 </code></pre>
-<h1 id='reusability' class='heading'>Reusability</h1>
+<h2 id='reusability' class='heading'>Reusability</h2>
 
 <p>Typically, you will want to re-use body encoders for a given type.</p>
 

@@ -27,7 +27,7 @@ import Foundation
 
 /// A generic value type to encode request body content as `Data`
 ///
-/// # Usage
+/// ## Usage
 ///
 /// You specilize the `Encoder` with the type you want to encoder, and pass in a closure to convert the type into `Data`
 ///
@@ -37,7 +37,7 @@ import Foundation
 /// }
 /// ```
 ///
-/// # Reusability
+/// ## Reusability
 ///
 /// Typically, you will want to re-use body encoders for a given type.
 ///

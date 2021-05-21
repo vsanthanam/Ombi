@@ -2,119 +2,119 @@
   "warnings": [
     {
       "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Extensions/RequestHeaders+Ombi.swift",
-      "line": 59,
+      "line": 77,
       "symbol": "RequestHeaders.Value.string(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Extensions/RequestHeaders+Ombi.swift",
-      "line": 63,
+      "line": 81,
       "symbol": "RequestHeaders.Value.int(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Extensions/RequestHeaders+Ombi.swift",
-      "line": 67,
+      "line": 85,
       "symbol": "RequestHeaders.Value.double(_:)",
       "symbol_kind": "source.lang.swift.decl.function.method.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Models/RequestHeaders.swift",
-      "line": 207,
+      "line": 221,
       "symbol": "RequestHeaders.subscript(_:)",
       "symbol_kind": "source.lang.swift.decl.function.subscript",
       "warning": "undocumented"
     },
     {
       "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Models/RequestParameters.swift",
-      "line": 10,
+      "line": 28,
       "symbol": "RequestParameters",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Models/RequestParameters.swift",
-      "line": 14,
+      "line": 32,
       "symbol": "RequestParameters.init(parameters:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Models/RequestParameters.swift",
-      "line": 20,
+      "line": 38,
       "symbol": "RequestParameters.ParameterName",
       "symbol_kind": "source.lang.swift.decl.struct",
       "warning": "undocumented"
     },
     {
       "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Models/RequestParameters.swift",
-      "line": 24,
+      "line": 42,
       "symbol": "RequestParameters.ParameterName.init(name:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Models/RequestParameters.swift",
-      "line": 57,
+      "line": 75,
       "symbol": "RequestParameters.ParameterValue",
       "symbol_kind": "source.lang.swift.decl.enum",
       "warning": "undocumented"
     },
     {
       "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Models/RequestParameters.swift",
-      "line": 61,
+      "line": 79,
       "symbol": "RequestParameters.ParameterValue.int(_:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Models/RequestParameters.swift",
-      "line": 63,
+      "line": 81,
       "symbol": "RequestParameters.ParameterValue.string(_:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Models/RequestParameters.swift",
-      "line": 65,
+      "line": 83,
       "symbol": "RequestParameters.ParameterValue.double(_:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Models/RequestParameters.swift",
-      "line": 67,
+      "line": 85,
       "symbol": "RequestParameters.ParameterValue.bool(_:)",
       "symbol_kind": "source.lang.swift.decl.enumelement",
       "warning": "undocumented"
     },
     {
       "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Models/RequestParameters.swift",
-      "line": 129,
+      "line": 147,
       "symbol": "RequestParameters.allParameters",
       "symbol_kind": "source.lang.swift.decl.var.instance",
       "warning": "undocumented"
     },
     {
       "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Models/RequestResponse.swift",
-      "line": 15,
+      "line": 33,
       "symbol": "RequestResponse.empty",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
       "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Wrappers/AnyJSON.swift",
-      "line": 86,
+      "line": 104,
       "symbol": "AnyJSON.subscript(_:)",
       "symbol_kind": "source.lang.swift.decl.function.subscript",
       "warning": "undocumented"
     },
     {
       "file": "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Wrappers/AnyJSON.swift",
-      "line": 105,
+      "line": 123,
       "symbol": "AnyJSON.subscript(_:)",
       "symbol_kind": "source.lang.swift.decl.function.subscript",
       "warning": "undocumented"

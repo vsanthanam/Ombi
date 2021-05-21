@@ -41,8 +41,6 @@ public struct RequestHeaders: ExpressibleByDictionaryLiteral, Equatable, Hashabl
 
     // MARK: - API
 
-    /// # Key
-    ///
     /// A `RequestHeaders.Key` is a value type used to describe keys in a header dictionary.
     ///
     /// You can create headers in a few ways:
@@ -105,8 +103,6 @@ public struct RequestHeaders: ExpressibleByDictionaryLiteral, Equatable, Hashabl
         }
     }
 
-    /// # Value
-    ///
     /// A `RequestHeaders.Value` is a value type used to describe values in a header dictionary.
     ///
     /// You can create values in a few ways:
