@@ -1,0 +1,18 @@
+Add Basic Unit Test Framework
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# Date:      Fri May 21 11:57:46 2021 -0700
+#
+# On branch testability
+# Your branch is up to date with 'origin/testability'.
+#
+# Changes to be committed:
+#	modified:   Sources/Ombi/Core/RequestManager.swift
+#	modified:   Sources/Ombi/Extensions/URLRequest+Ombi.swift
+#	modified:   Sources/Ombi/Models/RequestResponse.swift
+#	deleted:    Tests/OmbiTests/OmbiTests.swift
+#	new file:   Tests/OmbiTests/RequestManagerTests.swift
+#	new file:   Tests/OmbiTests/TestScheduler.swift
+#

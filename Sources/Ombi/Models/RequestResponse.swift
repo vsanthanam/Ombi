@@ -78,3 +78,22 @@ public struct RequestResponse<Body> {
         }
     }
 }
+
+extension RequestResponse: Equatable where Body: Equatable {
+
+    public static func == (lhs: RequestResponse<Body>, rhs: RequestResponse<Body>) -> Bool {
+        lhs.statusCode == rhs.statusCode && lhs.headers == rhs.headers && lhs.url == rhs.url && lhs.body == rhs.body
+    }
+
+}
+
+extension RequestResponse: Hashable where Body: Hashable {
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(statusCode)
+        hasher.combine(headers)
+        hasher.combine(url)
+        hasher.combine(body)
+    }
+
+}

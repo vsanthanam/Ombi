@@ -31,5 +31,4 @@ public extension URLRequest {
     var requestMethod: RequestMethod? {
         httpMethod.flatMap(RequestMethod.init)
     }
-
 }
