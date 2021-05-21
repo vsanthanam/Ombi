@@ -1,7 +1,7 @@
 # Ombi
 Elegant reactive networking with Combine and Swift
 
-[![release](https://img.shields.io/github/v/release/vsanthanam/Ombi?sort=semver)](https://github.com/vsanthanam/Ombi/releases/new)
+[![release](https://img.shields.io/github/v/release/vsanthanam/Ombi)](https://github.com/vsanthanam/Ombi/releases/new)
 [![license](https://img.shields.io/github/license/vsanthanam/Ombi.svg)](https://en.wikipedia.org/wiki/MIT_License)
 [![documentation](https://docs.ombi.network/badge.svg)](https://docs.ombi.network)
 [![swift-version](https://img.shields.io/badge/Swift-5.4-orange)](https://www.swift.org)
