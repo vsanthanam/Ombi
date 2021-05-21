@@ -1,0 +1,11 @@
+{
+  "": {
+    "swift-dependencies": "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/OmbiTests.build/master.swiftdeps"
+  },
+  "/Users/vsanthanam/Desktop/Ombi/Tests/OmbiTests/OmbiTests.swift": {
+    "dependencies": "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/OmbiTests.build/OmbiTests.d",
+    "object": "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/OmbiTests.build/OmbiTests.swift.o",
+    "swiftmodule": "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/OmbiTests.build/OmbiTests~partial.swiftmodule",
+    "swift-dependencies": "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/OmbiTests.build/OmbiTests.swiftdeps"
+  }
+}

@@ -1,0 +1,53 @@
+remote_theme: vsanthanam/gh-proj-theme
+# show_downloads: true
+name: Ombi
+
+project:
+    version: 1.0
+    download_url: https://www.github.com/vsanthanam/Ombi/releases
+
+license:
+    software: MIT License
+    software_url: http://opensource.org/licenses/MIT
+
+    docs: CC BY 3.0
+    docs_url: http://creativecommons.org/licenses/by/3.0/
+
+links:
+    header:
+      - title: Documentation
+        url: https://docs.ombi.network
+      - title: GitHub
+        url: https://www.github.com/vsanthanam/Ombi
+    footer:
+      - title: GitHub
+        url: https://www.github.com/vsanthanam/VSAlert/jekyll-docs-theme
+      - title: Issues
+        url: https://www.github.com/vsanthanam/Ombi/issues?state=open
+      - title: About Me
+        url: https://www.vsanthanam.com
+
+ui:
+    header:
+        color1: "#80D0C7"
+        color2: "#13547A"
+        trianglify: true
+
+social:
+    github:
+        user: vsanthanam
+        repo: VSAlert
+    twitter:
+        enabled: false
+        via:
+        hash:
+        account: 
+    facebook:
+        enabled: false
+        profileUrl:
+
+# Build settings
+markdown: kramdown
+exclude:
+    - Gemfile
+    - Gemfile.lock

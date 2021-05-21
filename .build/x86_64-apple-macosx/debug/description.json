@@ -1,0 +1,355 @@
+{
+  "builtTestProducts" : [
+    {
+      "binaryPath" : "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/OmbiPackageTests.xctest/Contents/MacOS/OmbiPackageTests",
+      "packageName" : "Ombi",
+      "productName" : "OmbiPackageTests"
+    }
+  ],
+  "copyCommands" : {
+
+  },
+  "swiftCommands" : {
+    "C.Ombi-debug.module" : {
+      "executable" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "importPath" : "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Core/BodyDecoder.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Core/BodyEncoder.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Core/ComposableRequest.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Core/Internal/Codable+Ombi.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Core/Internal/Error+Ombi.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Core/RequestManager.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Core/ResponseValidator.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Extensions/BodyDecoder+Ombi.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Extensions/BodyEncoder+Ombi.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Extensions/RequestHeaders+Ombi.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Extensions/Requestable+Ombi.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Extensions/ResponseValidator+Ombi.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Extensions/URLRequest+Ombi.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Models/RequestError.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Models/RequestHeaders.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Models/RequestMethod.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Models/RequestParameters.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Models/RequestResponse.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Protocols/AutomaticBodyCoding.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Protocols/Requestable.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Wrappers/AnyJSON.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Wrappers/AnyRequestable.swift"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "Ombi",
+      "moduleOutputPath" : "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.swiftmodule",
+      "objects" : [
+        "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build/Core/BodyDecoder.swift.o",
+        "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build/Core/BodyEncoder.swift.o",
+        "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build/Core/ComposableRequest.swift.o",
+        "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build/Core/Internal/Codable+Ombi.swift.o",
+        "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build/Core/Internal/Error+Ombi.swift.o",
+        "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build/Core/RequestManager.swift.o",
+        "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build/Core/ResponseValidator.swift.o",
+        "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build/Extensions/BodyDecoder+Ombi.swift.o",
+        "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build/Extensions/BodyEncoder+Ombi.swift.o",
+        "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build/Extensions/RequestHeaders+Ombi.swift.o",
+        "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build/Extensions/Requestable+Ombi.swift.o",
+        "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build/Extensions/ResponseValidator+Ombi.swift.o",
+        "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build/Extensions/URLRequest+Ombi.swift.o",
+        "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build/Models/RequestError.swift.o",
+        "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build/Models/RequestHeaders.swift.o",
+        "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build/Models/RequestMethod.swift.o",
+        "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build/Models/RequestParameters.swift.o",
+        "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build/Models/RequestResponse.swift.o",
+        "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build/Protocols/AutomaticBodyCoding.swift.o",
+        "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build/Protocols/Requestable.swift.o",
+        "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build/Wrappers/AnyJSON.swift.o",
+        "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build/Wrappers/AnyRequestable.swift.o"
+      ],
+      "otherArgs" : [
+        "-target",
+        "x86_64-apple-macosx11.0",
+        "-swift-version",
+        "5",
+        "-enable-batch-mode",
+        "-index-store-path",
+        "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/index/store",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-I",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-L",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-Onone",
+        "-enable-testing",
+        "-g",
+        "-j8",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-module-cache-path",
+        "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-emit-objc-header",
+        "-emit-objc-header-path",
+        "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build/Ombi-Swift.h",
+        "-swift-version",
+        "5"
+      ],
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build/Core/BodyDecoder.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build/Core/BodyEncoder.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build/Core/ComposableRequest.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build/Core/Internal/Codable+Ombi.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build/Core/Internal/Error+Ombi.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build/Core/RequestManager.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build/Core/ResponseValidator.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build/Extensions/BodyDecoder+Ombi.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build/Extensions/BodyEncoder+Ombi.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build/Extensions/RequestHeaders+Ombi.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build/Extensions/Requestable+Ombi.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build/Extensions/ResponseValidator+Ombi.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build/Extensions/URLRequest+Ombi.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build/Models/RequestError.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build/Models/RequestHeaders.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build/Models/RequestMethod.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build/Models/RequestParameters.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build/Models/RequestResponse.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build/Protocols/AutomaticBodyCoding.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build/Protocols/Requestable.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build/Wrappers/AnyJSON.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build/Wrappers/AnyRequestable.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.swiftmodule"
+        }
+      ],
+      "sources" : [
+        "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Core/BodyDecoder.swift",
+        "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Core/BodyEncoder.swift",
+        "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Core/ComposableRequest.swift",
+        "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Core/Internal/Codable+Ombi.swift",
+        "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Core/Internal/Error+Ombi.swift",
+        "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Core/RequestManager.swift",
+        "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Core/ResponseValidator.swift",
+        "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Extensions/BodyDecoder+Ombi.swift",
+        "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Extensions/BodyEncoder+Ombi.swift",
+        "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Extensions/RequestHeaders+Ombi.swift",
+        "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Extensions/Requestable+Ombi.swift",
+        "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Extensions/ResponseValidator+Ombi.swift",
+        "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Extensions/URLRequest+Ombi.swift",
+        "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Models/RequestError.swift",
+        "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Models/RequestHeaders.swift",
+        "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Models/RequestMethod.swift",
+        "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Models/RequestParameters.swift",
+        "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Models/RequestResponse.swift",
+        "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Protocols/AutomaticBodyCoding.swift",
+        "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Protocols/Requestable.swift",
+        "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Wrappers/AnyJSON.swift",
+        "/Users/vsanthanam/Desktop/Ombi/Sources/Ombi/Wrappers/AnyRequestable.swift"
+      ],
+      "tempsPath" : "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build",
+      "WMO" : false
+    },
+    "C.OmbiTests-debug.module" : {
+      "executable" : "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc",
+      "importPath" : "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug",
+      "inputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/Tests/OmbiTests/OmbiTests.swift"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.swiftmodule"
+        }
+      ],
+      "isLibrary" : true,
+      "moduleName" : "OmbiTests",
+      "moduleOutputPath" : "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/OmbiTests.swiftmodule",
+      "objects" : [
+        "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/OmbiTests.build/OmbiTests.swift.o"
+      ],
+      "otherArgs" : [
+        "-target",
+        "x86_64-apple-macosx11.0",
+        "-swift-version",
+        "5",
+        "-enable-batch-mode",
+        "-index-store-path",
+        "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/index/store",
+        "-sdk",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX11.3.sdk",
+        "-F",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks",
+        "-I",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-L",
+        "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/usr/lib",
+        "-Onone",
+        "-enable-testing",
+        "-g",
+        "-j8",
+        "-DSWIFT_PACKAGE",
+        "-DDEBUG",
+        "-module-cache-path",
+        "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/ModuleCache",
+        "-parseable-output",
+        "-swift-version",
+        "5"
+      ],
+      "outputs" : [
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/OmbiTests.build/OmbiTests.swift.o"
+        },
+        {
+          "kind" : "file",
+          "name" : "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/OmbiTests.swiftmodule"
+        }
+      ],
+      "sources" : [
+        "/Users/vsanthanam/Desktop/Ombi/Tests/OmbiTests/OmbiTests.swift"
+      ],
+      "tempsPath" : "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/OmbiTests.build",
+      "WMO" : false
+    }
+  },
+  "swiftFrontendCommands" : {
+
+  },
+  "testDiscoveryCommands" : {
+
+  }
+}
