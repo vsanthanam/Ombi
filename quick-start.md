@@ -1,12 +1,11 @@
 ---
-title: Get Started
+title: Quick Start
 homepage: false
-description: Elegant Swift Networking with Combine
 layout: page
 navorder: 1
 ---
 
-# Get Started
+# Quick Start
 
 Making a network request with ombi is pretty straight forward.
 Create a `Requestable`, initialize a `RequestManager`, and invoke the `makeRequest` method using your `Requestable`
