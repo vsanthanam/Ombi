@@ -1,5 +1,5 @@
 # Ombi
-Elegent reactive networking with Combine and Swift
+Elegant reactive networking with Combine and Swift
 
 [![license](https://img.shields.io/github/license/vsanthanam/Ombi.svg)](https://en.wikipedia.org/wiki/MIT_License)
 [![documentation](https://docs.ombi.network/badge.svg)](https://docs.ombi.network)
@@ -154,7 +154,7 @@ In addition to providing the host URL, the request manager can automatically inj
 
 ```swift
 /// Custom Log
-let myLog = OSLog(subsystem: "com.developer.subsystem", category: "api.myapp")
+let myLog = OSLog(subsystem: "com.developer.subsystem", category: "api.myapp.com")
 
 let manager = RequestManager(host: "https://api.myapp.com", log: myLog)
 
@@ -220,7 +220,7 @@ let cancellable = ComposableRequest<AnyJSON, String, HTTPError>()
             "body" : "lorem ipsum dolor sit amit"
         ]
     }
-    .send(on: https://api.myapp.com)
+    .send(on: "https://api.myapp.com")
     .sink(receiveCompletion: { completion in
         switch completion {
         case .finished:
