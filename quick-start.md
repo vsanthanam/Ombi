@@ -5,8 +5,6 @@ layout: page
 navorder: 1
 ---
 
-# Quick Start
-
 Making a network request with ombi is pretty straight forward.
 Create a `Requestable`, initialize a `RequestManager`, and invoke the `makeRequest` method using your `Requestable`
 You will recieve a `Publisher` which will allow you to handle network responses or errors as they occur.
