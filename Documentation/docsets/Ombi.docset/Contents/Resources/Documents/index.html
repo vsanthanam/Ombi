@@ -146,7 +146,7 @@
             
             <h1 id='ombi' class='heading'>Ombi</h1>
 
-<p>Elegent reactive networking with Combine and Swift</p>
+<p>Elegant reactive networking with Combine and Swift</p>
 
 <p><a href="https://en.wikipedia.org/wiki/MIT_License"><img src="https://img.shields.io/github/license/vsanthanam/Ombi.svg" alt="license"></a>
 <a href="https://docs.ombi.network"><img src="https://docs.ombi.network/badge.svg" alt="documentation"></a>
@@ -289,7 +289,7 @@ You will recieve a <code>Publisher</code> which will allow you to handle network
 
 <p>In addition to providing the host URL, the request manager can automatically inject headers, setup retries counts, setup a response SLA, and more.</p>
 <pre class="highlight swift"><code><span class="c1">/// Custom Log</span>
-<span class="k">let</span> <span class="nv">myLog</span> <span class="o">=</span> <span class="kt">OSLog</span><span class="p">(</span><span class="nv">subsystem</span><span class="p">:</span> <span class="s">"com.developer.subsystem"</span><span class="p">,</span> <span class="nv">category</span><span class="p">:</span> <span class="s">"api.myapp"</span><span class="p">)</span>
+<span class="k">let</span> <span class="nv">myLog</span> <span class="o">=</span> <span class="kt">OSLog</span><span class="p">(</span><span class="nv">subsystem</span><span class="p">:</span> <span class="s">"com.developer.subsystem"</span><span class="p">,</span> <span class="nv">category</span><span class="p">:</span> <span class="s">"api.myapp.com"</span><span class="p">)</span>
 
 <span class="k">let</span> <span class="nv">manager</span> <span class="o">=</span> <span class="kt">RequestManager</span><span class="p">(</span><span class="nv">host</span><span class="p">:</span> <span class="s">"https://api.myapp.com"</span><span class="p">,</span> <span class="nv">log</span><span class="p">:</span> <span class="n">myLog</span><span class="p">)</span>
 
@@ -349,7 +349,7 @@ You will recieve a <code>Publisher</code> which will allow you to handle network
             <span class="s">"body"</span> <span class="p">:</span> <span class="s">"lorem ipsum dolor sit amit"</span>
         <span class="p">]</span>
     <span class="p">}</span>
-    <span class="o">.</span><span class="nf">send</span><span class="p">(</span><span class="nv">on</span><span class="p">:</span> <span class="nv">https</span><span class="p">:</span><span class="c1">//api.myapp.com)</span>
+    <span class="o">.</span><span class="nf">send</span><span class="p">(</span><span class="nv">on</span><span class="p">:</span> <span class="s">"https://api.myapp.com"</span><span class="p">)</span>
     <span class="o">.</span><span class="nf">sink</span><span class="p">(</span><span class="nv">receiveCompletion</span><span class="p">:</span> <span class="p">{</span> <span class="n">completion</span> <span class="k">in</span>
         <span class="k">switch</span> <span class="n">completion</span> <span class="p">{</span>
         <span class="k">case</span> <span class="o">.</span><span class="nv">finished</span><span class="p">:</span>
