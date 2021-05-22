@@ -25,7 +25,7 @@ Add `Ombi` to your `Package.swift` file like so:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/vsanthanam/Ombi.git", .upToNextMajor(from: "1.0"))
+    .package(url: "https://github.com/vsanthanam/Ombi.git", .upToNextMajor(from: "1.0.0"))
 ]
 ```
 

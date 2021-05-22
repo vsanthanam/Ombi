@@ -3,7 +3,7 @@ remote_theme: vsanthanam/gh-proj-theme
 name: Ombi
 
 project:
-    version: 1.0
+    version: 1.0.1
     download_url: https://www.github.com/vsanthanam/Ombi/releases
 
 license:
