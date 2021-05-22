@@ -49,7 +49,7 @@ public struct AnyRequestable<RequestBody, ResponseBody, ResponseError>: Requesta
 
     public var path: String { pathClosure() }
 
-    public var query: [String: String] { queryClosure() }
+    public var query: [URLQueryItem] { queryClosure() }
 
     public var method: RequestMethod { methodClosure() }
 
@@ -70,7 +70,7 @@ public struct AnyRequestable<RequestBody, ResponseBody, ResponseError>: Requesta
     // MARK: - Private
 
     private let pathClosure: () -> String
-    private let queryClosure: () -> [String: String]
+    private let queryClosure: () -> [URLQueryItem]
     private let methodClosure: () -> RequestMethod
     private let headersClosure: () -> RequestHeaders
     private let bodyClosure: () -> RequestBody?

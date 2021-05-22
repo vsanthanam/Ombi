@@ -227,11 +227,7 @@ open class RequestManager {
         }
         urlComponents.path = "\(urlComponents.path)\(requestable.path)"
         if !requestable.query.isEmpty {
-            urlComponents.queryItems = requestable.query.reduce([URLQueryItem]()) { items, pair in
-                let (key, value) = pair
-                let item = URLQueryItem(name: key, value: value)
-                return items + [item]
-            }
+            urlComponents.queryItems = requestable.query
         }
         guard let finalURL = urlComponents.url else {
             return InstantFailure(error: .malformedRequest)

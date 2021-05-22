@@ -33,7 +33,7 @@ final class RequestManagerTests: XCTestCase {
 
     struct TestRequest<RequestBody, ResponseBody, ResponseError>: Requestable where ResponseError: Error {
         var path: String
-        var query: [String: String]
+        var query: [URLQueryItem]
         var method: RequestMethod
         var headers: RequestHeaders
         var body: RequestBody?
@@ -67,7 +67,7 @@ final class RequestManagerTests: XCTestCase {
         }
         let testScheduler = DispatchQueue.test
         let request = TestRequest<Data, Data, Error>(path: "/",
-                                                     query: [:],
+                                                     query: [],
                                                      method: .post,
                                                      headers: [:],
                                                      body: "REQUEST".data(using: .utf8),
@@ -119,7 +119,7 @@ final class RequestManagerTests: XCTestCase {
         var completed = false
         let testScheduler = DispatchQueue.test
         let request = TestRequest<Data, Data, Error>(path: "/",
-                                                     query: [:],
+                                                     query: [],
                                                      method: .post,
                                                      headers: [:],
                                                      body: "REQUEST".data(using: .utf8),
@@ -161,7 +161,7 @@ final class RequestManagerTests: XCTestCase {
         var completed = false
         let testScheduler = DispatchQueue.test
         let request = TestRequest<Data, Data, Error>(path: "/",
-                                                     query: [:],
+                                                     query: [],
                                                      method: .post,
                                                      headers: [:],
                                                      body: "REQUEST".data(using: .utf8),
@@ -200,7 +200,7 @@ final class RequestManagerTests: XCTestCase {
         var completed = false
         let testScheduler = DispatchQueue.test
         let request = TestRequest<Data, Data, Error>(path: "/",
-                                                     query: [:],
+                                                     query: [],
                                                      method: .post,
                                                      headers: [:],
                                                      body: "REQUEST".data(using: .utf8),
@@ -238,7 +238,7 @@ final class RequestManagerTests: XCTestCase {
         var completed = false
         let testScheduler = DispatchQueue.test
         let request = TestRequest<Data, Data, Error>(path: "/",
-                                                     query: [:],
+                                                     query: [],
                                                      method: .post,
                                                      headers: [:],
                                                      body: "REQUEST".data(using: .utf8),
@@ -277,7 +277,7 @@ final class RequestManagerTests: XCTestCase {
         var completed = false
         let testScheduler = DispatchQueue.test
         let request = TestRequest<Data, Data, Error>(path: "/",
-                                                     query: [:],
+                                                     query: [],
                                                      method: .post,
                                                      headers: [:],
                                                      body: "REQUEST".data(using: .utf8),
@@ -312,6 +312,27 @@ final class RequestManagerTests: XCTestCase {
         XCTAssertTrue(completed)
     }
     
+    func test_pizza() {
+        
+        ComposableRequest<Any, String, Error>()
+            .path("/Home/SessionExpire")
+            .method(.post)
+            .send(on: "https://www.dominos.co.uk")
+            .sink { completion in
+                switch completion {
+                case .failure(let error):
+                    print(error)
+                default:
+                    break
+                }
+            } receiveValue: { response in
+                print(response)
+            }
+            .store(in: &cancellables)
+        sleep(10)
+        
+    }
+    
     override func tearDown() {
         cancellables.forEach { $0.cancel() }
     }
@@ -330,7 +351,7 @@ private class ResponsePublisherProvidingMock: ResponsePublisherProviding {
             .delay(for: .seconds(delay), scheduler: scheduler)
             .eraseToAnyPublisher()
     }
-
+    
     var validateClosure: (URLRequest) -> Void = { _ in }
 
     func sendResult(_ result: Result<(data: Data, response: URLResponse), URLError>) {

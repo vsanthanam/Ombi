@@ -38,8 +38,8 @@ public extension Requestable {
         120.0
     }
 
-    var query: [String: String] {
-        [:]
+    var query: [URLQueryItem] {
+        []
     }
 }
 
