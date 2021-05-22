@@ -61,7 +61,7 @@ public protocol Requestable {
 
     /// The URL query to request
     /// A default empty url query is implemented for you
-    var query: [String: String] { get }
+    var query: [URLQueryItem] { get }
 
     /// The HTTP method to use
     var method: RequestMethod { get }

@@ -96,15 +96,14 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
     ///
     /// ```
     /// let request = ComposableRequest<Any, Any, Error>()
-    ///     .query("search", value: "test")
+    ///     .query(URLQueryItem(name: "key", value: "value"))
     /// ```
     ///
     /// - Parameters:
     ///   - query: The query parameter
-    ///   - value: The parameter value
     /// - Returns: The request
-    public func query(_ query: String, value: String) -> Self {
-        self.query { (query, value) }
+    public func query(_ query: URLQueryItem) -> Self {
+        self.query { query }
     }
 
     /// Add a URL query
@@ -113,13 +112,13 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
     /// let request = ComposableRequest<Any, Any, Error>()
     ///     .query {
     ///         // ... logic to determine the request query ...
-    ///         return (query: "search", value: "test")
+    ///         return URLQueryItem(name: "key", value: "value")
     ///     }
     /// ```
     ///
     /// - Parameter queryBuilder: The closure that returns the URL query
-    /// - Returns: The requet
-    public func query(_ queryBuilder: @escaping () -> (query: String, value: String)) -> Self {
+    /// - Returns: The request
+    public func query(_ queryBuilder: @escaping () -> URLQueryItem) -> Self {
         var copy = self
         copy.queryBuilders.append(queryBuilder)
         return copy
@@ -129,30 +128,18 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
     ///
     /// ```
     /// let request = ComposableRequest<Any, Any, Error>()
-    ///     .queries((query: "key1", value: "value1"),
-    ///              (query: "key2", value: "value2"))
+    ///     .queries(URLQueryItem(name: "key1", value: "value1"),
+    ///              URLQueryItem(name: "key2", value: "value2"))
     /// ```
     ///
     /// - Parameter pairs: Query pairs
     /// - Returns: The request
-    public func queries(_ pairs: (query: String, value: String) ...) -> Self {
-        queries(pairs)
-    }
-
-    /// Add URL queries
-    ///
-    /// ```
-    /// let request = ComposableRequest<Any, Any, Error>()
-    ///     .queries([(query: "key1", value: "value1"),
-    ///               (query: "key2", value: "value2")])
-    /// ```
-    ///
-    /// - Parameter pairs: Query pairs
-    /// - Returns: The request
-    public func queries(_ pairs: [(query: String, value: String)]) -> Self {
+    public func queries(_ pairs: URLQueryItem ...) -> Self {
         var copy = self
-        pairs.forEach { pair in
-            copy.queryBuilders.append { pair }
+        for pair in pairs {
+            copy.queryBuilders.append {
+                pair
+            }
         }
         return copy
     }
@@ -161,13 +148,13 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
     ///
     /// ```
     /// let request = ComposableRequest<Any, Any, Error>()
-    ///     .queries(["key1" : "value1",
-    ///               "key2" : "value2"])
+    ///     .queries([URLQueryItem(name: "key1", value: "value1")
+    ///               URLQueryItem(name: "key2", value: "value2")])
     /// ```
     ///
     /// - Parameter queries: The queries
     /// - Returns: The request
-    public func queries(_ query: [String: String]) -> Self {
+    public func queries(_ query: [URLQueryItem]) -> Self {
         queries { query }
     }
 
@@ -177,14 +164,14 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
     /// let request = ComposableRequest<Any, Any, Error>()
     ///     .queries {
     ///         // ... logic to determine the request queries ...
-    ///         return ["key1" : "value1",
-    ///                 "key2" : "value2"]
+    ///         return [URLQueryItem(name: "key1", value: "value1")
+    ///                 URLQueryItem(name: "key2", value: "value2")]
     ///     }
     /// ```
     ///
     /// - Parameter queryBuilder: The closure that builds the queries
     /// - Returns: The request
-    public func queries(_ queryBuilder: @escaping () -> [String: String]) -> Self {
+    public func queries(_ queryBuilder: @escaping () -> [URLQueryItem]) -> Self {
         var copy = self
         copy.queryBuilder = queryBuilder
         copy.queryBuilders = []
@@ -466,11 +453,10 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
         pathBuilder()
     }
 
-    public var query: [String: String] {
+    public var query: [URLQueryItem] {
         var base = queryBuilder()
         for builder in queryBuilders {
-            let (key, value) = builder()
-            base[key] = value
+            base.append(builder())
         }
         return base
     }
@@ -565,8 +551,8 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
     // MARK: - Private
 
     private var pathBuilder: () -> String = { "/" }
-    private var queryBuilders: [() -> (String, String)] = []
-    private var queryBuilder: () -> [String: String] = { [:] }
+    private var queryBuilders: [() -> (URLQueryItem)] = []
+    private var queryBuilder: () -> [URLQueryItem] = { [] }
     private var methodBuilder: () -> RequestMethod = { .get }
     private var headerBuilders: [() -> (RequestHeaders.Key, RequestHeaders.Value?)] = []
     private var headersBuilder: () -> RequestHeaders = { [:] }
