@@ -1,0 +1,4 @@
+module Ombi {
+    header "/Users/vsanthanam/Desktop/Ombi/.build/x86_64-apple-macosx/debug/Ombi.build/Ombi-Swift.h"
+    requires objc
+}
