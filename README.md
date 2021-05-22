@@ -215,7 +215,7 @@ If you don't want to create your own types that conform to `Requestable`, Ombi p
 ```swift
 let cancellable = ComposableRequest<AnyJSON, String, HTTPError>()
     .path("/posts/update")
-    .method(".post")
+    .method(.post)
     .headers {
         // ... capture some things or do some work ...
         [
