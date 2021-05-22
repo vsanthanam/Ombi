@@ -372,7 +372,7 @@ open class RequestManager {
             return "\(osName) \(versionString)"
         }()
 
-        let ombiTag = "Ombi/1.0.0"
+        let ombiTag = "Ombi/1.0.1"
 
         return .init(host + "/" + version + " (" + identifier + ";" + "build:" + build + ";" + " " + os + ")" + " " + ombiTag)
     }

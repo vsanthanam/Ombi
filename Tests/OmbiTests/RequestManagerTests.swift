@@ -1,5 +1,5 @@
 // Ombi
-// OmbiTests.swift
+// RequestManagerTests.swift
 //
 // MIT License
 //
@@ -45,22 +45,22 @@ final class RequestManagerTests: XCTestCase {
     }
 
     func test_constructsResponse_callsEncoder_callsDecoder_validatesResponse_returnsRsponse() {
-        
+
         var completed = false
         var encoded = false
         var decoded = false
         var validated = false
-        
+
         let requestEncoder = BodyEncoder<Data> { body in
             encoded = true
             return body
         }
-        
+
         let responseDecoder = BodyDecoder<Data> { data in
             decoded = true
             return data
         }
-        
+
         let responseValidator = ResponseValidator<Data, Error> { error in
             validated = true
             return .success(error)
@@ -87,8 +87,7 @@ final class RequestManagerTests: XCTestCase {
         }
 
         let manager = RequestManager(host: "https://app.myapi.com", session: publisherProvider, log: nil)
-        
-        
+
         manager.makeRequest(request, on: testScheduler)
             .sink { completion in
                 switch completion {
@@ -156,7 +155,7 @@ final class RequestManagerTests: XCTestCase {
         testScheduler.advance()
         XCTAssertTrue(completed)
     }
-    
+
     func test_usesManagerFallback() {
         var completed = false
         let testScheduler = DispatchQueue.test
@@ -195,7 +194,7 @@ final class RequestManagerTests: XCTestCase {
         testScheduler.advance()
         XCTAssertTrue(completed)
     }
-    
+
     func test_enforces_sla_noResponse() {
         var completed = false
         let testScheduler = DispatchQueue.test
@@ -218,7 +217,7 @@ final class RequestManagerTests: XCTestCase {
                 switch completion {
                 case .finished:
                     XCTFail()
-                case .failure(let error):
+                case let .failure(error):
                     guard case RequestError<Error>.slaExceeded = error else {
                         XCTFail()
                         return
@@ -233,7 +232,7 @@ final class RequestManagerTests: XCTestCase {
         testScheduler.advance(by: .seconds(6))
         XCTAssertTrue(completed)
     }
-    
+
     func test_enforces_sla_lateResponse() {
         var completed = false
         let testScheduler = DispatchQueue.test
@@ -256,7 +255,7 @@ final class RequestManagerTests: XCTestCase {
                 switch completion {
                 case .finished:
                     XCTFail()
-                case .failure(let error):
+                case let .failure(error):
                     guard case RequestError<Error>.slaExceeded = error else {
                         XCTFail()
                         return
@@ -272,7 +271,7 @@ final class RequestManagerTests: XCTestCase {
         testScheduler.advance(by: .seconds(6))
         XCTAssertTrue(completed)
     }
-    
+
     func test_enforces_sla_lateError() {
         var completed = false
         let testScheduler = DispatchQueue.test
@@ -295,7 +294,7 @@ final class RequestManagerTests: XCTestCase {
                 switch completion {
                 case .finished:
                     XCTFail()
-                case .failure(let error):
+                case let .failure(error):
                     guard case RequestError<Error>.slaExceeded = error else {
                         XCTFail()
                         return
@@ -311,28 +310,7 @@ final class RequestManagerTests: XCTestCase {
         testScheduler.advance(by: .seconds(6))
         XCTAssertTrue(completed)
     }
-    
-    func test_pizza() {
-        
-        ComposableRequest<Any, String, Error>()
-            .path("/Home/SessionExpire")
-            .method(.post)
-            .send(on: "https://www.dominos.co.uk")
-            .sink { completion in
-                switch completion {
-                case .failure(let error):
-                    print(error)
-                default:
-                    break
-                }
-            } receiveValue: { response in
-                print(response)
-            }
-            .store(in: &cancellables)
-        sleep(10)
-        
-    }
-    
+
     override func tearDown() {
         cancellables.forEach { $0.cancel() }
     }
@@ -344,14 +322,14 @@ private class ResponsePublisherProvidingMock: ResponsePublisherProviding {
         self.scheduler = scheduler
         self.delay = delay
     }
-    
+
     func publisher(for urlRequest: URLRequest) -> AnyPublisher<(data: Data, response: URLResponse), URLError> {
         validateClosure(urlRequest)
         return subject
             .delay(for: .seconds(delay), scheduler: scheduler)
             .eraseToAnyPublisher()
     }
-    
+
     var validateClosure: (URLRequest) -> Void = { _ in }
 
     func sendResult(_ result: Result<(data: Data, response: URLResponse), URLError>) {
