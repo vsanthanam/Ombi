@@ -197,4 +197,28 @@ class ComposableRequestTests: XCTestCase {
         XCTAssertEqual(provider.count, 2)
     }
     
+    func test_headerMethods_addHeader() {
+        var request = ComposableRequest<Any, Any, Error>()
+        
+        XCTAssertEqual(request.headers, [:])
+        
+        request = request.header(key: "Header-1", value: "Value-1")
+        
+        XCTAssertEqual(request.headers, ["Header-1": "Value-1"])
+        
+        request = request.headers((key: "Header-2", value: "Value-2"), (key: "Header-3", value: "Value-3"))
+        
+        XCTAssertEqual(request.headers, ["Header-1": "Value-1",
+                                         "Header-2": "Value-2",
+                                         "Header-3": "Value-3"])
+        
+        request = request.headers([(key: "Header-4", value: "Value-4"), (key: "Header-5", value: "Value-5")])
+        
+        XCTAssertEqual(request.headers, ["Header-1": "Value-1",
+                                         "Header-2": "Value-2",
+                                         "Header-3": "Value-3",
+                                         "Header-4": "Value-4",
+                                         "Header-5": "Value-5"])
+    }
+    
 }
