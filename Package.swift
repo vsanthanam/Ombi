@@ -15,7 +15,7 @@ let package = Package(
         .library(
             name: "Ombi",
             targets: ["Ombi"]
-        ),
+        )
     ],
     dependencies: [
         .package(url: "https://github.com/mattgallagher/CwlPreconditionTesting.git", from: Version("2.0.0"))
