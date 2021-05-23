@@ -22,9 +22,9 @@ See this example for a "POST" request to "/posts/update" that sends an `AnyJSON`
 // Define `Requestable`
 struct MyRequest: Requestable {
 
-    typealias RequestBody == AnyJSON
-    typealias ResponseBody == String
-    typealias ResponseError == HTTPError
+    typealias RequestBody = AnyJSON
+    typealias ResponseBody = String
+    typealias ResponseError = HTTPErroR
 
     var path: String {
         "/posts/update"
@@ -81,7 +81,7 @@ If you are using a type not mentioned above, but still do not want to provide a 
 You can create a single type for every request you might make, or you can create parameterized, reusable types:
 
 ```swift
-struct LoginRequest: Requestable
+struct LoginRequest: HTTPRequest
 
     init(username: String, password: String) {
         body = RequestBody(username: username, password: password)
@@ -95,8 +95,6 @@ struct LoginRequest: Requestable
     struct ResponseBody: Codable {
         let token: String
     }
-    
-    typealias ResponseError == HTTPError
     
     let path: String = "/login"
     
