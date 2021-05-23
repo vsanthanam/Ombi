@@ -32,16 +32,16 @@ class ComposableRequestTests: XCTestCase {
 
     func test_pathMethod_updatesPath() {
         var request = ComposableRequest<Any, Any, Error>()
-        
+
         XCTAssertEqual(request.path, "/")
-        
+
         request = request.path("/path")
-        
+
         XCTAssertEqual(request.path, "/path")
     }
 
     func test_pathClosure_updatesPath() {
-        
+
         final class PathProvider {
             var executed = false
             func provide() -> String {
@@ -49,32 +49,32 @@ class ComposableRequestTests: XCTestCase {
                 return "/path"
             }
         }
-        
+
         let provider = PathProvider()
         var request = ComposableRequest<Any, Any, Error>()
-        
+
         XCTAssertEqual(request.path, "/")
-        
+
         request = request.path { [provider] in
             provider.provide()
         }
-        
+
         XCTAssertEqual(request.path, "/path")
         XCTAssertTrue(provider.executed)
     }
 
     func test_methodMethod_updatesPath() {
         var request = ComposableRequest<Any, Any, Error>()
-        
+
         XCTAssertEqual(request.method, .get)
-        
+
         request = request.method(.post)
-        
+
         XCTAssertEqual(request.method, .post)
     }
 
     func test_methodClosure_updatesPath() {
-        
+
         final class MethodProvider {
             var executed = false
             func provide() -> RequestMethod {
@@ -82,64 +82,63 @@ class ComposableRequestTests: XCTestCase {
                 return .post
             }
         }
-        
+
         let provider = MethodProvider()
         var request = ComposableRequest<Any, Any, Error>()
-        
+
         XCTAssertEqual(request.method, .get)
-        
+
         request = request.method { [provider] in
             provider.provide()
         }
-        
+
         XCTAssertEqual(request.method, .post)
         XCTAssertTrue(provider.executed)
     }
 
     func test_queryMethods_addQuery() {
         var request = ComposableRequest<Any, Any, Error>()
-        
+
         XCTAssertEqual(request.query, [])
-        
+
         request = request.query(URLQueryItem(name: "1", value: "1"))
-        
+
         XCTAssertEqual(request.query, [URLQueryItem(name: "1", value: "1")])
-        
+
         request = request.query(URLQueryItem(name: "2", value: "2"))
-        
+
         XCTAssertEqual(request.query, [URLQueryItem(name: "1", value: "1"),
                                        URLQueryItem(name: "2", value: "2")])
-        
+
         request = request.query(URLQueryItem(name: "3", value: "3"), URLQueryItem(name: "4", value: "4"))
-        
+
         XCTAssertEqual(request.query, [URLQueryItem(name: "1", value: "1"),
                                        URLQueryItem(name: "2", value: "2"),
                                        URLQueryItem(name: "3", value: "3"),
                                        URLQueryItem(name: "4", value: "4")])
     }
-    
+
     func test_queryClosures_addQuery() {
-        
+
         final class QueryProvider {
             var count = 0
             func provide() -> URLQueryItem {
-                let item = URLQueryItem(name: (count+1).description, value: (count+1).description)
+                let item = URLQueryItem(name: (count + 1).description, value: (count + 1).description)
                 count += 1
                 return item
             }
         }
-        
-        
+
         var request = ComposableRequest<Any, Any, Error>()
-        
+
         let provider = QueryProvider()
-        
+
         XCTAssertEqual(request.query, [])
-        
+
         request = request.query { [provider] in
             provider.provide()
         }
-        
+
         XCTAssertEqual(request.query, [URLQueryItem(name: "1", value: "1")])
         XCTAssertEqual(provider.count, 1)
 
@@ -151,118 +150,118 @@ class ComposableRequestTests: XCTestCase {
                                        URLQueryItem(name: "3", value: "3")])
         XCTAssertEqual(provider.count, 3)
     }
-    
+
     func test_queriesMethod_replacesQuery() {
         var request = ComposableRequest<Any, Any, Error>()
-        
+
         XCTAssertEqual(request.query, [])
-        
+
         request = request.queries([URLQueryItem(name: "1", value: "1")])
-        
+
         XCTAssertEqual(request.query, [URLQueryItem(name: "1", value: "1")])
- 
+
         request = request.queries([URLQueryItem(name: "2", value: "2")])
-        
+
         XCTAssertEqual(request.query, [URLQueryItem(name: "2", value: "2")])
     }
-    
+
     func test_queriesClosure_replacesQuery() {
         var request = ComposableRequest<Any, Any, Error>()
-        
+
         final class QueriesProvider {
             var count = 0
             func provide() -> [URLQueryItem] {
-                let item = URLQueryItem(name: (count+1).description, value: (count+1).description)
+                let item = URLQueryItem(name: (count + 1).description, value: (count + 1).description)
                 count += 1
                 return [item]
             }
         }
-        
+
         let provider = QueriesProvider()
-        
+
         XCTAssertEqual(request.query, [])
-        
+
         request = request.queries { [provider] in
             provider.provide()
         }
-        
+
         XCTAssertEqual(request.query, [URLQueryItem(name: "1", value: "1")])
         XCTAssertEqual(provider.count, 1)
-        
+
         request = request.queries { [provider] in
             provider.provide()
         }
-        
+
         XCTAssertEqual(request.query, [URLQueryItem(name: "2", value: "2")])
         XCTAssertEqual(provider.count, 2)
     }
-    
+
     func test_headerMethods_addHeader() {
         var request = ComposableRequest<Any, Any, Error>()
-        
+
         XCTAssertEqual(request.headers, [:])
-        
+
         request = request.header(key: "Header-1", value: "Value-1")
-        
+
         XCTAssertEqual(request.headers, ["Header-1": "Value-1"])
-        
+
         request = request.headers((key: "Header-2", value: "Value-2"), (key: "Header-3", value: "Value-3"))
-        
+
         XCTAssertEqual(request.headers, ["Header-1": "Value-1",
                                          "Header-2": "Value-2",
                                          "Header-3": "Value-3"])
-        
+
         request = request.headers([(key: "Header-4", value: "Value-4"), (key: "Header-5", value: "Value-5")])
-        
+
         XCTAssertEqual(request.headers, ["Header-1": "Value-1",
                                          "Header-2": "Value-2",
                                          "Header-3": "Value-3",
                                          "Header-4": "Value-4",
                                          "Header-5": "Value-5"])
     }
-    
+
     func test_headerClosure_addHeader() {
         var request = ComposableRequest<Any, Any, Error>()
-        
+
         final class HeaderProvider {
             var count = 0
             func provide() -> (key: RequestHeaders.Key, value: RequestHeaders.Value) {
-                let item = (key: RequestHeaders.Key("Header-\(count+1)"), value: RequestHeaders.Value.string("Value-\(count+1)"))
+                let item = (key: RequestHeaders.Key("Header-\(count + 1)"), value: RequestHeaders.Value.string("Value-\(count + 1)"))
                 count += 1
                 return item
             }
         }
-        
+
         let provider = HeaderProvider()
-        
+
         XCTAssertEqual(request.headers, [:])
-        
+
         request = request.header { [provider] in
             provider.provide()
         }
-        
+
         XCTAssertEqual(request.headers, ["Header-1": "Value-1"])
         XCTAssertEqual(provider.count, 1)
-        
+
         request = request.header { [provider] in
             provider.provide()
         }
-        
+
         XCTAssertEqual(request.headers, ["Header-2": "Value-2",
                                          "Header-3": "Value-3"])
         XCTAssertEqual(provider.count, 3)
     }
-    
+
     func test_bodyMethod_updatesBody() {
         var request = ComposableRequest<String, Any, Error>()
-        
+
         XCTAssertNil(request.body)
-        
+
         request = request.body("test")
-        
+
         XCTAssertEqual(request.body, "test")
     }
-    
+
     func test_bodyClosure_updatesBody() {
         final class BodyProvider {
             var executed = false
@@ -271,30 +270,30 @@ class ComposableRequestTests: XCTestCase {
                 return "test"
             }
         }
-        
+
         let provider = BodyProvider()
         var request = ComposableRequest<String, Any, Error>()
-        
+
         XCTAssertNil(request.body)
-        
+
         request = request.body { [provider] in
             provider.provide()
         }
-        
+
         XCTAssertEqual(request.body, "test")
         XCTAssertTrue(provider.executed)
     }
-    
+
     func test_fallbackMethod_updatesBody() {
         var request = ComposableRequest<Any, String, Error>()
-        
+
         XCTAssertNil(request.fallbackResponse)
-        
+
         request = request.fallbackResponse(.empty)
-        
+
         XCTAssertEqual(request.fallbackResponse, .empty)
     }
-    
+
     func test_fallbackClosure_updatesBody() {
         final class FallbackProvider {
             var executed = false
@@ -303,18 +302,18 @@ class ComposableRequestTests: XCTestCase {
                 return .empty
             }
         }
-        
+
         let provider = FallbackProvider()
         var request = ComposableRequest<Any, String, Error>()
-        
+
         XCTAssertNil(request.fallbackResponse)
-        
+
         request = request.fallbackResponse { [provider] in
             provider.provide()
         }
-        
+
         XCTAssertEqual(request.fallbackResponse, .empty)
         XCTAssertTrue(provider.executed)
     }
-    
+
 }
