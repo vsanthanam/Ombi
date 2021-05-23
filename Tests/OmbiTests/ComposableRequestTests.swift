@@ -285,4 +285,36 @@ class ComposableRequestTests: XCTestCase {
         XCTAssertTrue(provider.executed)
     }
     
+    func test_fallbackMethod_updatesBody() {
+        var request = ComposableRequest<Any, String, Error>()
+        
+        XCTAssertNil(request.fallbackResponse)
+        
+        request = request.fallbackResponse(.empty)
+        
+        XCTAssertEqual(request.fallbackResponse, .empty)
+    }
+    
+    func test_fallbackClosure_updatesBody() {
+        final class FallbackProvider {
+            var executed = false
+            func provide() -> RequestResponse<String> {
+                executed = true
+                return .empty
+            }
+        }
+        
+        let provider = FallbackProvider()
+        var request = ComposableRequest<Any, String, Error>()
+        
+        XCTAssertNil(request.fallbackResponse)
+        
+        request = request.fallbackResponse { [provider] in
+            provider.provide()
+        }
+        
+        XCTAssertEqual(request.fallbackResponse, .empty)
+        XCTAssertTrue(provider.executed)
+    }
+    
 }
