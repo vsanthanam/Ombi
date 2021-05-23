@@ -128,18 +128,16 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
     ///
     /// ```
     /// let request = ComposableRequest<Any, Any, Error>()
-    ///     .queries(URLQueryItem(name: "key1", value: "value1"),
-    ///              URLQueryItem(name: "key2", value: "value2"))
+    ///     .query(URLQueryItem(name: "key1", value: "value1"),
+    ///            URLQueryItem(name: "key2", value: "value2"))
     /// ```
     ///
-    /// - Parameter pairs: Query pairs
+    /// - Parameter queries: Query items
     /// - Returns: The request
-    public func queries(_ pairs: URLQueryItem ...) -> Self {
+    public func query(_ queries: URLQueryItem ...) -> Self {
         var copy = self
-        for pair in pairs {
-            copy.queryBuilders.append {
-                pair
-            }
+        for query in queries {
+            copy.queryBuilders.append { query }
         }
         return copy
     }
