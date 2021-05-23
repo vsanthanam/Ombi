@@ -26,6 +26,8 @@
 import Foundation
 
 /// An error produced by a `RequestManager`
+///
+/// - Tag: RequestError
 public enum RequestError<T>: LocalizedError, CustomStringConvertible where T: Error {
 
     /// Malformed Request

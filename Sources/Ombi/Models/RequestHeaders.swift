@@ -30,6 +30,8 @@ import Foundation
 ///
 /// See the the nested `Key` and `Value` types for more detailed information.
 /// You can create a `RequestHeaders` using a dictionary litera containing those types.
+///
+/// - Tag: RequestHeaders
 public struct RequestHeaders: ExpressibleByDictionaryLiteral, Equatable, Hashable, CustomStringConvertible {
 
     // MARK: - Initializers

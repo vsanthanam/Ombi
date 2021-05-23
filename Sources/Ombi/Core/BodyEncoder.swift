@@ -26,9 +26,6 @@
 import Foundation
 
 /// A generic value type to encode request body content as `Data`
-///
-/// ## Usage
-///
 /// You specilize the `Encoder` with the type you want to encoder, and pass in a closure to convert the type into `Data`
 ///
 /// ```
@@ -64,8 +61,8 @@ import Foundation
 /// }
 /// ```
 ///
-/// Alternatively, if you want to create an encoder for a type you have control over, simply have that type conform to`AutomaticBodyEncoding`.
-/// A `default` encoder is created for you automatically, and added by default to every `Requestable` or `ComposableRequest` type that has been specialized with your type as its `RequestBody`
+/// Alternatively, if you want to create an encoder for a type you have control over, simply have that type conform to [AutomaticBodyEncoding](x-source-tag://AutomaticBodyEncoding)
+/// A `default` encoder is created for you automatically, and added by default to every [Requestable](x-source-tag://Requestable) or [ComposableRequest](x-source-tag://ComposableRequest) type that has been specialized with your type as its `RequestBody`
 ///
 /// ```
 /// extension MyType: AutomaticBodyEncoding {
@@ -82,12 +79,17 @@ import Foundation
 ///
 /// - `String`
 /// - `Data`
-/// - `AnyJSON`
-/// - `RequestParameters`
+/// - [AnyJSON](x-source-tag://AnyJSON)
+/// - [RequestParameters](x-source-tag://RequestParameters)
 /// - Types that conform to`Encodable`
-/// - Types that conform to `AutomaticBodyEncoding`
+/// - Types that conform to [AutomaticBodyEncoding](x-source-tag://AutomaticBodyEncoding)
 ///
-/// See similar types `BodyDecoder` and `ResponseValidator`
+/// - seeAlso:
+///   - [BodyDecoder](x-source-tag://BodyDecoder)
+///   - [ResponseValidator](x-source-tag://ResponseValidator)
+///   - [AutomaticBodyEncoding](x-source-tag://AutomaticBodyEncoding)
+///   
+/// - Tag: BodyEncoder
 public struct BodyEncoder<Body> {
 
     // MARK: - Initializers

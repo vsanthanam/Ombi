@@ -26,9 +26,6 @@
 import Foundation
 
 /// A generic value type to decode response body content from `Data`
-///
-/// ## Usage
-///
 /// You specilize the `Decoder` with the type you want to decode, and pass in a closure to convert `Data` into the type:
 ///
 /// ```
@@ -64,8 +61,8 @@ import Foundation
 /// }
 /// ```
 ///
-/// Alternatively, if you want to create an decoder for a type you have control over, simply have that type conform to`AutomaticBodyDecoding`.
-/// A `default` decoder is created for you automatically, and added by default to every `Requestable` or `ComposableRequest` type that has been specialized with your type as its `ResponseBody`
+/// Alternatively, if you want to create an decoder for a type you have control over, simply have that type conform to [AutomaticBodyDecoding](x-source-tag://AutomaticBodyDecoding).
+/// A `default` decoder is created for you automatically, and added by default to every [Requestable](x-source-tag://Requestable) or [ComposableRequest](x-source-tag://ComposableRequest) type that has been specialized with your type as its `ResponseBody`
 ///
 /// ```
 /// extension MyType: AutomaticBodyDecoding {
@@ -82,11 +79,15 @@ import Foundation
 ///
 /// - `String`
 /// - `Data`
-/// - `AnyJSON`
+/// - [AnyJSON](x-source-tag://AnyJSON)
 /// - Types that conform to`Decodable`
-/// - Types that conform to `AutomaticBodyDecoding`
+/// - Types that conform to [AutomaticBodyDecoding](x-source-tag://AutomaticBodyDecoding)
 ///
-/// See similar types `BodyEncoder` and `ResponseValidator`
+/// - seeAlso:
+///   - [BodyEncoder](x-source-tag://BodyEncoder)
+///   - [ResponseValidator](x-source-tag://ResponseValidator)
+///   - [AutomaticBodyDecoding](x-source-tag://AutomaticBodyDecoding)
+/// - Tag: BodyDecoder
 public struct BodyDecoder<Body> {
 
     // MARK: - Initializers
