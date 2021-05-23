@@ -65,7 +65,7 @@ final class RequestManagerTests: XCTestCase {
             validated = true
             return .success(error)
         }
-        let testScheduler = DispatchQueue.test
+        let testScheduler = DispatchQueue.ombiTest
         let request = TestRequest<Data, Data, Error>(path: "/",
                                                      query: [],
                                                      method: .post,
@@ -116,7 +116,7 @@ final class RequestManagerTests: XCTestCase {
 
     func test_usesRequestableFallback() {
         var completed = false
-        let testScheduler = DispatchQueue.test
+        let testScheduler = DispatchQueue.ombiTest
         let request = TestRequest<Data, Data, Error>(path: "/",
                                                      query: [],
                                                      method: .post,
@@ -158,7 +158,7 @@ final class RequestManagerTests: XCTestCase {
 
     func test_usesManagerFallback() {
         var completed = false
-        let testScheduler = DispatchQueue.test
+        let testScheduler = DispatchQueue.ombiTest
         let request = TestRequest<Data, Data, Error>(path: "/",
                                                      query: [],
                                                      method: .post,
@@ -197,7 +197,7 @@ final class RequestManagerTests: XCTestCase {
 
     func test_enforces_sla_noResponse() {
         var completed = false
-        let testScheduler = DispatchQueue.test
+        let testScheduler = DispatchQueue.ombiTest
         let request = TestRequest<Data, Data, Error>(path: "/",
                                                      query: [],
                                                      method: .post,
@@ -235,7 +235,7 @@ final class RequestManagerTests: XCTestCase {
 
     func test_enforces_sla_lateResponse() {
         var completed = false
-        let testScheduler = DispatchQueue.test
+        let testScheduler = DispatchQueue.ombiTest
         let request = TestRequest<Data, Data, Error>(path: "/",
                                                      query: [],
                                                      method: .post,
@@ -274,7 +274,7 @@ final class RequestManagerTests: XCTestCase {
 
     func test_enforces_sla_lateError() {
         var completed = false
-        let testScheduler = DispatchQueue.test
+        let testScheduler = DispatchQueue.ombiTest
         let request = TestRequest<Data, Data, Error>(path: "/",
                                                      query: [],
                                                      method: .post,

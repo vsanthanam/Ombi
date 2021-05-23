@@ -1,5 +1,5 @@
 // Ombi
-// TestScheduler.swift
+// OmbiTestScheduler.swift
 //
 // MIT License
 //
@@ -28,7 +28,7 @@ import Foundation
 import XCTest
 
 ///
-/// From [CombineSchedulers](https://github.com/pointfreeco/combine-schedulers/blob/main/Sources/CombineSchedulers/TestScheduler.swift)
+/// Taken From [CombineSchedulers](https://github.com/pointfreeco/combine-schedulers/blob/main/Sources/CombineSchedulers/TestScheduler.swift)
 ///
 
 /// A scheduler whose current time and execution can be controlled in a deterministic manner.
@@ -86,7 +86,7 @@ import XCTest
 /// operations.
 ///
 @available(iOS 13, macOS 10.15, tvOS 13, watchOS 6, *)
-public final class TestScheduler<SchedulerTimeType, SchedulerOptions>: Scheduler
+public final class OmbiTestScheduler<SchedulerTimeType, SchedulerOptions>: Scheduler
     where SchedulerTimeType: Strideable, SchedulerTimeType.Stride: SchedulerTimeIntervalConvertible {
 
     private var lastSequence: UInt = 0
@@ -208,7 +208,7 @@ public final class TestScheduler<SchedulerTimeType, SchedulerOptions>: Scheduler
 @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
 public extension DispatchQueue {
     /// A test scheduler of dispatch queues.
-    static var test: TestSchedulerOf<DispatchQueue> {
+    static var ombiTest: TestSchedulerOf<DispatchQueue> {
         // NB: `DispatchTime(uptimeNanoseconds: 0) == .now())`. Use `1` for consistency.
         .init(now: .init(.init(uptimeNanoseconds: 1)))
     }
@@ -217,7 +217,7 @@ public extension DispatchQueue {
 @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
 public extension OperationQueue {
     /// A test scheduler of operation queues.
-    static var test: TestSchedulerOf<OperationQueue> {
+    static var ombiTest: TestSchedulerOf<OperationQueue> {
         .init(now: .init(.init(timeIntervalSince1970: 0)))
     }
 }
@@ -225,7 +225,7 @@ public extension OperationQueue {
 @available(macOS 10.15, iOS 13, tvOS 13, watchOS 6, *)
 public extension RunLoop {
     /// A test scheduler of run loops.
-    static var test: TestSchedulerOf<RunLoop> {
+    static var ombiTest: TestSchedulerOf<RunLoop> {
         .init(now: .init(.init(timeIntervalSince1970: 0)))
     }
 }
@@ -233,6 +233,6 @@ public extension RunLoop {
 /// A convenience type to specify a `TestScheduler` by the scheduler it wraps rather than by the
 /// time type and options type.
 // @available(iOS 13, macOS 10.15, tvOS 13, watchOS 6, *)
-public typealias TestSchedulerOf<Scheduler> = TestScheduler<
+public typealias TestSchedulerOf<Scheduler> = OmbiTestScheduler<
     Scheduler.SchedulerTimeType, Scheduler.SchedulerOptions
 > where Scheduler: Combine.Scheduler
