@@ -53,7 +53,7 @@ import os.log
 ///
 /// ### Publisher
 ///
-/// The publisher created by the `makeRequest` methods return a `RequestResponse` and  a `RequestError`.
+/// The publisher created by the `makeRequest` methods return a [RequestResponse](x-source-tag://RequestResponse) and  a `RequestError`.
 /// See the documentation on both of these generic types for more information.
 ///
 /// ### Request Lifecycle & Error Handling
@@ -63,13 +63,13 @@ import os.log
 /// 1. The request is created. Possible failures inlcude an invalid URL, or a failure to encode the `RequestBody`, if one is present
 /// 2. The request is excecuted. Possible failures include a broken network connection, a missing host, or a timeout.
 /// 3. The request is parsed. The only possible failure here would be an attempt to decode the response data
-/// 4. The request is validated. The provided `ResponseValidator` examines the response's headers, status code, and body and choose to manipulate it or throw and error. See the "Validation step below for more information.
+/// 4. The request is validated. The provided [ResponseValidator](x-source-tag://ResponseValidator) examines the response's headers, status code, and body and choose to manipulate it or throw and error. See the "Validation step below for more information.
 ///
 /// When the manager encounters any of the errors describer above, you can choose to retry to request. The number of retries is specified as a paramater in the `makeRequest<T, S>(_:retries:sla:on:fallback:)` method. You can also specify an SLA by which all retries must complete, and an optional fallback response to use. The request object itself can also contain a fallback response.
 ///
 /// ### Additional Headers
 ///
-/// In addition to the headers specified in the `Requestable`, you can have the manager inject its own headers on every request it makes. This can be useful for handling things like authentication.
+/// In addition to the headers specified in the [Requestable](x-source-tag://Requestable), you can have the manager inject its own headers on every request it makes. This can be useful for handling things like authentication.
 ///
 /// ```
 /// let manager = RequestManager(host: "https://www.apple.com")
@@ -86,6 +86,15 @@ import os.log
 ///
 /// `RequestManager` support logging via [Apple Unified Logging](https://developer.apple.com/documentation/oslog)
 /// To enable this, use one of the initializers that accept a log subsystem or an `OSLog` instance
+///
+/// - seeAlso:
+///   - [Requestable](x-source-tag://Requestable)
+///   - [BodyEncoder](x-source-tag://BodyEncoder)
+///   - [BodyDecoder](x-source-tag://BodyDecoder)
+///   - [ResponseValidator](x-source-tag://ResponseValidator)
+///   - [RequestResponse](x-source-tag://RequestResponse)
+///   
+/// - Tag: RequestManager
 open class RequestManager {
 
     // MARK: - Initializers

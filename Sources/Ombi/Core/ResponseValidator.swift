@@ -26,6 +26,8 @@
 import Foundation
 
 /// A value type used to validate a `RequestResponse`
+///
+/// - Tag: ResponseValidator
 public struct ResponseValidator<Body, Error> where Error: Swift.Error {
 
     // MARK: - Initializers

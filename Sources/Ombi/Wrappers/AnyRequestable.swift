@@ -26,6 +26,8 @@
 import Foundation
 
 /// A type erased `Requestable` wrapper, with no other functional differences.
+///
+/// - Tag: AnyRequestable
 public struct AnyRequestable<RequestBody, ResponseBody, ResponseError>: Requestable where ResponseError: Error {
 
     // MARK: - Initializers

@@ -33,6 +33,8 @@ import Foundation
 ///
 /// Depending on what types you use to specialize the protocol, parts of the interface maybe already implemented for you.
 /// See the documentation on each protocol requirement for more information.
+///
+/// - Tag: Requestable
 public protocol Requestable {
 
     // MARK: - Generic Constraints

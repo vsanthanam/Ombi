@@ -25,6 +25,9 @@
 
 import Foundation
 
+/// TBA
+///
+/// - Tag: RequestParameters
 public struct RequestParameters: Equatable, Hashable, CustomStringConvertible, ExpressibleByDictionaryLiteral {
 
     // MARK: - Initializers

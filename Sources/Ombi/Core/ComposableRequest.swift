@@ -49,9 +49,15 @@ import Foundation
 ///     }
 /// ```
 /// You can specialize a `ComposableRequest` with body types, as well as an error model of your choosing.
-/// If you use body types `String`, `Data`, `Codable`, `RequestParameters` or `AnyJSON`, default encoder and decoders are provided for you.
-/// If you use an error type `HTTPError`, a response validator is used for you.
+/// If you use body types `String`, `Data`, `Codable`, [RequestParameters](x-source-tag://RequestParameters) or [AnyJSON](x-source-tag://AnyJSON), default encoder and decoders are provided for you.
+/// If you use an error type [HTTPError](x-source-tag://HTTPError), a response validator is used for you.
 /// If you provide your own error model, rember to provide a validator, as the default validator automatically allows all responses to continue
+///
+/// - seeAlso:
+///   - [Requestable](x-source-tag://Requestable)
+///   - [RequestManager](x-source-tag://RequestManager)
+///
+/// - Tag: ComposableRequest
 public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Requestable where ResponseError: Error {
 
     // MARK: - Initializers

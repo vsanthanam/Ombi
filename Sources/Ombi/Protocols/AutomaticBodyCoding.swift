@@ -29,6 +29,7 @@ import Foundation
 public typealias AutomaticBodyCoding = AutomaticBodyEncoding & AutomaticBodyDecoding
 
 /// A protocol for types that can be expressed as  `Data`
+/// - Tag: AutomaticBodyEncoding
 public protocol AutomaticBodyEncoding {
 
     /// Convert `self` into `Data?`, or throw and error
@@ -36,6 +37,7 @@ public protocol AutomaticBodyEncoding {
 }
 
 /// A protocol for types that can be initialized from  `Data` provided by a network response
+/// - Tag: AutomaticBodyDecoding
 public protocol AutomaticBodyDecoding {
 
     /// Create `Self` from `Data?`, or throw an error

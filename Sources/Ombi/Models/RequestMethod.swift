@@ -26,6 +26,8 @@
 import Foundation
 
 /// An enumeration defining HTTP methods as detailed in [RFC 7231 §4.3](https://datatracker.ietf.org/doc/html/rfc7231#section-4.3)
+///
+/// - Tag: RequestMethod
 public enum RequestMethod: String, Equatable, Hashable, CustomStringConvertible {
 
     // MARK: - API
