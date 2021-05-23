@@ -221,4 +221,37 @@ class ComposableRequestTests: XCTestCase {
                                          "Header-5": "Value-5"])
     }
     
+    func test_headerClosure_addHeader() {
+        var request = ComposableRequest<Any, Any, Error>()
+        
+        final class HeaderProvider {
+            var count = 0
+            func provide() -> (key: RequestHeaders.Key, value: RequestHeaders.Value) {
+                let item = (key: RequestHeaders.Key("Header-\(count+1)"), value: RequestHeaders.Value.string("Value-\(count+1)"))
+                count += 1
+                return item
+            }
+        }
+        
+        let provider = HeaderProvider()
+        
+        XCTAssertEqual(request.headers, [:])
+        
+        request = request.header { [provider] in
+            provider.provide()
+        }
+        
+        XCTAssertEqual(request.headers, ["Header-1": "Value-1"])
+        XCTAssertEqual(provider.count, 1)
+        
+        request = request.header { [provider] in
+            provider.provide()
+        }
+        
+        XCTAssertEqual(request.headers, ["Header-2": "Value-2",
+                                         "Header-3": "Value-3"])
+        XCTAssertEqual(provider.count, 3)
+    }
+    
+    
 }
