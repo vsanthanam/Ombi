@@ -152,4 +152,18 @@ class ComposableRequestTests: XCTestCase {
         XCTAssertEqual(provider.count, 3)
     }
     
+    func test_queriesMethod_replacesQuery() {
+        var request = ComposableRequest<Any, Any, Error>()
+        
+        XCTAssertEqual(request.query, [])
+        
+        request = request.queries([URLQueryItem(name: "1", value: "1")])
+        
+        XCTAssertEqual(request.query, [URLQueryItem(name: "1", value: "1")])
+ 
+        request = request.queries([URLQueryItem(name: "2", value: "2")])
+        
+        XCTAssertEqual(request.query, [URLQueryItem(name: "2", value: "2")])
+    }
+    
 }
