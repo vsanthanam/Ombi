@@ -253,5 +253,36 @@ class ComposableRequestTests: XCTestCase {
         XCTAssertEqual(provider.count, 3)
     }
     
+    func test_bodyMethod_updatesBody() {
+        var request = ComposableRequest<String, Any, Error>()
+        
+        XCTAssertNil(request.body)
+        
+        request = request.body("test")
+        
+        XCTAssertEqual(request.body, "test")
+    }
+    
+    func test_bodyClosure_updatesBody() {
+        final class BodyProvider {
+            var executed = false
+            func provide() -> String {
+                executed = true
+                return "test"
+            }
+        }
+        
+        let provider = BodyProvider()
+        var request = ComposableRequest<String, Any, Error>()
+        
+        XCTAssertNil(request.body)
+        
+        request = request.body { [provider] in
+            provider.provide()
+        }
+        
+        XCTAssertEqual(request.body, "test")
+        XCTAssertTrue(provider.executed)
+    }
     
 }
