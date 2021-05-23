@@ -30,17 +30,11 @@ dependencies: [
 ]
 ```
 
-## Getting Started
-
-See the [quick start guide](https://ombi.network/quick-start.html) for the latest stable release.
-For version-specific guides, see the project [README file](https://github.com/vsanthanam/Ombi/blob/main/README.md), or take a look at the 
-
 ## Documentation
 
-The documentation for the latest stable release is available at [docs.ombi.network](https://docs.ombi.network).
-For version-specific docs, generate them yourself using `jazzy` and the included script:
+You can view the documentation for the latest stable release at [docs.ombi.network](https://docs.ombi.network). For any given copy of the repository, you can generate version specific docs using [jazzy](https://github.com/realm/jazzy) and the included script:
 
 ```
-$ cd path/to/repo/
+$ cd path to repo
 $ ./gen-docs.sh
 ```

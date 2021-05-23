@@ -24,7 +24,7 @@ struct MyRequest: Requestable {
 
     typealias RequestBody = AnyJSON
     typealias ResponseBody = String
-    typealias ResponseError = HTTPErroR
+    typealias ResponseError = HTTPError
 
     var path: String {
         "/posts/update"
@@ -81,7 +81,7 @@ If you are using a type not mentioned above, but still do not want to provide a 
 You can create a single type for every request you might make, or you can create parameterized, reusable types:
 
 ```swift
-struct LoginRequest: HTTPRequest
+struct LoginRequest: HTTPRequest {
 
     init(username: String, password: String) {
         body = RequestBody(username: username, password: password)
