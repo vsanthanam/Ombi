@@ -26,7 +26,7 @@ dependencies: [
 
 ### Documentation
 
-You can view the documentation for the latest stable release at [docs.ombi.network](https://docs.ombi.network). For any given copy of the repository, you can generate version specific docs using `jazzy` and the included script:
+You can view the documentation for the latest stable release at [docs.ombi.network](https://docs.ombi.network). For any given copy of the repository, you can generate version specific docs using [jazzy](https://github.com/realm/jazzy) and the included script:
 
 ```
 $ cd path to repo
