@@ -401,17 +401,3 @@ private extension Publisher {
         .eraseToAnyPublisher()
     }
 }
-
-protocol ResponsePublisherProviding {
-
-    func publisher(for urlRequest: URLRequest) -> AnyPublisher<(data: Data, response: URLResponse), URLError>
-
-}
-
-extension URLSession: ResponsePublisherProviding {
-    func publisher(for urlRequest: URLRequest) -> AnyPublisher<(data: Data, response: URLResponse), URLError> {
-        dataTaskPublisher(for: urlRequest)
-            .eraseToAnyPublisher()
-    }
-
-}
