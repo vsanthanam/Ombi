@@ -126,7 +126,7 @@ struct LoginRequest: Requestable
         let token: String
     }
     
-    typealias ResponseError == HTTPError
+    typealias ResponseError = HTTPError
     
     let path: String = "/login"
     
