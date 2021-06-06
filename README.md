@@ -99,14 +99,15 @@ let cancellable = requestManager.makeRequest(request)
     })
 ```
 
-The `Requestable` protocol has many other fields that aren't included in the example, but many of them are implemented for you by default. The main choice you need to make is what types you need to use to express `RequestBody` and `ResponseBody`. The `Requestable` protocol requires you to provide `BodyEncoder` and `BodyDecoder` for the two types choose, respectively.  These are provided for you by default if you use any of the following types:
+The `Requestable` protocol has many other fields that aren't included in the example, but most of them are implemented for you by default in a protocol extension. The main choice you need to make is what types you need to use to express `RequestBody` and `ResponseBody`. The `Requestable` protocol requires you to provide `BodyEncoder` and `BodyDecoder` for the two types choose, respectively.  These are provided for you by default if you use any of the following types:
 
+- `NoBody`
 - `String`
 - `Data`
 - `AnyJSON`
 - Any `Codable` type
 
-If you are using a type not mentioned above, but still do not want to provide a encoder or decoder, make that type conform to `AutomaticBodyCoding`, and `Requestable` will generate the appropropriate encoder / decoder for you. A failure to use a type that doesn't provide its own encoder / decore, in conjunction with a failure to specify one within the `Requestable` itself will result in a compile time error.
+If you are using a type not mentioned above, but still do not want to provide a `Requestable` instance specific encoder or decoder, make that type conform to `AutomaticBodyCoding`, and `Requestable` will generate the appropropriate encoder / decoder for you. A failure to use a type that doesn't provide its own encoder / decoder, in conjunction with a failure to specify an encoder/decoder within the `Requestable` itself will result in a compile time error.
 
 You can create a single type for every request you might make, or you can create parameterized, reusable types:
 
@@ -202,9 +203,9 @@ The `RequestError` type describes a number of errors that could occur when makin
 
 However, a request could complete and still fail. Once a `RequestResponse` is generated, the `Requestable`(s) `responseValidator` is used to examine the contents of the request for `ResponseError`(s). The default response validator allows any request to complete, regardless of its content. If you specialize your `Requestable` with `ResponseError == HTTPError`, the default response validator will perform basic validation based on the HTTP status code. If you choose to provide your own error model, remember to provide a `ResponseValidator` with the `Requestable` as well.
 
-All `RequestResponse`(s), including ones provided by the `RequestManager`'s `fallbackResponse` parameter, will go through validation step. This means that even your backup response provided from disk could still result in an error, for example, of that response's status code is 404 and the `Requestable` has been specialized with a `ResponseError` of type `HTTPError`.
+All `RequestResponse`(s), including ones provided by the `RequestManager`'s `fallbackResponse` parameter, will go through validation step. This means that even your backup response provided from disk could still result in an error, for example, if that response's status code is 404 and the `Requestable` has been specialized with a `ResponseError` of type `HTTPError`.
 
-If you don't want to bother with validation at all, just specialize your `Requestable` with `Error`, and every completed `RequestResponse` will be allowed to pass.
+If you don't want to bother with validation at all, just specialize your `Requestable` with `NoError`, and every `RequestResponse` will be allowed to pass.
 
 ## ComposableRequest
 

@@ -107,3 +107,9 @@ public extension BodyDecoder where Body: AutomaticBodyDecoding {
         .init(Body.init)
     }
 }
+
+public extension BodyDecoder where Body == NoBody {
+    static var `default`: Self {
+        .init { _ in nil }
+    }
+}

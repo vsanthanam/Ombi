@@ -501,6 +501,8 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
                 guard let body = (body as? AutomaticBodyEncoding) else { return nil }
                 return try body.asData()
             }
+        } else if RequestBody.self is NoBody.Type {
+            return unsafeBitCast(BodyEncoder<NoBody>.default, to: BodyEncoder<RequestBody>.self)
         } else {
             return BodyEncoder<RequestBody>.fatal
         }
@@ -527,6 +529,8 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
                 let decoded = try desiredType.init(fromData: data)
                 return unsafeBitCast(decoded, to: ResponseBody?.self)
             }
+        } else if ResponseBody.self is NoBody.Type {
+            return unsafeBitCast(BodyDecoder<NoBody>.default, to: BodyDecoder<ResponseBody>.self)
         } else {
             return BodyDecoder<ResponseBody>.fatal
         }
@@ -537,6 +541,8 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
             return customResponseValidator
         } else if ResponseError.self is HTTPError.Type {
             return unsafeBitCast(ResponseValidator<ResponseBody, HTTPError>.default, to: ResponseValidator<ResponseBody, ResponseError>.self)
+        } else if ResponseError.self is NoError.Type {
+            return unsafeBitCast(ResponseValidator<ResponseBody, NoError>.default, to: ResponseValidator<ResponseBody, ResponseError>.self)
         } else {
             return .unsafe
         }

@@ -49,6 +49,12 @@ public extension Requestable where ResponseError == HTTPError {
     }
 }
 
+public extension Requestable where ResponseError == NoError {
+    var responseValidator: ResponseValidator<ResponseBody, ResponseError> {
+        .default
+    }
+}
+
 public extension Requestable where RequestBody == String {
     var requestEncoder: BodyEncoder<RequestBody> {
         .default
@@ -110,6 +116,18 @@ public extension Requestable where RequestBody: AutomaticBodyEncoding {
 }
 
 public extension Requestable where ResponseBody: AutomaticBodyDecoding {
+    var responseDecoder: BodyDecoder<ResponseBody> {
+        .default
+    }
+}
+
+public extension Requestable where RequestBody == NoBody {
+    var requestEncoder: BodyEncoder<RequestBody> {
+        .default
+    }
+}
+
+public extension Requestable where ResponseBody == NoBody {
     var responseDecoder: BodyDecoder<ResponseBody> {
         .default
     }
