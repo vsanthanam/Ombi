@@ -37,6 +37,7 @@ final class RequestManagerTests: XCTestCase {
         var method: RequestMethod
         var headers: RequestHeaders
         var body: RequestBody?
+        var authentication: RequestAuthentication?
         var fallbackResponse: RequestResponse<ResponseBody>?
         var requestEncoder: BodyEncoder<RequestBody>
         var responseDecoder: BodyDecoder<ResponseBody>
@@ -307,6 +308,118 @@ final class RequestManagerTests: XCTestCase {
             .store(in: &cancellables)
         XCTAssertFalse(completed)
         publisherProvider.sendResult(.failure(URLError(.badServerResponse)))
+        testScheduler.advance(by: .seconds(6))
+        XCTAssertTrue(completed)
+    }
+
+    func test_usesRequestAuthentication() {
+        var completed = false
+        let testScheduler = DispatchQueue.ombiTest
+        let request = TestRequest<Data, Data, Error>(path: "/",
+                                                     query: [],
+                                                     method: .post,
+                                                     headers: [:],
+                                                     body: "REQUEST".data(using: .utf8),
+                                                     authentication: .token(type: .bearer, value: "request"),
+                                                     fallbackResponse: nil,
+                                                     requestEncoder: .default,
+                                                     responseDecoder: .default,
+                                                     responseValidator: .unsafe,
+                                                     timeoutInterval: 120.0)
+        let publisherProvider = ResponsePublisherProvidingMock(scheduler: testScheduler)
+        publisherProvider.validateClosure = { request in
+            XCTAssertEqual(request.allHTTPHeaderFields?["Authorization"], "Bearer request")
+        }
+        let manager = RequestManager(host: "https://api.myapp.com",
+                                     session: publisherProvider,
+                                     log: nil)
+        manager.requestAuthentication = .token(type: .bearer, value: "manager")
+        manager.makeRequest(request, authentication: .token(type: .bearer, value: "param"), on: testScheduler)
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    completed = true
+                default:
+                    XCTFail()
+                }
+            } receiveValue: { _ in }
+            .store(in: &cancellables)
+        XCTAssertFalse(completed)
+        publisherProvider.sendResult(.success((Data(), URLResponse())))
+        testScheduler.advance(by: .seconds(6))
+        XCTAssertTrue(completed)
+    }
+
+    func test_usesParameterAuthentication() {
+        var completed = false
+        let testScheduler = DispatchQueue.ombiTest
+        let request = TestRequest<Data, Data, Error>(path: "/",
+                                                     query: [],
+                                                     method: .post,
+                                                     headers: [:],
+                                                     body: "REQUEST".data(using: .utf8),
+                                                     fallbackResponse: nil,
+                                                     requestEncoder: .default,
+                                                     responseDecoder: .default,
+                                                     responseValidator: .unsafe,
+                                                     timeoutInterval: 120.0)
+        let publisherProvider = ResponsePublisherProvidingMock(scheduler: testScheduler)
+        publisherProvider.validateClosure = { request in
+            XCTAssertEqual(request.allHTTPHeaderFields?["Authorization"], "Bearer param")
+        }
+        let manager = RequestManager(host: "https://api.myapp.com",
+                                     session: publisherProvider,
+                                     log: nil)
+        manager.requestAuthentication = .token(type: .bearer, value: "manager")
+        manager.makeRequest(request, authentication: .token(type: .bearer, value: "param"), on: testScheduler)
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    completed = true
+                default:
+                    XCTFail()
+                }
+            } receiveValue: { _ in }
+            .store(in: &cancellables)
+        XCTAssertFalse(completed)
+        publisherProvider.sendResult(.success((Data(), URLResponse())))
+        testScheduler.advance(by: .seconds(6))
+        XCTAssertTrue(completed)
+    }
+
+    func test_usesManagerAuthentication() {
+        var completed = false
+        let testScheduler = DispatchQueue.ombiTest
+        let request = TestRequest<Data, Data, Error>(path: "/",
+                                                     query: [],
+                                                     method: .post,
+                                                     headers: [:],
+                                                     body: "REQUEST".data(using: .utf8),
+                                                     fallbackResponse: nil,
+                                                     requestEncoder: .default,
+                                                     responseDecoder: .default,
+                                                     responseValidator: .unsafe,
+                                                     timeoutInterval: 120.0)
+        let publisherProvider = ResponsePublisherProvidingMock(scheduler: testScheduler)
+        publisherProvider.validateClosure = { request in
+            XCTAssertEqual(request.allHTTPHeaderFields?["Authorization"], "Bearer manager")
+        }
+        let manager = RequestManager(host: "https://api.myapp.com",
+                                     session: publisherProvider,
+                                     log: nil)
+        manager.requestAuthentication = .token(type: .bearer, value: "manager")
+        manager.makeRequest(request, on: testScheduler)
+            .sink { completion in
+                switch completion {
+                case .finished:
+                    completed = true
+                default:
+                    XCTFail()
+                }
+            } receiveValue: { _ in }
+            .store(in: &cancellables)
+        XCTAssertFalse(completed)
+        publisherProvider.sendResult(.success((Data(), URLResponse())))
         testScheduler.advance(by: .seconds(6))
         XCTAssertTrue(completed)
     }
