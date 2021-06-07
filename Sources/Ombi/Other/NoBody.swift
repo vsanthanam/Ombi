@@ -25,4 +25,5 @@
 
 import Foundation
 
+/// A type used to specialize `Requestable` when you aren't concerned with body data
 public struct NoBody {}

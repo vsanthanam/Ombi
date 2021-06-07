@@ -53,7 +53,7 @@ public extension Requestable where ResponseError == HTTPError {
     }
 }
 
-public extension Requestable where ResponseError == NoError {
+public extension Requestable where ResponseError == NoResponseError {
     var responseValidator: ResponseValidator<ResponseBody, ResponseError> {
         .default
     }

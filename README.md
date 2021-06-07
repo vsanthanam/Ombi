@@ -205,7 +205,7 @@ However, a request could complete and still fail. Once a `RequestResponse` is ge
 
 All `RequestResponse`(s), including ones provided by the `RequestManager`'s `fallbackResponse` parameter, will go through validation step. This means that even your backup response provided from disk could still result in an error, for example, if that response's status code is 404 and the `Requestable` has been specialized with a `ResponseError` of type `HTTPError`.
 
-If you don't want to bother with validation at all, just specialize your `Requestable` with `NoError`, and every `RequestResponse` will be allowed to pass.
+If you don't want to bother with validation at all, just specialize your `Requestable` with `NoResponseError`, and every `RequestResponse` will be allowed to pass.
 
 ## ComposableRequest
 
