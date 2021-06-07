@@ -102,24 +102,6 @@ public extension RequestHeaders.Value {
         .string(contentType.rawValue)
     }
 
-    /// A value for the `Authorization` header field
-    /// - Parameters:
-    ///   - type: The type of authorization
-    ///   - value: The value used to authenticate
-    /// - Returns: The header value
-    static func authorization(type: AuthorizationType, value: String) -> RequestHeaders.Value {
-        .string(type.description + " " + value)
-    }
-
-    /// A value for the `Authorization` header field based on a user and a password
-    /// - Parameters:
-    ///   - username: The username
-    ///   - password: The password
-    /// - Returns: The header value
-    static func authorization(username: String, password: String) -> RequestHeaders.Value {
-        .string("Basic \(Data((username + ":" + password).utf8).base64EncodedString())")
-    }
-
     /// A value for the `Cache-Control` header field
     /// - Parameter type: The cache control typr
     /// - Returns: The header value
@@ -159,74 +141,6 @@ public extension RequestHeaders.Value {
 
         public func hash(into hasher: inout Hasher) {
             hasher.combine(rawValue)
-        }
-    }
-
-    /// Available Authorization Types
-    enum AuthorizationType: ExpressibleByStringLiteral, CustomStringConvertible, Equatable, Hashable {
-
-        // MARK: - API
-
-        /// Basic authorization
-        case basic
-
-        /// Bearer token authorization
-        case bearer
-
-        /// Digest token authorizatoin
-        case digest
-
-        /// Hoba token authorization
-        case hoba
-
-        /// Mutal authorization
-        case mutual
-
-        /// Aws authorization
-        case aws
-
-        /// Custom authorization type
-        case custom(_ value: String)
-
-        // MARK: - CustomStringConvertible
-
-        public var description: String {
-            switch self {
-            case .basic:
-                return "Basic"
-            case .bearer:
-                return "Bearer"
-            case .digest:
-                return "Digest"
-            case .hoba:
-                return "HOBA"
-            case .mutual:
-                return "Mutual"
-            case .aws:
-                return "AWS4-HMAC-SHA256"
-            case let .custom(value):
-                return value
-            }
-        }
-
-        // MARK: - ExpressibleByStringLiteral
-
-        public typealias StringLiteralType = String
-
-        public init(stringLiteral value: String) {
-            self = .custom(value)
-        }
-
-        // MARK: - Equatable
-
-        public static func == (lhs: RequestHeaders.Value.AuthorizationType, rhs: RequestHeaders.Value.AuthorizationType) -> Bool {
-            lhs.description == rhs.description
-        }
-
-        // MARK: - Hashable
-
-        public func hash(into hasher: inout Hasher) {
-            hasher.combine(description)
         }
     }
 

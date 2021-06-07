@@ -123,6 +123,8 @@ open class RequestManager {
     /// Headers to add to every request
     open var additionalHeaders: RequestHeaders = [:]
 
+    open var requestAuthentication: RequestAuthentication? = nil
+
     /// Whether or not to inject Ombi's default headers
     open var shouldInjectDefaultHeaders: Bool = true
 
@@ -134,12 +136,14 @@ open class RequestManager {
     ///   - scheduler: The scheduler to use
     /// - Returns: A `Publisher` to observe request responses or errors
     public final func makeRequest<T, S>(_ requestable: T,
+                                        authentication: RequestAuthentication? = nil,
                                         retries: Int = 0,
                                         sla: S.SchedulerTimeType.Stride = .seconds(180.0),
                                         on scheduler: S,
                                         fallback: T.Response? = nil) -> AnyPublisher<T.Response, T.Failure> where T: Requestable, S: Scheduler {
         publisher(for: requestable,
-                  scheduler: scheduler)
+                  scheduler: scheduler,
+                  authentication: requestable.authentication ?? authentication ?? requestAuthentication)
             .retry(retries)
             .timeout(sla,
                      scheduler: scheduler,
@@ -179,10 +183,12 @@ open class RequestManager {
     ///   - sla: The SLA to use before timing out
     /// - Returns: A `Publisher` to observe request responses or errors
     public final func makeRequest<T>(_ requestable: T,
+                                     authentication: RequestAuthentication? = nil,
                                      retries: Int = 0,
                                      sla: TimeInterval = 180.0,
                                      fallback: T.Response? = nil) -> AnyPublisher<T.Response, T.Failure> where T: Requestable {
         makeRequest(requestable,
+                    authentication: authentication,
                     retries: retries,
                     sla: .seconds(sla),
                     on: DispatchQueue.global(),
@@ -219,7 +225,7 @@ open class RequestManager {
                 .acceptLanguage: RequestManager.defaultAcceptLanguage]
     }
 
-    private func publisher<T, S>(for requestable: T, scheduler: S) -> AnyPublisher<T.Response, T.Failure> where T: Requestable, S: Scheduler {
+    private func publisher<T, S>(for requestable: T, scheduler: S, authentication: RequestAuthentication?) -> AnyPublisher<T.Response, T.Failure> where T: Requestable, S: Scheduler {
         typealias InstantFailure = Fail<T.Response, T.Failure>
         guard var urlComponents = URLComponents(string: host) else {
             return InstantFailure(error: .malformedRequest)
@@ -258,6 +264,10 @@ open class RequestManager {
                 next[key.description] = value.description
                 return next
             }
+
+        if let authentication = authentication {
+            dict[authentication.headerKey.description] = authentication.headerValue.description
+        }
 
         request.allHTTPHeaderFields = additionalHeaders
             .reduce(dict) { prev, pair in

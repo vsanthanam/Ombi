@@ -335,6 +335,67 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
         return copy
     }
 
+    /// Set the request authentication
+    ///
+    /// ```
+    /// let request = ComposableRequest<Any, Any, Error>()
+    ///     .authentication(.token(.bearer, "myToken"))
+    /// ```
+    /// - Parameter authentication: The authentication
+    /// - Returns: The request
+    public func authenticate(with authentication: RequestAuthentication?) -> Self {
+        authenticate { authentication }
+    }
+
+    /// Set the request authentication
+    ///
+    /// ```
+    /// let request = ComposableRequest<Any, Any, Error>()
+    ///     .authentication {
+    ///         /// ... logic to determine authentication ...
+    ///         return .token(.bearer, "myToken"))
+    ///     }
+    /// ```
+    /// - Parameter authenticationBuilder: The closure that builds the authentication
+    /// - Returns: The request
+    public func authenticate(with authenticationBuilder: @escaping () -> RequestAuthentication?) -> Self {
+        var copy = self
+        copy.authenticationBuilder = authenticationBuilder
+        return copy
+    }
+
+    /// Set the request authentication using basic username and password credentials
+    ///
+    /// ```
+    /// let request = ComposableRequest<Any, Any, Error>
+    ///     .authentication(withUsername: "myUserName", password: "myPassword")
+    /// ```
+    /// - Parameters:
+    ///   - username: Username
+    ///   - password: Password
+    /// - Returns: The request
+    public func authenticate(withUsername username: String, password: String) -> Self {
+        authenticate {
+            .basic(username: username, password: password)
+        }
+    }
+
+    /// Set the request authentication using an authorization token
+    ///
+    /// ```
+    /// let request = ComposableRequest<Any, Any, Error>
+    ///     .authentication(withToken: "myToken", type: .bearer)
+    /// ```
+    /// - Parameters:
+    ///   - token: The token
+    ///   - type: The type of token
+    /// - Returns: the request
+    public func authenticate(withToken token: String, type: RequestAuthentication.TokenType) -> Self {
+        authenticate {
+            .token(type: type, value: token)
+        }
+    }
+
     /// Add a fallback response to the request
     /// - Parameter fallbackResponse: The response to use if the request fails
     /// - Returns: The request
@@ -476,6 +537,10 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
         bodyBuilder()
     }
 
+    public var authentication: RequestAuthentication? {
+        authenticationBuilder()
+    }
+
     public var fallbackResponse: RequestResponse<ResponseBody>? {
         fallbackResponseBuilder()
     }
@@ -561,6 +626,7 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
     private var headerBuilders: [() -> (RequestHeaders.Key, RequestHeaders.Value?)] = []
     private var headersBuilder: () -> RequestHeaders = { [:] }
     private var bodyBuilder: () -> RequestBody? = { nil }
+    private var authenticationBuilder: () -> RequestAuthentication? = { nil }
     private var fallbackResponseBuilder: () -> RequestResponse<ResponseBody>? = { nil }
     private var customRequestEncoder: BodyEncoder<RequestBody>?
     private var customResponseDecoder: BodyDecoder<ResponseBody>?
