@@ -1,5 +1,5 @@
 // Ombi
-// NoError.swift
+// NoBody.swift
 //
 // MIT License
 //
@@ -25,4 +25,5 @@
 
 import Foundation
 
-public struct NoError: Error {}
+/// A type used to specialize `Requestable` when you aren't concerned with body data
+public struct NoBody {}

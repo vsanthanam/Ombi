@@ -51,7 +51,7 @@ public extension ResponseValidator {
 
 }
 
-public extension ResponseValidator where Error == NoError {
+public extension ResponseValidator where Error == NoResponseError {
     static var `default`: Self {
         .init { .success($0) }
     }
