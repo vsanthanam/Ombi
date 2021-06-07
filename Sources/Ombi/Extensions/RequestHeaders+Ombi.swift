@@ -74,14 +74,23 @@ public extension RequestHeaders.Value {
 
     // MARK: - Factory Methods
 
+    /// Create a header value from a `String`
+    /// - Parameter value: The `String` value
+    /// - Returns: The header value
     static func string(_ value: String) -> RequestHeaders.Value {
         .init(value.description)
     }
 
+    /// Create a header from an `Int`
+    /// - Parameter value: The `Int` value
+    /// - Returns: The header value
     static func int(_ value: Int) -> RequestHeaders.Value {
         .init(value.description)
     }
 
+    /// Create a header from a `Double`
+    /// - Parameter value: The `Double` value
+    /// - Returns: The header value
     static func double(_ value: Double) -> RequestHeaders.Value {
         .init(value.description)
     }

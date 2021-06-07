@@ -25,6 +25,7 @@
 
 import Foundation
 
+/// `RequestParameters` are a type used to express values as a URL encoded form.
 public struct RequestParameters: Equatable, Hashable, CustomStringConvertible, ExpressibleByDictionaryLiteral {
 
     // MARK: - Initializers
@@ -76,12 +77,16 @@ public struct RequestParameters: Equatable, Hashable, CustomStringConvertible, E
 
         // MARK: - API
 
+        /// Int parameter value
         case int(_ int: Int)
 
+        /// String parameter value
         case string(_ string: String)
 
+        /// Double parameter value
         case double(_ double: Double)
 
+        /// Bool parameter value
         case bool(_ bool: Bool)
 
         // MARK: - ExpressibleByStringLiteral
