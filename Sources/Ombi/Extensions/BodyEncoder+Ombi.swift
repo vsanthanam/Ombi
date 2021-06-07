@@ -127,3 +127,9 @@ public extension BodyEncoder where Body: AutomaticBodyEncoding {
         }
     }
 }
+
+public extension BodyEncoder where Body == NoBody {
+    static var `default`: Self {
+        .init { _ in nil }
+    }
+}

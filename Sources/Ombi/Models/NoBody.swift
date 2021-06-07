@@ -1,5 +1,5 @@
 // Ombi
-// ResponseValidator+Ombi.swift
+// NoBody.swift
 //
 // MIT License
 //
@@ -25,34 +25,4 @@
 
 import Foundation
 
-public extension ResponseValidator where Error == HTTPError {
-
-    /// The default response validator for `HTTPError` types, which returns an error based on the status code
-    static var `default`: Self {
-        .init { response in
-            guard let code = response.statusCode else {
-                return .success(response)
-            }
-            if let error = Error(code) {
-                return .failure(error)
-            }
-            return .success(response)
-        }
-    }
-
-}
-
-public extension ResponseValidator {
-
-    /// An unsafe response validator, which never returns an error, regardless of the content of the response
-    static var unsafe: Self {
-        .init { .success($0) }
-    }
-
-}
-
-public extension ResponseValidator where Error == NoError {
-    static var `default`: Self {
-        .init { .success($0) }
-    }
-}
+public struct NoBody {}
