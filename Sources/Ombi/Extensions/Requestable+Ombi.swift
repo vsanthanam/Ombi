@@ -26,6 +26,10 @@
 import Foundation
 
 public extension Requestable {
+    var authentication: RequestAuthentication? {
+        nil
+    }
+
     var responseValidator: ResponseValidator<ResponseBody, ResponseError> {
         .unsafe
     }

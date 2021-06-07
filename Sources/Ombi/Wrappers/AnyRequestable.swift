@@ -38,6 +38,7 @@ public struct AnyRequestable<RequestBody, ResponseBody, ResponseError>: Requesta
         methodClosure = { requestable.method }
         headersClosure = { requestable.headers }
         bodyClosure = { requestable.body }
+        authenticationClosure = { requestable.authentication }
         fallbackResponseClosure = { requestable.fallbackResponse }
         requestEncoderClosure = { requestable.requestEncoder }
         responseDecoderClosure = { requestable.responseDecoder }
@@ -57,6 +58,8 @@ public struct AnyRequestable<RequestBody, ResponseBody, ResponseError>: Requesta
 
     public var body: RequestBody? { bodyClosure() }
 
+    public var authentication: RequestAuthentication? { authenticationClosure() }
+
     public var fallbackResponse: Response? { fallbackResponseClosure() }
 
     public var requestEncoder: BodyEncoder<RequestBody> { requestEncoderClosure() }
@@ -74,6 +77,7 @@ public struct AnyRequestable<RequestBody, ResponseBody, ResponseError>: Requesta
     private let methodClosure: () -> RequestMethod
     private let headersClosure: () -> RequestHeaders
     private let bodyClosure: () -> RequestBody?
+    private let authenticationClosure: () -> RequestAuthentication?
     private let fallbackResponseClosure: () -> Response?
     private let requestEncoderClosure: () -> BodyEncoder<RequestBody>
     private let responseDecoderClosure: () -> BodyDecoder<ResponseBody>

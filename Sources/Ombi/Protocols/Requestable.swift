@@ -72,6 +72,8 @@ public protocol Requestable {
     /// The body to append to the request
     var body: RequestBody? { get }
 
+    var authentication: RequestAuthentication? { get }
+
     /// The response to use if the request fails
     /// A default fallback response of `nil` is implemented for you.
     var fallbackResponse: Response? { get }
