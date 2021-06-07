@@ -9,8 +9,8 @@ Elegant reactive networking with Combine and Swift
 
 ## Introduction
 
-Ombi is a simple library built on top of `URLSession` and `Combine` that makes it very easy to make asynchronous network requests with reactive programming.
-It requires Combine to work correctly, and does not support Swift runtime environments that do not support Combine.
+Ombi is a simple library built on top of [URLSession](https://developer.apple.com/documentation/foundation/urlsession) and [Combine](https://developer.apple.com/documentation/combine) that makes it very easy to execute asynchronous network requests using reactive programming APIs.
+It requires Combine to work correctly, and does not support Swift runtime environments that do not also support Combine.
 
 ### Installation
 
@@ -39,7 +39,7 @@ Making a network request with ombi is pretty straight forward.
 Create a `Requestable`, initialize a `RequestManager`, and invoke the `makeRequest` method using your `Requestable`
 You will recieve a `Publisher` which will allow you to handle network responses or errors as they occur.
 
-There are two main ways to use the framework: Creating your own types that conform to `Requestable`, or using the provided `ComposableRequest` type, which already conform to `Requestable`. This document will cover both strategies.
+There are two main ways to use the framework: Creating your own types that conform to `Requestable`, or using the provided `ComposableRequest` type, which already conforms to `Requestable`. This document will briefly cover both strategies.
 
 ### Requestable Interface
 
@@ -157,7 +157,7 @@ let cancellable = manager.makeRequest(request)
 
 ### RequestManager
 
-While most of the properties of the request are definied within the `Requestable` a few are properties of the request manager, and a few other are additional parameters in the `makeRequest` method.
+While most of the properties of the request are definied within the `Requestable`, a few of them are properties of the request manager, and a few others are additional parameters in the `makeRequest` method.
 
 In addition to providing the host URL, the request manager can automatically inject headers, setup retries counts, setup a response SLA, and more.
 
