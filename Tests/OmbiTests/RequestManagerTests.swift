@@ -436,7 +436,7 @@ private class ResponsePublisherProvidingMock: ResponsePublisherProviding {
         self.delay = delay
     }
 
-    func publisher(for urlRequest: URLRequest) -> AnyPublisher<(data: Data, response: URLResponse), URLError> {
+    func requestPublisher(for urlRequest: URLRequest) -> AnyPublisher<(data: Data, response: URLResponse), URLError> {
         validateClosure(urlRequest)
         return subject
             .delay(for: .seconds(delay), scheduler: scheduler)

@@ -123,6 +123,7 @@ open class RequestManager {
     /// Headers to add to every request
     open var additionalHeaders: RequestHeaders = [:]
 
+    /// Authentication to add to every request
     open var requestAuthentication: RequestAuthentication? = nil
 
     /// Whether or not to inject Ombi's default headers
@@ -143,7 +144,7 @@ open class RequestManager {
                                         fallback: T.Response? = nil) -> AnyPublisher<T.Response, T.Failure> where T: Requestable, S: Scheduler {
         publisher(for: requestable,
                   scheduler: scheduler,
-                  authentication: requestable.authentication ?? authentication ?? requestAuthentication)
+                  authentication: authentication)
             .retry(retries)
             .timeout(sla,
                      scheduler: scheduler,
@@ -198,7 +199,7 @@ open class RequestManager {
     // MARK: - Private
 
     init(host: String,
-         session: ResponsePublisherProviding,
+         session: URLSession,
          log: OSLog?) {
         self.host = host
         self.session = session
@@ -214,7 +215,16 @@ open class RequestManager {
         self.init(host: host, session: session, log: log)
     }
 
-    private let session: ResponsePublisherProviding
+    private let session: URLSession
+
+    private var injectedHeaders: RequestHeaders {
+        additionalHeaders.reduce(defaultHeaders) { prev, pair in
+            var copy = prev
+            let (key, value) = pair
+            copy[key] = value
+            return copy
+        }
+    }
 
     private var defaultHeaders: RequestHeaders {
         guard shouldInjectDefaultHeaders else {
@@ -226,122 +236,13 @@ open class RequestManager {
     }
 
     private func publisher<T, S>(for requestable: T, scheduler: S, authentication: RequestAuthentication?) -> AnyPublisher<T.Response, T.Failure> where T: Requestable, S: Scheduler {
-        typealias InstantFailure = Fail<T.Response, T.Failure>
-        guard var urlComponents = URLComponents(string: host) else {
-            return InstantFailure(error: .malformedRequest)
-                .eraseToAnyPublisher()
-        }
-        urlComponents.path = "\(urlComponents.path)\(requestable.path)"
-        if !requestable.query.isEmpty {
-            urlComponents.queryItems = requestable.query
-        }
-        guard let finalURL = urlComponents.url else {
-            return InstantFailure(error: .malformedRequest)
-                .eraseToAnyPublisher()
-        }
-        var request = URLRequest(url: finalURL)
-        request.httpMethod = requestable.method.rawValue
-        if let body = requestable.body {
-            do {
-                request.httpBody = try requestable.requestEncoder.encode(body)
-            } catch {
-                return InstantFailure(error: .malformedRequest)
-                    .eraseToAnyPublisher()
-            }
-        }
-        var dict = defaultHeaders
-            .reduce([String: String]()) { prev, pair in
-                let (key, value) = pair
-                var next = prev
-                next[key.description] = value.description
-                return next
-            }
-
-        dict = requestable.headers
-            .reduce(dict) { prev, pair in
-                let (key, value) = pair
-                var next = prev
-                next[key.description] = value.description
-                return next
-            }
-
-        if let authentication = authentication {
-            dict[authentication.headerKey.description] = authentication.headerValue.description
-        }
-
-        request.allHTTPHeaderFields = additionalHeaders
-            .reduce(dict) { prev, pair in
-                let (key, value) = pair
-                var next = prev
-                next[key.description] = value.description
-                return next
-            }
-        request.timeoutInterval = requestable.timeoutInterval
-
-        return session.publisher(for: request)
-            .mapError { error -> T.Failure in
-                if error.code == URLError.timedOut {
-                    return T.Failure.timedOut
-                }
-                return T.Failure.urlSessionFailed(error)
-            }
-            .tryMap { (data: Data, response: URLResponse) -> T.Response in
-                do {
-                    let body = try requestable.responseDecoder.decode(data)
-                    if let response = response as? HTTPURLResponse {
-                        let headers = response.allHeaderFields.reduce(RequestHeaders()) { headers, pair in
-                            let (field, value) = pair
-                            var next = headers
-                            next[.init(String(describing: field))] = .init(String(describing: value))
-                            return next
-                        }
-                        return .init(url: response.url, headers: headers, statusCode: response.statusCode, body: body)
-                    }
-                    return .init(url: response.url, headers: nil, statusCode: nil, body: body)
-                } catch {
-                    throw T.Failure.decodingError(error)
-                }
-            }
-            .handleEvents(receiveOutput: { [log] response in
-                guard let log = log else { return }
-                var message = ""
-                if let urlString = response.url?.absoluteString {
-                    message.append("Received Response from \(urlString)")
-                } else {
-                    message.append("Received Response")
-                }
-                if let code = response.statusCode {
-                    message.append("\nStatus Code: \(code.description)")
-                }
-                if let headers = response.headers {
-                    message.append("\nHeaders:\n\(headers.description)")
-                }
-                if let body = response.body {
-                    message.append("\nBody:\n\(String(describing: body))")
-                }
-                os_log(.debug, log: log, "%@", message)
-            })
+        RequestPublisher(session: session,
+                         request: requestable,
+                         host: host,
+                         injectedHeaders: injectedHeaders,
+                         backupAuthentication: authentication ?? requestAuthentication,
+                         log: log)
             .validate(using: requestable.responseValidator)
-            .handleEvents(receiveSubscription: { [log] _ in
-                guard let log = log else { return }
-                var message = "Making Request"
-                if let urlString = request.url?.absoluteString {
-                    message.append("\nURL: \(urlString)")
-                }
-                if let method = request.requestMethod {
-                    message.append("\nMethod: \(method)")
-                }
-                if let headers = request.allHTTPHeaderFields {
-                    message.append("\nHeaders:\n\(headers.description)")
-                }
-                if let body = requestable.body {
-                    message.append("\nBody:\n\(String(describing: body))")
-                }
-                if let encodedBody = request.httpBody {
-                    message.append("\nEncoded Body:\n\(String(describing: encodedBody))")
-                }
-                os_log(.debug, log: log, "%@", message)
-            })
             .eraseToAnyPublisher()
     }
 
@@ -370,10 +271,6 @@ open class RequestManager {
                     return "tvOS"
                 #elseif os(macOS)
                     return "macOS"
-                #elseif os(Linux)
-                    return "Linux"
-                #elseif os(Windows)
-                    return "Windows"
                 #else
                     return "Unknown"
                 #endif

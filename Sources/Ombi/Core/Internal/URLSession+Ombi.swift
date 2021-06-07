@@ -26,9 +26,8 @@
 import Combine
 import Foundation
 
-extension URLSession: ResponsePublisherProviding {
-    func publisher(for urlRequest: URLRequest) -> AnyPublisher<(data: Data, response: URLResponse), URLError> {
-        dataTaskPublisher(for: urlRequest)
-            .eraseToAnyPublisher()
-    }
-}
+// extension URLSession: ResponsePublisherProviding {
+//    func requestPublisher(for urlRequest: URLRequest) -> AnyPublisher<(data: Data, response: URLResponse), URLError> {
+//        RequestPublisher(session: self, request: urlRequest).eraseToAnyPublisher()
+//    }
+// }

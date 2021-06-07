@@ -60,7 +60,7 @@ public struct AnyRequestable<RequestBody, ResponseBody, ResponseError>: Requesta
 
     public var authentication: RequestAuthentication? { authenticationClosure() }
 
-    public var fallbackResponse: Response? { fallbackResponseClosure() }
+    public var fallbackResponse: RequestResponse<ResponseBody>? { fallbackResponseClosure() }
 
     public var requestEncoder: BodyEncoder<RequestBody> { requestEncoderClosure() }
 
