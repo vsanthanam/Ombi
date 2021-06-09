@@ -1,5 +1,5 @@
 // Ombi
-// NoResponseError.swift
+// NoError.swift
 //
 // MIT License
 //
@@ -26,4 +26,4 @@
 import Foundation
 
 /// A type used to specialize `Requestable` when you aren't concerned with response validation
-public struct NoResponseError: Error {}
+public struct NoError: Error {}

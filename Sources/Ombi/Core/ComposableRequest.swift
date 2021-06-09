@@ -606,8 +606,8 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
             return customResponseValidator
         } else if ResponseError.self is HTTPError.Type {
             return unsafeBitCast(ResponseValidator<ResponseBody, HTTPError>.default, to: ResponseValidator<ResponseBody, ResponseError>.self)
-        } else if ResponseError.self is NoResponseError.Type {
-            return unsafeBitCast(ResponseValidator<ResponseBody, NoResponseError>.default, to: ResponseValidator<ResponseBody, ResponseError>.self)
+        } else if ResponseError.self is NoError.Type {
+            return unsafeBitCast(ResponseValidator<ResponseBody, NoError>.default, to: ResponseValidator<ResponseBody, ResponseError>.self)
         } else {
             return .unsafe
         }

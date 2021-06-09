@@ -30,7 +30,7 @@ public extension Publisher {
 
     /// Replace all errors with an empty response
     /// - Returns: A publisher that cannot error
-    func ignoreErrors<T>() -> Publishers.ReplaceError<Self> where Output == RequestResponse<T> {
+    func removeErrors<T>() -> Publishers.ReplaceError<Self> where Output == RequestResponse<T> {
         replaceError(with: Output.empty)
     }
 

@@ -44,7 +44,7 @@ import os.log
 ///                                       retries: 3,
 ///                                       sla: .seconds(120),
 ///                                       on: DispathQueue.main)
-///     .replaceError(with: .empty)
+///     .removeErrors()
 ///     .map(\.body)
 ///     .sink { responseBody in
 ///         ...
