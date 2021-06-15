@@ -94,7 +94,7 @@ public struct BodyEncoder<Body> {
 
     /// Create a `BodyDecoder`
     /// - Parameter handler: The encoding closure
-    init(_ handler: @escaping Handler) {
+    public init(_ handler: @escaping Handler) {
         encode = handler
     }
 
@@ -104,5 +104,5 @@ public struct BodyEncoder<Body> {
     public typealias Handler = (Body?) throws -> Data?
 
     /// The handler that decodes `Body`
-    public let encode: (Body?) throws -> Data?
+    public let encode: Handler
 }
