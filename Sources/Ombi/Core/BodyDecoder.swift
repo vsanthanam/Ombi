@@ -93,7 +93,7 @@ public struct BodyDecoder<Body> {
 
     /// Create a `BodyDecoder`
     /// - Parameter handler: The decoding closure
-    init(_ handler: @escaping Handler) {
+    public init(_ handler: @escaping Handler) {
         decode = handler
     }
 
