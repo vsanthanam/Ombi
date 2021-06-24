@@ -25,6 +25,7 @@
 
 import Combine
 import Foundation
+import os.log
 
 /// A `ComposableRequest` is a generic type used to execute HTTP requests without needing to create request-specific `Requestable` types.
 ///
@@ -484,8 +485,13 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
     /// - Returns: A publisher to observe request responses
     public func send(on host: String,
                      retries: Int = 0,
-                     sla: TimeInterval = 120) -> AnyPublisher<Response, Failure> {
-        send(on: host, retries: retries, sla: .seconds(sla), using: DispatchQueue.global())
+                     sla: TimeInterval = 120,
+                     log: OSLog) -> AnyPublisher<Response, Failure> {
+        send(on: host,
+             retries: retries,
+             sla: .seconds(sla),
+             using: DispatchQueue.global(),
+             log: log)
     }
 
     /// Send this request
@@ -498,8 +504,9 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
     public func send<S>(on host: String,
                         retries: Int = 0,
                         sla: S.SchedulerTimeType.Stride = .seconds(120),
-                        using scheduler: S) -> AnyPublisher<Response, Failure> where S: Scheduler {
-        let manager = RequestManager(host: host)
+                        using scheduler: S,
+                        log: OSLog) -> AnyPublisher<Response, Failure> where S: Scheduler {
+        let manager = RequestManager(host: host, log: log)
         return manager.makeRequest(self,
                                    retries: retries,
                                    sla: sla,
