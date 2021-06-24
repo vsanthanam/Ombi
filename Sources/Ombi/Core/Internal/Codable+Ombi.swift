@@ -26,13 +26,13 @@
 import Foundation
 
 extension Encodable {
-    func encoded() throws -> Data {
+    func encoded() throws -> Data? {
         try JSONEncoder().encode(self)
     }
 }
 
 extension Decodable {
-    static func decoded(from data: Data) throws -> Self {
+    static func decoded(from data: Data) throws -> Self? {
         try JSONDecoder().decode(self, from: data)
     }
 }
