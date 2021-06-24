@@ -628,13 +628,13 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
             return .init { data in
                 guard let data = data else { return nil }
                 let decoded = try desiredType.decoded(from: data)
-                return unsafeBitCast(decoded, to: ResponseBody?.self)
+                return decoded as? ResponseBody
             }
         } else if let desiredType = ResponseBody.self as? AutomaticBodyDecoding.Type {
             return .init { data in
                 guard let data = data else { return nil }
                 let decoded = try desiredType.init(fromData: data)
-                return unsafeBitCast(decoded, to: ResponseBody?.self)
+                return decoded as? ResponseBody
             }
         } else if ResponseBody.self is NoBody.Type {
             return unsafeBitCast(BodyDecoder<NoBody>.default, to: BodyDecoder<ResponseBody>.self)
