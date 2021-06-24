@@ -485,6 +485,22 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
     /// - Returns: A publisher to observe request responses
     public func send(on host: String,
                      retries: Int = 0,
+                     sla: TimeInterval = 120) -> AnyPublisher<Response, Failure> {
+        send(on: host,
+             retries: retries,
+             sla: .seconds(sla),
+             using: DispatchQueue.global())
+    }
+
+    /// Send this request on the main thread
+    /// - Parameters:
+    ///   - host: The host
+    ///   - retries: The number of retries
+    ///   - sla: The SLA to use before timing out
+    ///   - log: The log used to write network request info.
+    /// - Returns: A publisher to observe request responses
+    public func send(on host: String,
+                     retries: Int = 0,
                      sla: TimeInterval = 120,
                      log: OSLog) -> AnyPublisher<Response, Failure> {
         send(on: host,
@@ -500,6 +516,25 @@ public struct ComposableRequest<RequestBody, ResponseBody, ResponseError>: Reque
     ///   - retries: The number of retries
     ///   - sla: The SLA to use before timing out
     ///   - scheduler: The scheduler to use
+    /// - Returns: A publisher to observe request responses
+    public func send<S>(on host: String,
+                        retries: Int = 0,
+                        sla: S.SchedulerTimeType.Stride = .seconds(120),
+                        using scheduler: S) -> AnyPublisher<Response, Failure> where S: Scheduler {
+        let manager = RequestManager(host: host)
+        return manager.makeRequest(self,
+                                   retries: retries,
+                                   sla: sla,
+                                   on: scheduler)
+    }
+
+    /// Send this request
+    /// - Parameters:
+    ///   - host: The host
+    ///   - retries: The number of retries
+    ///   - sla: The SLA to use before timing out
+    ///   - scheduler: The scheduler to use
+    ///   - log: The log used to write network request info.
     /// - Returns: A publisher to observe request responses
     public func send<S>(on host: String,
                         retries: Int = 0,
