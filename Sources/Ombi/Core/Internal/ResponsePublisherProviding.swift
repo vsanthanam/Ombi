@@ -27,5 +27,5 @@ import Combine
 import Foundation
 
 protocol ResponsePublisherProviding {
-    func publisher(for urlRequest: URLRequest) -> AnyPublisher<(data: Data, response: URLResponse), URLError>
+    func requestPublisher(for urlRequest: URLRequest) -> AnyPublisher<(data: Data, response: URLResponse), URLError>
 }
